@@ -1,24 +1,19 @@
-// This file merely configures the store for hot reloading.
-// This boilerplate file is likely to be the same for each project that uses Redux.
-// With Redux, the actual stores are in /reducers.
-
-import {createStore, compose} from 'redux';
-import rootReducer from '../reducers';
+import { createStore, compose } from 'redux'
+import rootReducer from '../reducers'
 import DevTools from '../components/DevTools'
 
+
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, compose(
-      DevTools.instrument()
-    )
-  );
+    const store = createStore(rootReducer, initialState, compose(
+        DevTools.instrument()
+    ))
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers').default; // eslint-disable-line global-require
-      store.replaceReducer(nextReducer);
-    });
-  }
+    if (module.hot) {
+        module.hot.accept('../reducers', () => {
+            const nextReducer = require('../reducers').default
+            store.replaceReducer(nextReducer)
+        })
+    }
 
-  return store;
+    return store
 }

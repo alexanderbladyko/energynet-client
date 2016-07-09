@@ -1,52 +1,37 @@
-// This file configures the development web server
-// which supports hot reloading and synchronized testing.
+import browserSync from 'browser-sync'
+import historyApiFallback from 'connect-history-api-fallback'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 
-// Require Browsersync along with webpack and middleware for it
-import browserSync from 'browser-sync';
-// Required for react-router browserHistory
-// see https://github.com/BrowserSync/browser-sync/issues/204#issuecomment-102623643
-import historyApiFallback from 'connect-history-api-fallback';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import config from '../webpack.config.dev';
+import config from '../webpack.config.dev'
 
-const bundler = webpack(config);
+const bundler = webpack(config)
 
-// Run Browsersync and use middleware for Hot Module Replacement
 browserSync({
-  port: 3000,
-  ui: {
-    port: 3001
-  },
-  server: {
-    baseDir: 'src',
+    port: 3000,
+    ui: {
+        port: 3001,
+    },
+    server: {
+        baseDir: 'src',
 
-    middleware: [
-      historyApiFallback(),
+        middleware: [
+            historyApiFallback(),
 
-      webpackDevMiddleware(bundler, {
-        // Dev middleware can't access config, so we provide publicPath
-        publicPath: config.output.publicPath,
+            webpackDevMiddleware(bundler, {
+                publicPath: config.output.publicPath,
 
-        // pretty colored output
-        stats: { colors: true },
+                stats: { colors: true },
 
-        // Set to false to display a list of each file that is being bundled.
-        noInfo: true
+                noInfo: true,
+            }),
 
-        // for other settings see
-        // http://webpack.github.io/docs/webpack-dev-middleware.html
-      }),
+            webpackHotMiddleware(bundler),
+        ],
+    },
 
-      // bundler should be the same as above
-      webpackHotMiddleware(bundler)
-    ]
-  },
-
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [
-    'src/*.html'
-  ]
-});
+    files: [
+        'src/*.html',
+    ],
+})
