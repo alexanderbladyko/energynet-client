@@ -1,11 +1,10 @@
 import { createStore, compose } from 'redux'
 import rootReducer from '../reducers'
-import DevTools from '../components/DevTools'
 
 
 export default function configureStore(initialState) {
     const store = createStore(rootReducer, initialState, compose(
-        DevTools.instrument()
+        window.devToolsExtension ? window.devToolsExtension() : f => f
     ))
 
     if (module.hot) {

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import DevTools from './DevTools'
 
 
 const App = props => {
@@ -7,7 +6,6 @@ const App = props => {
         <div>
             <h1>{'Some header'}</h1>
             {props.children}
-            <DevTools />
         </div>
     )
 }

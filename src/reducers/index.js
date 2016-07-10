@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux'
-import userInfo from './user_info'
-import { routerReducer } from 'react-router-redux'
+
+import userInfo from 'reducers/userInfo'
+import route from 'reducers/route'
+import config from 'reducers/config'
+
 
 const rootReducer = combineReducers({
+    config,
     userInfo,
-    routing: routerReducer,
+    route,
 })
 
 export default rootReducer

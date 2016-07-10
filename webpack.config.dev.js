@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
     debug: true,
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     noInfo: true,
     entry: [
         'webpack-hot-middleware/client?reload=true',
