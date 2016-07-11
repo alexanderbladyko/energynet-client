@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import configureStore from 'store/configureStore' // eslint-disable-line
 import 'favicon.ico'
 import 'styles/styles.scss'
-import App from 'components/App'
+import RoutesApp from 'apps/routes/app'
 
 import ConfigApp from 'apps/config/app'
 import ConnectionApp from 'apps/connection/app'
@@ -23,6 +23,6 @@ configApp.load().then(() => {
 
 render(
     <Provider store={store}>
-        <App />
+        <RoutesApp />
     </Provider>, document.getElementById('app')
 )

@@ -1,9 +1,9 @@
+import initialState from 'reducers/initialState'
 import {
     CONFIG_REQUEST,
     CONFIG_RESPONSE,
     CONFIG_ERROR,
 } from 'constants/actionTypes'
-import initialState from './initialState'
 
 
 export default function config(state = initialState.config, action) {

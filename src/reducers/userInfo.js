@@ -1,4 +1,4 @@
-import initialState from './initialState'
+import initialState from 'reducers/initialState'
 
 
 export default function userInfoReducer(state = initialState.userInfo, action) {
