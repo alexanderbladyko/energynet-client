@@ -34,12 +34,13 @@ export function errorConfig(message) {
     }
 }
 
-export function loadConfig() {
-    return dispatch => {
-        dispatch(requestConfig())
-        return ajax.get(CONFIG_URL).then(
-            config => dispatch(responseConfig(config)),
-            error => dispatch(errorConfig(error))
-        )
-    }
+export function loadConfig(dispatch) {
+    dispatch(requestConfig())
+    return ajax.get(CONFIG_URL).then(
+        config => {
+            dispatch(responseConfig(config))
+            return config
+        },
+        error => dispatch(errorConfig(error))
+    )
 }

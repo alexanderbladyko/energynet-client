@@ -8,17 +8,25 @@ import 'favicon.ico'
 import 'styles/styles.scss'
 import RoutesApp from 'apps/routes/app'
 
-import ConfigApp from 'apps/config/app'
 import ConnectionApp from 'apps/connection/app'
+
+import {
+    loadConfig,
+} from 'actions/config'
+import {
+    loadUserInfo,
+} from 'actions/userInfo'
 
 const store = configureStore()
 
-const configApp = new ConfigApp()
 const connectionApp = new ConnectionApp()
 
-configApp.start(store)
-configApp.load().then(() => {
-    connectionApp.start(store)
+loadConfig(store.dispatch).then(config => {
+    loadUserInfo(store.dispatch, config).then(userInfo => {
+        if (userInfo.isAuthenticated) {
+            connectionApp.start(store)
+        }
+    }).done()
 }).done()
 
 render(
