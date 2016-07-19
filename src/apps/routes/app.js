@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import {
     ERROR_ROUTE,
     LOADING_ROUTE,
+    LOGIN_ROUTE,
 } from 'constants/routes'
 
 import LoadingApp from 'apps/loading/app'
 import ErrorApp from 'apps/error/app'
-
+import LoginApp from 'apps/login/app'
 
 class RoutesApp extends React.Component {
     static propTypes = {
@@ -25,6 +26,10 @@ class RoutesApp extends React.Component {
                 {
                     this.props.route === ERROR_ROUTE
                     && <ErrorApp />
+                }
+                {
+                    this.props.route === LOGIN_ROUTE
+                    && <LoginApp />
                 }
             </div>
         )

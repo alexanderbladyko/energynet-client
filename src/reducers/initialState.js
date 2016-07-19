@@ -4,7 +4,14 @@ import {
 
 
 export default {
-    userInfo: {},
+    userInfo: {
+        data: {},
+    },
     route: LOADING_ROUTE,
-    config: {},
+    config: {
+        data: {},
+    },
+    socket: {
+        connected: false,
+    },
 }

@@ -21,12 +21,20 @@ const store = configureStore()
 
 const connectionApp = new ConnectionApp()
 
+const apps = [
+    connectionApp,
+]
+
+connectionApp.onConnect = () => {
+    apps.forEach(app => app.connect())
+}
+
+apps.forEach(app => app.init(store))
+
 loadConfig(store.dispatch).then(config => {
-    loadUserInfo(store.dispatch, config).then(userInfo => {
-        if (userInfo.isAuthenticated) {
-            connectionApp.start(store)
-        }
-    }).done()
+    apps.forEach(app => app.start(store))
+
+    loadUserInfo(store.dispatch, config).done()
 }).done()
 
 render(

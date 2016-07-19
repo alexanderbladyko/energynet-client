@@ -17,7 +17,7 @@ export default function userInfoReducer(state = initialState.userInfo, action) {
         return {
             ...state,
             loading: false,
-            isAuthenticated: action.payload.userInfo.isAuthenticated,
+            data: action.payload.userInfo,
         }
     case USER_INFO_ERROR:
         return {
