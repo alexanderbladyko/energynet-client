@@ -9,6 +9,7 @@ import {
     CONFIG_RESPONSE,
     CONFIG_ERROR,
     USER_INFO_RESPONSE,
+    NAVIGATE,
 } from 'constants/actionTypes'
 
 
@@ -23,6 +24,8 @@ export default function routeReducer(state = initialState.route, action) {
             return BASE_ROUTE
         }
         return LOGIN_ROUTE
+    case NAVIGATE:
+        return action.payload.route
     default:
         return state
     }

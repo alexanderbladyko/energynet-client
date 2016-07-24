@@ -5,11 +5,13 @@ import {
     ERROR_ROUTE,
     LOADING_ROUTE,
     LOGIN_ROUTE,
+    REGISTER_ROUTE,
 } from 'constants/routes'
 
 import LoadingApp from 'apps/loading/app'
 import ErrorApp from 'apps/error/app'
 import LoginApp from 'apps/login/app'
+import RegisterApp from 'apps/register/app'
 
 class RoutesApp extends React.Component {
     static propTypes = {
@@ -30,6 +32,10 @@ class RoutesApp extends React.Component {
                 {
                     this.props.route === LOGIN_ROUTE
                     && <LoginApp />
+                }
+                {
+                    this.props.route === REGISTER_ROUTE
+                    && <RegisterApp />
                 }
             </div>
         )

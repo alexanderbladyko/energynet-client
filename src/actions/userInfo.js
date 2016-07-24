@@ -5,10 +5,14 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_RESPONSE,
     USER_LOGIN_ERROR,
+    USER_REGISTER_REQUEST,
+    USER_REGISTER_RESPONSE,
+    USER_REGISTER_ERROR,
 } from 'constants/actionTypes'
 import {
     USER_INFO_URL,
     LOGIN_URL,
+    REGISTER_URL,
 } from 'constants'
 import ajax from 'utils/ajax'
 
@@ -77,11 +81,46 @@ export function errorLogin(message) {
 }
 
 export function loginUser(dispatch) {
-    return data => {
+    return (data, config) => {
         dispatch(requestLogin())
-        return ajax.post(LOGIN_URL, data).then(
+        return ajax.post(`${config.data.authApi}${LOGIN_URL}`, data).then(
             userInfo => dispatch(responseLogin(userInfo)),
             error => dispatch(errorLogin(error))
+        )
+    }
+}
+
+export function requestRegister() {
+    return {
+        type: USER_REGISTER_REQUEST,
+    }
+}
+
+export function responseRegister(registerInfo) {
+    return {
+        type: USER_REGISTER_RESPONSE,
+        payload: {
+            registerInfo,
+        },
+    }
+}
+
+export function errorRegister(message) {
+    return {
+        type: USER_REGISTER_ERROR,
+        error: true,
+        payload: {
+            message,
+        },
+    }
+}
+
+export function registerUser(dispatch) {
+    return (data, config) => {
+        dispatch(requestRegister())
+        return ajax.post(`${config.data.authApi}${REGISTER_URL}`, data).then(
+            registerInfo => dispatch(responseRegister(registerInfo)),
+            error => dispatch(errorRegister(error))
         )
     }
 }

@@ -7,6 +7,8 @@ import {
     loginUser,
 } from 'actions/userInfo'
 
+import { REGISTER_ROUTE } from 'constants/routes'
+
 
 class Login extends React.Component {
     static propTypes = {
@@ -17,12 +19,15 @@ class Login extends React.Component {
     };
     handleSubmit(e) {
         e.preventDefault()
+        const { config } = this.props
+        const { name, password } = this.refs
         this.props.loginUser({
-            username: this.refs.name.value,
-            password: this.refs.password.value,
-        }).done()
+            username: name.value,
+            password: password.value,
+        }, config).done()
     }
     render() {
+        const handleNavigation = this.props.navigate.bind(this, REGISTER_ROUTE)
         return (
             <form
                 action=""
@@ -51,6 +56,12 @@ class Login extends React.Component {
                 </h3>
                 <button type="submit">
                     {'Log in'}
+                </button>
+                <button
+                    onClick={handleNavigation}
+                    type="button"
+                >
+                    {'Go to registration'}
                 </button>
             </form>
         )

@@ -3,11 +3,11 @@ import {
 } from 'constants/actionTypes'
 
 
-export function navigate(url) {
+export function navigate(route) {
     return {
         type: NAVIGATE,
         payload: {
-            url,
+            route,
         },
     }
 }
