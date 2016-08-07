@@ -14,4 +14,7 @@ export default {
     socket: {
         connected: false,
     },
+    games: {
+        data: [],
+    },
 }

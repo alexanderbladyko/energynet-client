@@ -4,12 +4,14 @@ import {
     BASE_ROUTE,
     ERROR_ROUTE,
     LOGIN_ROUTE,
+    LOBBY_ROUTE,
 } from 'constants/routes'
 import {
     CONFIG_RESPONSE,
     CONFIG_ERROR,
     USER_INFO_RESPONSE,
     NAVIGATE,
+    GAMES_NEW_SUCCESS,
 } from 'constants/actionTypes'
 
 
@@ -26,6 +28,8 @@ export default function routeReducer(state = initialState.route, action) {
         return LOGIN_ROUTE
     case NAVIGATE:
         return action.payload.route
+    case GAMES_NEW_SUCCESS:
+        return LOBBY_ROUTE
     default:
         return state
     }

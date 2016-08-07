@@ -6,12 +6,18 @@ import {
     LOADING_ROUTE,
     LOGIN_ROUTE,
     REGISTER_ROUTE,
+    GAMES_ROUTE,
+    BASE_ROUTE,
+    LOBBY_ROUTE,
 } from 'constants/routes'
 
 import LoadingApp from 'apps/loading/app'
 import ErrorApp from 'apps/error/app'
 import LoginApp from 'apps/login/app'
 import RegisterApp from 'apps/register/app'
+import GamesApp from 'apps/games/app'
+import LobbyApp from 'apps/lobby/app'
+
 
 class RoutesApp extends React.Component {
     static propTypes = {
@@ -36,6 +42,18 @@ class RoutesApp extends React.Component {
                 {
                     this.props.route === REGISTER_ROUTE
                     && <RegisterApp />
+                }
+                {
+                    this.props.route === GAMES_ROUTE
+                    && <GamesApp />
+                }
+                {
+                    this.props.route === BASE_ROUTE
+                    && <GamesApp />
+                }
+                {
+                    this.props.route === LOBBY_ROUTE
+                    && <LobbyApp />
                 }
             </div>
         )
