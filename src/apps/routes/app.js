@@ -48,10 +48,6 @@ class RoutesApp extends React.Component {
                     && <GamesApp />
                 }
                 {
-                    this.props.route === BASE_ROUTE
-                    && <GamesApp />
-                }
-                {
                     this.props.route === LOBBY_ROUTE
                     && <LobbyApp />
                 }

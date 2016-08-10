@@ -44,7 +44,7 @@ export function errorUserInfo(message) {
 
 export function loadUserInfo(dispatch, config) {
     dispatch(requestUserInfo())
-    return ajax.get(`${config.gameApi}${USER_INFO_URL}`).then(
+    return ajax.get(`${config.authApi}${USER_INFO_URL}`).then(
         userInfo => {
             dispatch(responseUserInfo(userInfo))
             return userInfo
