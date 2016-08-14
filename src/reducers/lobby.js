@@ -1,21 +1,15 @@
 import initialState from 'reducers/initialState'
 import {
-    GAMES_RECEIVE,
-    GAMES_JOIN,
+    LOBBY_RECEIVE,
 } from 'constants/actionTypes'
 
 
-export default function games(state = initialState.games, action) {
+export default function lobby(state = initialState.lobby, action) {
     switch (action.type) {
-    case GAMES_RECEIVE:
+    case LOBBY_RECEIVE:
         return {
             ...state,
             data: action.payload.data,
-        }
-    case GAMES_JOIN:
-        return {
-            ...state,
-            loading: true,
         }
     default:
         return state

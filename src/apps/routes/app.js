@@ -7,8 +7,8 @@ import {
     LOGIN_ROUTE,
     REGISTER_ROUTE,
     GAMES_ROUTE,
-    BASE_ROUTE,
     LOBBY_ROUTE,
+    HOME_ROUTE,
 } from 'constants/routes'
 
 import LoadingApp from 'apps/loading/app'
@@ -17,6 +17,7 @@ import LoginApp from 'apps/login/app'
 import RegisterApp from 'apps/register/app'
 import GamesApp from 'apps/games/app'
 import LobbyApp from 'apps/lobby/app'
+import HomeApp from 'apps/home/app'
 
 
 class RoutesApp extends React.Component {
@@ -50,6 +51,10 @@ class RoutesApp extends React.Component {
                 {
                     this.props.route === LOBBY_ROUTE
                     && <LobbyApp />
+                }
+                {
+                    this.props.route === HOME_ROUTE
+                    && <HomeApp />
                 }
             </div>
         )

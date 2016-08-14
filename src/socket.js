@@ -9,9 +9,13 @@ export function initSocket() {
 }
 
 export function send(url, options) {
+    if (!socket) initSocket()
+
     socket.emit(url, options)
 }
 
 export function subscribe(url, handler) {
-    socket.on(url, handler)
+    if (!socket) initSocket()
+
+    return socket.on(url, handler)
 }

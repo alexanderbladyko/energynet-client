@@ -8,8 +8,6 @@ import 'favicon.ico'
 import 'styles/styles.scss'
 import RoutesApp from 'apps/routes/app'
 
-import ConnectionApp from 'apps/connection/app'
-
 import {
     loadConfig,
 } from 'actions/config'
@@ -19,21 +17,8 @@ import {
 
 const store = configureStore()
 
-const connectionApp = new ConnectionApp()
-
-const apps = [
-    connectionApp,
-]
-
-connectionApp.onConnect = () => {
-    apps.forEach(app => app.connect())
-}
-
-apps.forEach(app => app.init(store))
-
 loadConfig(store.dispatch).then(config => {
-    apps.forEach(app => app.start(store))
-
+    if (!config) return
     loadUserInfo(store.dispatch, config).done()
 }).done()
 

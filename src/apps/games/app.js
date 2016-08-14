@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import io from 'socket.io-client'
 
+import { send, subscribe } from 'socket'
 import Game from 'apps/games/components/Game'
 import NewGame from 'apps/games/components/NewGame'
 
@@ -10,6 +11,8 @@ import {
     receiveGames,
     createNewGame,
     responseNewGame,
+    joinGame,
+    responseJoinGame,
 } from 'actions/games'
 
 
@@ -17,7 +20,9 @@ class Games extends React.Component {
     static propTypes = {
         createNewGame: React.PropTypes.func.isRequired,
         games: React.PropTypes.object.isRequired,
+        joinGame: React.PropTypes.func.isRequired,
         receiveGames: React.PropTypes.func.isRequired,
+        responseJoinGame: React.PropTypes.func.isRequired,
         responseNewGame: React.PropTypes.func.isRequired,
     };
     componentWillMount() {
@@ -28,15 +33,24 @@ class Games extends React.Component {
         this.socket.on('new', result => {
             this.props.responseNewGame(result)
         })
+        this.joinHandler = subscribe('join_game', this.props.responseJoinGame)
     }
     componentWillUnmout() {
         this.socket.disconnect()
+        this.joinHandler.destroy()
     }
     handleCreateNewGame(data) {
         this.props.createNewGame()
         this.socket.emit('new', data)
     }
+    handleJoinGame(id) {
+        send('join', { id })
+        this.props.joinGame()
+    }
     render() {
+        if (this.props.games.loading) {
+            return <div>{'Loading'}</div>
+        }
         return (
             <div className="games">
                 <h1>
@@ -48,7 +62,7 @@ class Games extends React.Component {
                         return (
                             <Game
                                 game={game}
-                                handleClick={() => {}}
+                                handleClick={() => { this.handleJoinGame(game.id) }}
                                 key={game.id}
                             />
                         )
@@ -71,4 +85,6 @@ export default connect(state => {
     receiveGames,
     createNewGame,
     responseNewGame,
+    joinGame,
+    responseJoinGame,
 })(Games)

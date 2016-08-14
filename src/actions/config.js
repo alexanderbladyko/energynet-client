@@ -41,6 +41,8 @@ export function loadConfig(dispatch) {
             dispatch(responseConfig(config))
             return config
         },
-        error => dispatch(errorConfig(error))
+        error => {
+            dispatch(errorConfig(error))
+        }
     )
 }

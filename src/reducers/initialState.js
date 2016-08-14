@@ -17,4 +17,7 @@ export default {
     games: {
         data: [],
     },
+    lobby: {
+        data: {},
+    },
 }
