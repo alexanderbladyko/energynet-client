@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { send, subscribe } from 'socket'
 import { navigate } from 'actions/route'
+import { getState, receiveState } from 'actions/state'
 import {
     LOBBY_ROUTE,
     GAMES_ROUTE,
@@ -11,19 +12,21 @@ import {
 
 class Home extends React.Component {
     static propTypes = {
-        lobby: React.PropTypes.object.isRequired,
+        getState: React.PropTypes.func.isRequired,
         navigate: React.PropTypes.func.isRequired,
+        receiveState: React.PropTypes.func.isRequired,
+        state: React.PropTypes.object.isRequired,
     };
     componentWillMount() {
-        send('state', {})
         this.stateHandler = subscribe('state', this.onState.bind(this))
+        send('state', {})
+        this.props.getState()
     }
     componentWillUnmout() {
         this.stateHandler.destroy()
     }
     onState(data) {
-        console.log(data)
-        // this.props.receiveLobby(data)
+        this.props.receiveState(data)
     }
     render() {
         return (
@@ -31,6 +34,10 @@ class Home extends React.Component {
                 <h1>
                     {'Home'}
                 </h1>
+                {
+                    this.props.state.loading
+                    && <p>{'Loading'}</p>
+                }
                 <div>
                     <button
                         onClick={() => this.props.navigate(LOBBY_ROUTE)}
@@ -50,8 +57,10 @@ class Home extends React.Component {
 
 export default connect(state => {
     return {
-        lobby: state.lobby,
+        state: state.state,
     }
 }, {
     navigate,
+    getState,
+    receiveState,
 })(Home)

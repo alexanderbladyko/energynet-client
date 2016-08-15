@@ -1,18 +1,19 @@
 import initialState from 'reducers/initialState'
+
 import {
-    LOBBY_GET,
-    LOBBY_RECEIVE,
+    STATE_GET,
+    STATE_RECEIVE,
 } from 'constants/actionTypes'
 
 
-export default function lobby(state = initialState.lobby, action) {
+export default function stateReducer(state = initialState.state, action) {
     switch (action.type) {
-    case LOBBY_GET:
+    case STATE_GET:
         return {
             ...state,
             loading: true,
         }
-    case LOBBY_RECEIVE:
+    case STATE_RECEIVE:
         return {
             ...state,
             loading: false,

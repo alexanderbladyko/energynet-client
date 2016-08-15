@@ -6,6 +6,7 @@ import config from 'reducers/config'
 import socket from 'reducers/socket'
 import games from 'reducers/games'
 import lobby from 'reducers/lobby'
+import state from 'reducers/state'
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     socket,
     games,
     lobby,
+    state,
 })
 
 export default rootReducer

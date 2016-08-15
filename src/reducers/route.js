@@ -17,6 +17,7 @@ import {
     GAMES_NEW_SUCCESS,
     GAMES_JOIN_SUCCESS,
     GAMES_JOIN_ERROR,
+    STATE_RECEIVE,
 } from 'constants/actionTypes'
 
 
@@ -40,6 +41,14 @@ export default function routeReducer(state = initialState.route, action) {
     case GAMES_NEW_SUCCESS:
     case GAMES_JOIN_SUCCESS:
         return LOBBY_ROUTE
+    case STATE_RECEIVE:
+        if (action.payload.data.inGame) {
+            if (action.payload.data.inLobby) {
+                return LOBBY_ROUTE
+            }
+            return GAMES_ROUTE
+        }
+        return state
     default:
         return state
     }

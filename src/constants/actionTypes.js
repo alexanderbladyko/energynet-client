@@ -26,6 +26,10 @@ export const GAMES_JOIN = 'GAMES_JOIN'
 export const GAMES_JOIN_SUCCESS = 'GAMES_JOIN_SUCCESS'
 export const GAMES_JOIN_ERROR = 'GAMES_JOIN_ERROR'
 
+export const LOBBY_GET = 'LOBBY_GET'
 export const LOBBY_RECEIVE = 'LOBBY_RECEIVE'
+
+export const STATE_GET = 'STATE_GET'
+export const STATE_RECEIVE = 'STATE_GET_SUCCESS'
 
 export const NAVIGATE = 'NAVIGATE'

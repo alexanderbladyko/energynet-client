@@ -20,4 +20,8 @@ export default {
     lobby: {
         data: {},
     },
+    state: {
+        loading: true,
+        data: {},
+    },
 }
