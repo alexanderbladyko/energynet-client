@@ -17,6 +17,8 @@ import {
     GAMES_NEW_SUCCESS,
     GAMES_JOIN_SUCCESS,
     GAMES_JOIN_ERROR,
+    GAMES_LEAVE_SUCCESS,
+    GAMES_LEAVE_ERROR,
     STATE_RECEIVE,
 } from 'constants/actionTypes'
 
@@ -29,6 +31,7 @@ export default function routeReducer(state = initialState.route, action) {
         return LOADING_ROUTE
     case CONFIG_ERROR:
     case GAMES_JOIN_ERROR:
+    case GAMES_LEAVE_ERROR:
         return ERROR_ROUTE
     case USER_INFO_RESPONSE:
     case USER_LOGIN_RESPONSE:
@@ -41,11 +44,13 @@ export default function routeReducer(state = initialState.route, action) {
     case GAMES_NEW_SUCCESS:
     case GAMES_JOIN_SUCCESS:
         return LOBBY_ROUTE
+    case GAMES_LEAVE_SUCCESS:
+        return HOME_ROUTE
     case STATE_RECEIVE:
+        if (action.payload.data.inLobby) {
+            return LOBBY_ROUTE
+        }
         if (action.payload.data.inGame) {
-            if (action.payload.data.inLobby) {
-                return LOBBY_ROUTE
-            }
             return GAMES_ROUTE
         }
         return state

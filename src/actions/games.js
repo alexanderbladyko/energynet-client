@@ -6,6 +6,9 @@ import {
     GAMES_JOIN,
     GAMES_JOIN_SUCCESS,
     GAMES_JOIN_ERROR,
+    GAMES_LEAVE,
+    GAMES_LEAVE_SUCCESS,
+    GAMES_LEAVE_ERROR,
 } from 'constants/actionTypes'
 
 
@@ -49,5 +52,22 @@ export function responseJoinGame(response) {
     }
     return {
         type: GAMES_JOIN_ERROR,
+    }
+}
+
+export function leaveGame() {
+    return {
+        type: GAMES_LEAVE,
+    }
+}
+
+export function responseLeaveGame(response) {
+    if (response.success) {
+        return {
+            type: GAMES_LEAVE_SUCCESS,
+        }
+    }
+    return {
+        type: GAMES_LEAVE_ERROR,
     }
 }

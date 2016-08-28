@@ -12,7 +12,7 @@ export default class Game extends React.Component {
                 className="game"
                 onClick={this.props.handleClick}
             >
-                {this.props.game.name}
+                {this.props.game.data.name}
             </div>
         )
     }

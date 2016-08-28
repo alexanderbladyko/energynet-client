@@ -5,7 +5,6 @@ let socket = null
 
 export function initSocket() {
     socket = io()
-    console.info('Socket connected')
 }
 
 export function send(url, options) {

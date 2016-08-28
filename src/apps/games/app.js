@@ -30,7 +30,7 @@ class Games extends React.Component {
         this.socket.on('games', data => {
             this.props.receiveGames(data)
         })
-        this.socket.on('new', result => {
+        this.socket.on('new_game', result => {
             this.props.responseNewGame(result)
         })
         this.joinHandler = subscribe('join_game', this.props.responseJoinGame)
