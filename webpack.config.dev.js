@@ -14,7 +14,7 @@ export default {
     target: 'web',
     output: {
         path: `${__dirname}/src`,
-        publicPath: 'http://localhost:3000/',
+        publicPath: '/',
         filename: 'bundle.js',
     },
     resolve: {
