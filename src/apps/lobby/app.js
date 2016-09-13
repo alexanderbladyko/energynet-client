@@ -18,7 +18,7 @@ class Games extends React.Component {
         this.lobbyHandler = subscribe('lobby', this.onReceiveLobby.bind(this))
         this.leaveHandler = subscribe('leave_game', this.props.responseLeaveGame)
         this.props.getLobby()
-        send('lobby')
+        send('get_lobby')
     }
     componentWillUnmout() {
         this.lobbyHandler.destroy()

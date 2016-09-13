@@ -5,7 +5,6 @@ import { send, subscribe } from 'socket'
 import { navigate } from 'actions/route'
 import { getState, receiveState } from 'actions/state'
 import {
-    LOBBY_ROUTE,
     GAMES_ROUTE,
 } from 'constants/routes'
 
@@ -39,11 +38,6 @@ class Home extends React.Component {
                     && <p>{'Loading'}</p>
                 }
                 <div>
-                    <button
-                        onClick={() => this.props.navigate(LOBBY_ROUTE)}
-                    >
-                        {'Go to lobby'}
-                    </button>
                     <button
                         onClick={() => this.props.navigate(GAMES_ROUTE)}
                     >

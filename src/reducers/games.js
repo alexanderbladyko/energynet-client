@@ -10,6 +10,7 @@ export default function games(state = initialState.games, action) {
     case GAMES_RECEIVE:
         return {
             ...state,
+            loading: false,
             data: action.payload.data,
         }
     case GAMES_JOIN:
