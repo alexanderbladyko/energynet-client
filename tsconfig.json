@@ -1,8 +1,16 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "jsx": "preserve",
-    "experimentalDecorators": true
-  },
-  "exclude": ["node_modules", "config", "dev_server.js"]
+    "compilerOptions": {
+        "target": "ES5",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "outDir": "./build/",
+        "preserveConstEnums": true,
+        "removeComments": true
+    },
+    "exclude": [
+        "node_modules",
+        "config",
+        "tasks"
+    ]
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
 
@@ -5,17 +7,15 @@ var SRC_DIR = path.join(__dirname, '..', 'src');
 
 module.exports = {
     devtool: 'source-map',
-    entry: './src/index.tsx',
+    entry: '../src/index.tsx',
     module: {
         preLoaders: [{
             test: /\.tsx?$/,
-            loader: 'tslint',
-            include: SRC_DIR
+            loader: 'tslint'
         }],
         loaders: [{
             test: /\.tsx?$/,
-            loaders: ['babel', 'ts'],
-            include: SRC_DIR
+            loaders: ['babel', 'ts']
         }]
     },
     output: {
