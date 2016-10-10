@@ -1,36 +1,39 @@
 'use strict';
 
 var webpack = require('webpack');
-var path = require('path');
+var path = require("path");
 
-var SRC_DIR = path.join(__dirname, '..', 'src');
 
-module.exports = {
+var config = {
     debug: true,
-    devtool: 'eval',
-    entry: ['webpack-hot-middleware/client', '../src/index.tsx'],
-    module: {
-        preLoaders: [{
-            test: /\.tsx?$/,
-            loader: 'tslint'
-        }],
-        loaders: [{
-            test: /\.tsx?$/,
-            loaders: ['ts'],
-            exclude: '/node_modules/'
-        }]
-    },
+    entry: [
+        "./src/app.tsx"
+    ],
     output: {
-        filename: 'app.js',
-        path: path.join(__dirname, '..', 'build'),
-        publicPath: '/'
+        path: path.resolve(path.join(__dirname, '..', 'build')),
+        filename: "app.js",
+        publicPath: "/"
+    },
+    resolve: {
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
-    resolve: {
-        root: SRC_DIR,
-        extensions: ['', '.jsx', '.js', '.tsx', '.ts']
+    module: {
+        preLoaders: [{
+            test: /\.tsx?$/,
+            loader: 'tslint'
+        }],
+        loaders: [
+            {
+                test: /\.tsx?$/,
+                loader: "ts-loader",
+                exclude: /node_modules/
+            }
+        ]
     }
 };
+
+module.exports = config;

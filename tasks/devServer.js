@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
-const config = require('../webpack.config')
+const config = require('../config/webpack.dev')
 
 const app = express()
 const compiler = webpack(config)

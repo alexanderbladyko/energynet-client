@@ -7,7 +7,12 @@ var SRC_DIR = path.join(__dirname, '..', 'src');
 
 module.exports = {
     devtool: 'source-map',
-    entry: '../src/index.tsx',
+    entry: [
+        "./src/app.tsx"
+    ],
+    resolve: {
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
+    },
     module: {
         preLoaders: [{
             test: /\.tsx?$/,
@@ -15,13 +20,13 @@ module.exports = {
         }],
         loaders: [{
             test: /\.tsx?$/,
-            loaders: ['babel', 'ts']
+            loaders: ['ts']
         }]
     },
     output: {
-        path: path.join(__dirname, '..', 'build'),
-        filename: 'app.js',
-        publicPath: '/static/'
+        path: path.resolve(path.join(__dirname, '..', 'build')),
+        filename: "app.js",
+        publicPath: "/"
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -36,10 +41,6 @@ module.exports = {
             }
         })
     ],
-    resolve: {
-        root: [SRC_DIR],
-        extensions: ['', '.jsx', '.js', '.tsx', '.ts']
-    },
     tslint: {
         emitErrors: true,
         failOnHint: true
