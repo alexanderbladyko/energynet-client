@@ -7,7 +7,7 @@ var path = require("path");
 var config = {
     debug: true,
     entry: [
-        "./src/app.tsx"
+        "./src/index.tsx"
     ],
     output: {
         path: path.resolve(path.join(__dirname, '..', 'build')),
