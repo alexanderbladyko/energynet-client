@@ -19,6 +19,7 @@
     "test": "karma start"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^2.2.4",
     "chai": "^3.5.0",
     "express": "^4.14.0",
     "karma": "^0.13.22",

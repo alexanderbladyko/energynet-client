@@ -15,7 +15,14 @@ var config = {
         publicPath: "/"
     },
     resolve: {
-        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
+        root: 'src',
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
+        moduleDirectories: ['node_modules']
+    },
+    resolveLoader: {
+        moduleDirectories: [
+            'node_modules'
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -29,7 +36,7 @@ var config = {
         loaders: [
             {
                 test: /\.tsx?$/,
-                loader: "ts-loader",
+                loader: "awesome-typescript-loader",
                 exclude: /node_modules/
             }
         ]

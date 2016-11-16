@@ -1,34 +1,35 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Store, createStore, Reducer } from 'redux';
-import { Provider } from 'react-redux';
+import { Store, createStore, Reducer, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
 
+import counter from './reducers/counter'
+import Counter from './components/Counter'
 
-interface IState {
-}
-
-function configureStore(): Store<IState> {
-    const reducer: Reducer<IState> = () => { return {} }
-    const store: Store<IState> = createStore(reducer)
+function configureStore(): Store<{}> {
+    const reducer: Reducer<{}> = combineReducers({
+        counter,
+    })
+    const store: Store<{}> = createStore(reducer)
 
     // if (module.hot) {
     //     module.hot.accept('./reducers', () => {
-    //         const nextRootReducer: any = require('./reducers').counterApp;
-    //         store.replaceReducer(nextRootReducer);
-    //     });
+    //         const nextRootReducer: any = require('./reducers').counterApp
+    //         store.replaceReducer(nextRootReducer)
+    //     })
     // }
 
     return store
 }
 
-const store: Store<IState> = configureStore()
+const store: Store<{}> = configureStore()
 
 class Main extends React.Component<{}, {}> {
 
     public render(): React.ReactElement<{}> {
         return (
             <Provider store={store}>
-                <div>Test</div>
+                <Counter/>
             </Provider>
         )
     }

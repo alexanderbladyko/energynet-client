@@ -11,7 +11,9 @@ module.exports = {
         "./src/app.tsx"
     ],
     resolve: {
-        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
+        root: 'src',
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
+        moduleDirectories: ['node_modules']
     },
     module: {
         preLoaders: [{
