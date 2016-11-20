@@ -1,26 +1,18 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { IState, ICounterState } from 'state'
-import { increaseCounter, decreaseCounter } from '../actions/counter'
+import { IState, IConfigState } from 'state'
+
 
 interface ICounterStateProps {
-    counter: ICounterState
-    increaseCounter: () => void
-    decreaseCounter: () => void
+    config: IConfigState
 }
 
 class Counter extends React.Component<ICounterStateProps, {}> {
     public render(): React.ReactElement<{}> {
         return (
             <div>
-                {`Counter: ${this.props.counter.value}`}
-                <button onClick={() => this.props.increaseCounter()}>
-                    {'Increase'}
-                </button>
-                <button onClick={() => this.props.decreaseCounter()}>
-                    {'Decrease'}
-                </button>
+                {`Config: ${this.props.config.data}`}
             </div>
         )
     }
@@ -29,11 +21,11 @@ class Counter extends React.Component<ICounterStateProps, {}> {
 export default connect(
     (state: IState): any => {
         return {
-            counter: state.counter,
+            config: state.config,
         }
     },
     {
-        increaseCounter,
-        decreaseCounter,
+        // increaseCounter,
+        // decreaseCounter,
     }
 )(Counter)

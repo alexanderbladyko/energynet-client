@@ -6,6 +6,7 @@ var path = require("path");
 
 var config = {
     debug: true,
+    noInfo: true,
     entry: [
         "./src/index.tsx"
     ],

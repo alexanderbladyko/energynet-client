@@ -7,13 +7,22 @@
         "outDir": "./build/",
         "preserveConstEnums": true,
         "baseUrl": "./src",
-        "removeComments": true
+        "removeComments": true,
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
+        "noResolve": false
     },
+    "filesGlob": [
+        "!../node_modules/@types/**/*.*.d.ts",
+        "../typings/**/*.*.ts",
+        "!../typings/jasmine/jasmine.d.ts",
+        "**/*.{ts,tsx}"
+    ],
     "exclude": [
         "node_modules",
         "config",
         "tasks",
-        "typings",
-        "test"
+        "typings"
     ]
 }

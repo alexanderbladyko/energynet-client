@@ -43,7 +43,9 @@
     "webpack-hot-middleware": "^2.13.0"
   },
   "dependencies": {
+    "@types/bluebird": "^3.0.35",
     "@types/chai": "^3.4.34",
+    "@types/jasmine": "^2.5.38",
     "@types/karma": "^0.13.33",
     "@types/mocha": "^2.2.32",
     "@types/react": "^0.14.41",
@@ -51,12 +53,17 @@
     "@types/react-redux": "^4.4.32",
     "@types/redux": "^3.6.31",
     "@types/sinon": "^1.16.31",
+    "@types/socket.io-client": "^1.4.28",
+    "@types/whatwg-fetch": "^0.0.32",
+    "bluebird": "^3.4.6",
     "react": "^15.4.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
+    "socket.io-client": "^1.6.0",
     "ts-loader": "^0.9.0",
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.3",
+    "whatwg-fetch": "^2.0.1"
   },
   "main": "index.js"
 }

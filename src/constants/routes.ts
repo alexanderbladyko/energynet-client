@@ -1,0 +1,7 @@
+export const LOADING_ROUTE = 'loading'
+export const LOGIN_ROUTE = 'login'
+export const REGISTER_ROUTE = 'register'
+export const GAMES_ROUTE = 'games'
+export const LOBBY_ROUTE = 'lobby'
+export const ERROR_ROUTE = 'error'
+export const HOME_ROUTE = 'home'

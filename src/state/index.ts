@@ -1,13 +1,21 @@
-export interface ICounterState {
-    value: number,
+export interface IConfigState {
+    loading: boolean,
+    data?: IConfig,
+    error: boolean,
+    message?: string
+}
+
+export interface IConfig {
+    authApi: string,
 }
 
 export interface IState extends Object {
-    counter: ICounterState,
+    config: IConfigState,
 }
 
 export const initialState: IState = {
-    counter: {
-        value: 0,
+    config: {
+        error: false,
+        loading: false,
     },
 }

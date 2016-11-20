@@ -7,8 +7,9 @@ var SRC_DIR = path.join(__dirname, '..', 'src');
 
 module.exports = {
     devtool: 'source-map',
+    noInfo: true,
     entry: [
-        "./src/app.tsx"
+        "./src/index.tsx"
     ],
     resolve: {
         root: 'src',
