@@ -3,29 +3,26 @@ import {
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
-import {
-    IConfigState,
-    initialState,
-} from 'state'
+import { IUserInfoState, initialState } from 'state'
 
 
-export default function counter(state: IConfigState, action: IBaseAction): IConfigState {
+export default function userInfoReducer(state: IUserInfoState, action: IBaseAction) {
     switch (action.type) {
-    case actionTypes.CONFIG_REQUEST:
+    case actionTypes.USER_INFO_REQUEST:
         return Object.create(state, {
             loading: true,
         })
-    case actionTypes.CONFIG_RESPONSE:
+    case actionTypes.USER_INFO_RESPONSE:
         return Object.create(state, {
-            data: action.payload.config,
-            loading: false,
+            loading: true,
+            data: action.payload.data,
         })
-    case actionTypes.CONFIG_ERROR:
+    case actionTypes.USER_INFO_ERROR:
         return Object.create(state, {
             loading: false,
             message: action.payload.message,
         })
     default:
-        return state || initialState.config
+        return state
     }
 }

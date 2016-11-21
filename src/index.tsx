@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 
 import config from './reducers/config'
 import Counter from './components/Counter'
+import { loadConfig } from './actions/config'
 
 import { initialState } from 'state'
 
@@ -40,6 +41,8 @@ class Main extends React.Component<{}, {}> {
 }
 
 ReactDOM.render(<Main />, document.getElementById('app'))
+
+loadConfig(store.dispatch)
 
 export function sum(a: number, b: number): number {
     return a + b

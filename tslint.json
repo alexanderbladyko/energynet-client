@@ -69,7 +69,7 @@
     "switch-default": true,
     "trailing-comma": [true, {
         "multiline": "always",
-        "singleline": "never"
+        "singleline": "always"
     }],
     "triple-equals": [true, "allow-null-check"],
     "typedef": [true,

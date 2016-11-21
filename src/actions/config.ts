@@ -35,7 +35,7 @@ export function errorConfig(message: string): IBaseAction {
 export function loadConfig(dispatch: Dispatch<IState>) {
     dispatch(requestConfig())
     const api = new ConfigApi()
-    return ajax.get(CONFIG_URL).then(
+    return api.get().then(
         config => {
             dispatch(responseConfig(config))
             return config
