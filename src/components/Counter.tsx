@@ -1,7 +1,12 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import {
+    connect,
+} from 'react-redux'
 
-import { IState, IConfigState } from 'state'
+import {
+    IState,
+    IConfigState,
+} from 'state'
 
 
 interface ICounterStateProps {

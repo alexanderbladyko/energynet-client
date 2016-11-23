@@ -4,17 +4,12 @@ var webpack = require('webpack');
 var path = require("path");
 
 
-var config = {
+module.exports = {
     debug: true,
     noInfo: true,
     entry: [
         "./src/index.tsx"
     ],
-    output: {
-        path: path.resolve(path.join(__dirname, '..', 'build')),
-        filename: "app.js",
-        publicPath: "/"
-    },
     resolve: {
         root: 'src',
         extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
@@ -25,10 +20,11 @@ var config = {
             'node_modules'
         ]
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
+    output: {
+        path: path.resolve(path.join(__dirname, '..', 'build')),
+        filename: "app.js",
+        publicPath: "/"
+    },
     module: {
         preLoaders: [{
             test: /\.tsx?$/,
@@ -37,11 +33,12 @@ var config = {
         loaders: [
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader",
-                exclude: /node_modules/
+                loaders: ['ts']
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
 };
-
-module.exports = config;

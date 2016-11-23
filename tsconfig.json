@@ -15,8 +15,6 @@
     },
     "filesGlob": [
         "!../node_modules/@types/**/*.*.d.ts",
-        "../typings/**/*.*.ts",
-        "!../typings/jasmine/jasmine.d.ts",
         "**/*.{ts,tsx}"
     ],
     "exclude": [

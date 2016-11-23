@@ -1,9 +1,8 @@
 'use strict';
 
-var path = require('path');
 var webpack = require('webpack');
+var path = require('path');
 
-var SRC_DIR = path.join(__dirname, '..', 'src');
 
 module.exports = {
     devtool: 'source-map',
@@ -16,6 +15,16 @@ module.exports = {
         extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
         moduleDirectories: ['node_modules']
     },
+    resolveLoader: {
+        moduleDirectories: [
+            'node_modules'
+        ]
+    },
+    output: {
+        path: path.resolve(path.join(__dirname, '..', 'build')),
+        filename: "app.js",
+        publicPath: "/"
+    },
     module: {
         preLoaders: [{
             test: /\.tsx?$/,
@@ -25,11 +34,6 @@ module.exports = {
             test: /\.tsx?$/,
             loaders: ['ts']
         }]
-    },
-    output: {
-        path: path.resolve(path.join(__dirname, '..', 'build')),
-        filename: "app.js",
-        publicPath: "/"
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
