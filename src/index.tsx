@@ -9,6 +9,7 @@ import { Store, createStore, Reducer, combineReducers, } from 'redux'
 import { Provider, } from 'react-redux'
 
 import config from './reducers/config'
+import userInfo from './reducers/userInfo'
 import Counter from './components/Counter'
 import { loadConfig, } from './actions/config'
 
@@ -18,6 +19,7 @@ import { initialState, IState, } from 'state'
 function configureStore(): Store<IState> {
     const reducer: Reducer<IState> = combineReducers<IState>({
         config,
+        userInfo,
     })
     const store: Store<IState> = createStore<IState>(reducer, initialState)
 

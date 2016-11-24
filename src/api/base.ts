@@ -6,27 +6,32 @@ export class BaseApi<T> {
         throw new Error('not implemented')
     }
     public get(...args: any[]): Bluebird<T> {
-        const url = this.getUrl(...args)
-        return new Bluebird<T>(function(resolve, reject) {
+        const url: string = this.getUrl(...args)
+        return new Bluebird<T>(function(resolve: any, reject: any): void {
             fetch(url, {
                 method: 'get',
-            }).then(function(response: Response) {
+            }).then(function(response: Response): void {
                 if (response.ok) {
-                    return response.json()
+                    response.json().then((data: any): void => {
+                        resolve(data)
+                    }).catch((error: any): void => {
+                        console.error(`Faild to get json by url: ${url}`)
+                        reject(error)
+                    })
                 }
             })
         })
     }
     public post(data: any, ...args: any[]): Bluebird<T> {
-        const url = this.getUrl(...args)
-        return new Bluebird<T>(function(resolve, reject) {
+        const url: string = this.getUrl(...args)
+        return new Bluebird<T>(function(resolve: any, reject: any): void {
             fetch(url, {
                 method: 'post',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-            }).then(function(response: Response) {
+            }).then(function(response: Response): Promise<any> {
                 if (response.ok) {
                     return response.json()
                 }

@@ -3,26 +3,26 @@ import {
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
-import { IUserInfoState, initialState } from 'state'
+import { IUserInfoState, initialState, } from 'state'
 
 
-export default function userInfoReducer(state: IUserInfoState, action: IBaseAction) {
+export default function userInfoReducer(state: IUserInfoState, action: IBaseAction): IUserInfoState {
     switch (action.type) {
     case actionTypes.USER_INFO_REQUEST:
-        return Object.create(state, {
+        return Object.assign(state, {
             loading: true,
         })
     case actionTypes.USER_INFO_RESPONSE:
-        return Object.create(state, {
+        return Object.assign(state, {
             loading: true,
             data: action.payload.data,
         })
     case actionTypes.USER_INFO_ERROR:
-        return Object.create(state, {
+        return Object.assign(state, {
             loading: false,
             message: action.payload.message,
         })
     default:
-        return state
+        return state || initialState.userInfo
     }
 }
