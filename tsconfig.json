@@ -7,6 +7,10 @@
         "outDir": "./build/",
         "preserveConstEnums": true,
         "baseUrl": "./src",
+        "rootDirs": [
+            "./src",
+            "."
+        ],
         "removeComments": true,
         "typeRoots": [
             "../node_modules/@types"

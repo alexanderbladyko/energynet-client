@@ -3,7 +3,6 @@
 var webpack = require('webpack');
 var path = require("path");
 
-
 module.exports = {
     debug: true,
     noInfo: true,
@@ -12,13 +11,7 @@ module.exports = {
     ],
     resolve: {
         root: 'src',
-        extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
-        moduleDirectories: ['node_modules']
-    },
-    resolveLoader: {
-        moduleDirectories: [
-            'node_modules'
-        ]
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
     },
     output: {
         path: path.resolve(path.join(__dirname, '..', 'build')),
@@ -33,7 +26,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.tsx?$/,
-                loaders: ['ts']
+                loaders: ['ts'],
+                exclude: /node_modules/
             }
         ]
     },

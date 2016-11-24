@@ -1,7 +1,7 @@
 import * as Bluebird from 'bluebird'
 
 
-export abstract class BaseApi<T> {
+export class BaseApi<T> {
     public getUrl(...args: any[]): string {
         throw new Error('not implemented')
     }
