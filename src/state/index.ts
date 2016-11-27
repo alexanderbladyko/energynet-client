@@ -1,3 +1,6 @@
+import * as routes from '../constants/routes'
+
+
 export interface IConfigState {
     loading: boolean,
     data?: IConfig,
@@ -21,8 +24,18 @@ export interface IUserInfo {
     isAuthenticated: boolean,
 }
 
+export interface IRouteState {
+    path: string,
+}
+
+export interface ISocketState {
+    connected: boolean,
+}
+
 export interface IState extends Object {
     config: IConfigState,
+    route: IRouteState,
+    socket: ISocketState,
     userInfo: IUserInfoState,
 }
 
@@ -30,6 +43,12 @@ export const initialState: IState = {
     config: {
         error: false,
         loading: false,
+    },
+    route: {
+        path: routes.LOADING_ROUTE,
+    },
+    socket: {
+        connected: false,
     },
     userInfo: {
         data: {

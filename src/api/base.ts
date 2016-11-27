@@ -15,7 +15,7 @@ export class BaseApi<T> {
                     response.json().then((data: any): void => {
                         resolve(data)
                     }).catch((error: any): void => {
-                        console.error(`Faild to get json by url: ${url}`)
+                        console.error(`Failed to get json by url: ${url}`)
                         reject(error)
                     })
                 }
@@ -31,9 +31,14 @@ export class BaseApi<T> {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-            }).then(function(response: Response): Promise<any> {
+            }).then(function(response: Response): void {
                 if (response.ok) {
-                    return response.json()
+                    response.json().then((responseData: any): void => {
+                        resolve(responseData)
+                    }).catch((error: any): void => {
+                        console.error(`Failed to get json by url: ${url}`)
+                        reject(error)
+                    })
                 }
             })
         })

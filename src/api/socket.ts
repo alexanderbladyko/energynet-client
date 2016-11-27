@@ -3,11 +3,11 @@ import * as io from 'socket.io-client'
 
 let socket: SocketIOClient.Socket = null
 
-export function initSocket() {
+export function initSocket(): void {
     socket = io()
 }
 
-export function send(url: string, options: any) {
+export function send(url: string, options: any): void {
     if (!socket) {
         initSocket()
     }
@@ -15,7 +15,7 @@ export function send(url: string, options: any) {
     socket.emit(url, options)
 }
 
-export function subscribe(url: string, handler: Function) {
+export function subscribe(url: string, handler: Function): SocketIOClient.Emitter {
     if (!socket) {
          initSocket()
     }
