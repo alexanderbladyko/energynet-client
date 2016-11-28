@@ -1,7 +1,7 @@
-import config from './config'
-import route from './route'
-import socket from './socket'
-import userInfo from './userInfo'
+import config from 'reducers/config'
+import route from 'reducers/route'
+import socket from 'reducers/socket'
+import userInfo from 'reducers/userInfo'
 
 export default {
     config,

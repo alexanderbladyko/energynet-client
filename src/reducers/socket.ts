@@ -1,8 +1,8 @@
 import {
     IBaseAction,
-} from '../actions/base'
-import * as actionTypes from '../constants/actionTypes'
-import { ISocketState, initialState, } from '../state'
+} from 'actions/base'
+import * as actionTypes from 'constants/actionTypes'
+import { ISocketState, initialState, } from 'state'
 
 
 export default function socketReducer(state: ISocketState, action: IBaseAction): ISocketState {

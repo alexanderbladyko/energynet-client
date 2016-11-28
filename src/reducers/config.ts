@@ -1,12 +1,12 @@
 import {
     IBaseAction,
-} from '../actions/base'
-import * as actionTypes from '../constants/actionTypes'
+} from 'actions/base'
+import * as actionTypes from 'constants/actionTypes'
 
 import {
     IConfigState,
     initialState,
-} from '../state'
+} from 'state'
 
 
 export default function counter(state: IConfigState, action: IBaseAction): IConfigState {

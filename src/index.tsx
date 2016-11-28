@@ -8,10 +8,10 @@ import * as ReactDOM from 'react-dom'
 import { Store, } from 'redux'
 import { Provider, } from 'react-redux'
 
-import { loadConfig, } from './actions/config'
-import Counter from './components/Counter'
-import { IState, } from './state'
-import { configureStore, } from './store/init'
+import { loadConfig, } from 'actions/config'
+import Counter from 'components/Counter'
+import { IState, } from 'state'
+import { configureStore, } from 'store/init'
 
 
 const store: Store<IState> = configureStore()

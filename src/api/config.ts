@@ -1,5 +1,5 @@
-import { BaseApi, } from './base'
-import { IConfig, } from '../state'
+import { BaseApi, } from 'api/base'
+import { IConfig, } from 'state'
 
 
 export default class ConfigApi extends BaseApi<IConfig> {

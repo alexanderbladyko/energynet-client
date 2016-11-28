@@ -1,8 +1,8 @@
 import {
     IBaseAction,
-} from '../actions/base'
-import * as actionTypes from '../constants/actionTypes'
-import { IUserInfoState, initialState, } from '../state'
+} from 'actions/base'
+import * as actionTypes from 'constants/actionTypes'
+import { IUserInfoState, initialState, } from 'state'
 
 
 export default function userInfoReducer(state: IUserInfoState, action: IBaseAction): IUserInfoState {

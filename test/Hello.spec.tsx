@@ -1,6 +1,6 @@
 /// <reference path="../node_modules/@types/jasmine/index.d.ts" />
 
-import { expect } from 'chai'
+import { expect, } from 'chai'
 
 describe('Hello', () => {
     it('should be true', () => {

@@ -1,8 +1,8 @@
 import { Dispatch, } from 'redux'
 import * as Bluebird from 'bluebird'
 
-import { IBaseAction, } from './base'
-import ConfigApi from '../api/config'
+import { IBaseAction, } from 'actions/base'
+import ConfigApi from 'api/config'
 import * as actionTypes from 'constants/actionTypes'
 import { IState, IConfig, } from 'state'
 

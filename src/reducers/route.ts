@@ -1,9 +1,9 @@
 import {
     IBaseAction,
-} from '../actions/base'
-import * as routes from '../constants/routes'
-import * as actionTypes from '../constants/actionTypes'
-import { IRouteState, initialState, } from '../state'
+} from 'actions/base'
+import * as routes from 'constants/routes'
+import * as actionTypes from 'constants/actionTypes'
+import { IRouteState, initialState, } from 'state'
 
 
 export default function routeReducer(state: IRouteState, action: IBaseAction): IRouteState {

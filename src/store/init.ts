@@ -1,7 +1,7 @@
 import { Store, createStore, Reducer, combineReducers, } from 'redux'
 
-import reducers from '../reducers'
-import { initialState, IState, } from '../state'
+import reducers from 'reducers'
+import { initialState, IState, } from 'state'
 
 
 declare const require: (name: String) => any
@@ -17,8 +17,8 @@ export function configureStore(): Store<IState> {
     const store: Store<IState> = createStore<IState>(reducer, initialState)
 
     if (module.hot) {
-        module.hot.accept('../reducers', () => {
-            const nextRootReducer: any = require('../reducers').counterApp
+        module.hot.accept('reducers', () => {
+            const nextRootReducer: any = require('reducers').counterApp
             store.replaceReducer(nextRootReducer)
         })
     }

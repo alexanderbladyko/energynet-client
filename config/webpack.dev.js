@@ -8,10 +8,10 @@ module.exports = {
     debug: true,
     noInfo: true,
     entry: [
-        "./src/index.tsx"
+        "index.tsx"
     ],
     resolve: {
-        root: 'src',
+        root: path.resolve(path.join(__dirname, '..', 'src')),
         extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
     },
     output: {
