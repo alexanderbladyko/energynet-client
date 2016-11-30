@@ -1,22 +1,22 @@
 import * as routes from 'constants/routes'
 
 
-export interface IConfigState {
+interface IBaseState {
     loading: boolean,
-    data?: IConfig,
     error: boolean,
-    message?: string
+    message?: string,
+}
+
+export interface IConfigState extends IBaseState {
+    data?: IConfig,
 }
 
 export interface IConfig {
     authApi: string,
 }
 
-export interface IUserInfoState {
-    loading: boolean,
+export interface IUserInfoState extends IBaseState {
     data: IUserInfo,
-    error: boolean,
-    message?: string,
 }
 
 export interface IUserInfo {
@@ -32,8 +32,31 @@ export interface ISocketState {
     connected: boolean,
 }
 
+export interface IGamesState extends IBaseState {
+    data: Array<IGame>,
+}
+
+export interface IGame {
+    id: number,
+}
+
+export interface ILobbyState extends IBaseState {
+    data: ILobby,
+}
+
+export interface ILobby {
+    name: string,
+    playersLimit: number,
+    users: Array<ILobbyUser>,
+}
+
+export interface ILobbyUser {
+
+}
+
 export interface IState extends Object {
     config: IConfigState,
+    games: IGamesState,
     route: IRouteState,
     socket: ISocketState,
     userInfo: IUserInfoState,
@@ -43,6 +66,11 @@ export const initialState: IState = {
     config: {
         error: false,
         loading: false,
+    },
+    games: {
+        error: false,
+        loading: false,
+        data: [],
     },
     route: {
         path: routes.LOADING_ROUTE,

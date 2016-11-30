@@ -9,7 +9,7 @@ import {
 } from 'state'
 
 
-export default function counter(state: IConfigState, action: IBaseAction): IConfigState {
+export default function configReducer(state: IConfigState, action: IBaseAction): IConfigState {
     switch (action.type) {
     case actionTypes.CONFIG_REQUEST:
         return Object.assign(state, {
