@@ -41,7 +41,7 @@ export interface IGame {
 }
 
 export interface ILobbyState extends IBaseState {
-    data: ILobby,
+    data?: ILobby,
 }
 
 export interface ILobby {
@@ -51,14 +51,21 @@ export interface ILobby {
 }
 
 export interface ILobbyUser {
+    id: number,
+}
 
+export interface IGameState extends IBaseState  {
+    inGame: boolean,
+    inLobby: boolean
 }
 
 export interface IState extends Object {
     config: IConfigState,
     games: IGamesState,
+    lobby: ILobbyState,
     route: IRouteState,
     socket: ISocketState,
+    state: IGameState,
     userInfo: IUserInfoState,
 }
 
@@ -72,11 +79,21 @@ export const initialState: IState = {
         loading: false,
         data: [],
     },
+    lobby: {
+        error: false,
+        loading: false,
+    },
     route: {
         path: routes.LOADING_ROUTE,
     },
     socket: {
         connected: false,
+    },
+    state: {
+        error: false,
+        loading: false,
+        inGame: false,
+        inLobby: false,
     },
     userInfo: {
         data: {
