@@ -12,11 +12,11 @@ import {
 export default function lobbyReducer(state: ILobbyState, action: IBaseAction): ILobbyState {
     switch (action.type) {
     case actionTypes.LOBBY_GET:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: true,
         })
     case actionTypes.LOBBY_RECEIVE:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: false,
             data: action.payload.data,
         })

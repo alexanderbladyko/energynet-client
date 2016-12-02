@@ -17,7 +17,7 @@ class Counter extends React.Component<ICounterStateProps, {}> {
     public render(): React.ReactElement<{}> {
         return (
             <div>
-                {`Config: ${this.props.config.data}`}
+                {`Config: ${JSON.stringify(this.props.config.data)}`}
             </div>
         )
     }

@@ -22,7 +22,7 @@ module.exports = function (config) {
         * karma-***-launcher.
         * http://karma-runner.github.io/0.13/config/browsers.html
         */
-       browsers: ["PhantomJS"],
+       browsers: ["Chrome"],
 
        // Enable or disable colors in the output (reporters and logs)
        colors: true,
@@ -37,6 +37,7 @@ module.exports = function (config) {
         * http://karma-runner.github.io/0.13/config/files.html
         */
        files: [
+           "test/**/*.ts",
            "test/**/*.tsx"
        ],
 
@@ -67,7 +68,8 @@ module.exports = function (config) {
         * npm module to be npm installed and added to the "plugins" field.
         */
        preprocessors: {
-           "test/**/*.tsx": ["webpack"] // Using karma-webpack npm module
+           "test/**/*.ts": ["webpack"], // Using karma-webpack npm module
+           "test/**/*.tsx": ["webpack"], // Using karma-webpack npm module
        },
 
        /*

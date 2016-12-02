@@ -3,6 +3,8 @@ const express = require('express')
 const webpack = require('webpack')
 const config = require('../config/webpack.dev')
 
+const mockApiServer = require('./mockApiServer')
+
 const app = express()
 const compiler = webpack(config)
 const port = process.env.PORT || 3000
@@ -13,6 +15,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }))
 
 app.use(require('webpack-hot-middleware')(compiler))
+
+app.use(mockApiServer)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'))

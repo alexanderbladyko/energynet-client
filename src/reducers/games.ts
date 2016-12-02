@@ -12,12 +12,12 @@ import {
 export default function games(state: IGamesState, action: IBaseAction): IGamesState {
     switch (action.type) {
     case actionTypes.GAMES_RECEIVE:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: false,
             data: action.payload.data,
         })
     case actionTypes.GAMES_JOIN:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: true,
             data: action.payload.data,
         })

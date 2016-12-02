@@ -8,16 +8,16 @@ import { IUserInfoState, initialState, } from 'state'
 export default function userInfoReducer(state: IUserInfoState, action: IBaseAction): IUserInfoState {
     switch (action.type) {
     case actionTypes.USER_INFO_REQUEST:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: true,
         })
     case actionTypes.USER_INFO_RESPONSE:
-        return Object.assign(state, {
-            loading: true,
-            data: action.payload.data,
+        return Object.assign({}, state, {
+            loading: false,
+            data: action.payload.userInfo,
         })
     case actionTypes.USER_INFO_ERROR:
-        return Object.assign(state, {
+        return Object.assign({}, state, {
             loading: false,
             message: action.payload.message,
         })

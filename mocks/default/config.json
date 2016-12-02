@@ -1,0 +1,4 @@
+{
+    "gameApi": "/game_api",
+    "authApi": "/auth"
+}

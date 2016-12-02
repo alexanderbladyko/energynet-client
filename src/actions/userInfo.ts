@@ -4,7 +4,7 @@ import { Dispatch, } from 'redux'
 import { IBaseAction, } from 'actions/base'
 import UserInfoApi from 'api/userInfo'
 import * as actionTypes from 'constants/actionTypes'
-import { IState, IConfig, IUserInfo, IConfigState, } from 'state'
+import { IState, IUserInfo, IConfigState, } from 'state'
 
 
 export function requestUserInfo(): IBaseAction {
