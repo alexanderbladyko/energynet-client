@@ -8,8 +8,6 @@ import * as ReactDOM from 'react-dom'
 import { Store, } from 'redux'
 import { Provider, } from 'react-redux'
 
-import { loadConfig, } from 'actions/config'
-import { loadUserInfo, } from 'actions/userInfo'
 import Layout from 'components/Layout/Layout'
 import { IState, } from 'state'
 import { configureStore, } from 'store/init'
@@ -29,8 +27,3 @@ class Main extends React.Component<{}, {}> {
 }
 
 ReactDOM.render(<Main />, document.getElementById('app'))
-
-loadConfig(store.dispatch).then(() => {
-    loadUserInfo(store.dispatch, store.getState().config).done()
-    return true
-}).done()

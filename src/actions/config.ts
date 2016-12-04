@@ -32,16 +32,19 @@ export function errorConfig(message: string): IBaseAction {
     }
 }
 
-export function loadConfig(dispatch: Dispatch<IState>): Bluebird<void|IConfig> {
-    dispatch(requestConfig())
-    const api: ConfigApi = new ConfigApi()
-    return api.get().then(
-        config => {
-            dispatch(responseConfig(config))
-            return config
-        },
-        error => {
-            dispatch(errorConfig(error))
-        }
-    )
+export function loadConfig(dispatch: Dispatch<IState>): () => Bluebird<void|IConfig> {
+    return function(): Bluebird<void|IConfig> {
+        dispatch(requestConfig())
+        const api: ConfigApi = new ConfigApi()
+        return api.get().then(
+            config => {
+                dispatch(responseConfig(config))
+                return config
+            },
+            error => {
+                dispatch(errorConfig(error))
+                throw new Error('Failed to load config')
+            }
+        )
+    }
 }

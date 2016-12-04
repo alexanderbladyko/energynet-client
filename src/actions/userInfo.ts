@@ -4,7 +4,7 @@ import { Dispatch, } from 'redux'
 import { IBaseAction, } from 'actions/base'
 import UserInfoApi from 'api/userInfo'
 import * as actionTypes from 'constants/actionTypes'
-import { IState, IUserInfo, IConfigState, } from 'state'
+import { IState, IUserInfo, IConfig, } from 'state'
 
 
 export function requestUserInfo(): IBaseAction {
@@ -32,18 +32,21 @@ export function errorUserInfo(message: string): IBaseAction {
     }
 }
 
-export function loadUserInfo(dispatch: Dispatch<IState>, config: IConfigState): Bluebird<IUserInfo|void> {
-    dispatch(requestUserInfo())
-    const api: UserInfoApi = new UserInfoApi()
-    return api.get(config).then(
-        userInfo => {
-            dispatch(responseUserInfo(userInfo))
-            return userInfo
-        },
-        error => {
-            dispatch(errorUserInfo(error))
-        }
-    )
+export function loadUserInfo(dispatch: Dispatch<IState>): (config: IConfig) => Bluebird<IUserInfo|void> {
+    return function(config: IConfig): Bluebird<IUserInfo|void>  {
+        dispatch(requestUserInfo())
+        const api: UserInfoApi = new UserInfoApi()
+        return api.get(config).then(
+            userInfo => {
+                dispatch(responseUserInfo(userInfo))
+                return userInfo
+            },
+            error => {
+                dispatch(errorUserInfo(error))
+                throw new Error('Failed to load user info')
+            }
+        )
+    }
 }
 
 // export function requestLogin() {
