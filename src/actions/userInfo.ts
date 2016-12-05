@@ -3,6 +3,7 @@ import { Dispatch, } from 'redux'
 
 import { IBaseAction, } from 'actions/base'
 import UserInfoApi from 'api/userInfo'
+import LoginApi from 'api/login'
 import * as actionTypes from 'constants/actionTypes'
 import { IState, IUserInfo, IConfig, } from 'state'
 
@@ -32,8 +33,12 @@ export function errorUserInfo(message: string): IBaseAction {
     }
 }
 
-export function loadUserInfo(dispatch: Dispatch<IState>): (config: IConfig) => Bluebird<IUserInfo|void> {
-    return function(config: IConfig): Bluebird<IUserInfo|void>  {
+export interface ILoadUserInfoAction {
+    (config: IConfig): Bluebird<IUserInfo|void>
+}
+
+export function loadUserInfo(dispatch: Dispatch<IState>): ILoadUserInfoAction {
+    return (config) => {
         dispatch(requestUserInfo())
         const api: UserInfoApi = new UserInfoApi()
         return api.get(config).then(
@@ -49,40 +54,56 @@ export function loadUserInfo(dispatch: Dispatch<IState>): (config: IConfig) => B
     }
 }
 
-// export function requestLogin() {
-//     return {
-//         type: USER_LOGIN_REQUEST,
-//     }
-// }
-//
-// export function responseLogin(userInfo) {
-//     return {
-//         type: USER_LOGIN_RESPONSE,
-//         payload: {
-//             userInfo,
-//         },
-//     }
-// }
-//
-// export function errorLogin(message) {
-//     return {
-//         type: USER_LOGIN_ERROR,
-//         error: true,
-//         payload: {
-//             message,
-//         },
-//     }
-// }
-//
-// export function loginUser(dispatch) {
-//     return (data, config) => {
-//         dispatch(requestLogin())
-//         return ajax.post(`${config.data.authApi}${LOGIN_URL}`, data).then(
-//             userInfo => dispatch(responseLogin(userInfo)),
-//             error => dispatch(errorLogin(error))
-//         )
-//     }
-// }
+export function requestLogin(): IBaseAction {
+    return {
+        type: actionTypes.USER_LOGIN_REQUEST,
+    }
+}
+
+export function responseLogin(userInfo: IUserInfo): IBaseAction {
+    return {
+        type: actionTypes.USER_LOGIN_RESPONSE,
+        payload: {
+            userInfo,
+        },
+    }
+}
+
+export function errorLogin(message: string): IBaseAction {
+    return {
+        type: actionTypes.USER_LOGIN_ERROR,
+        error: true,
+        payload: {
+            message,
+        },
+    }
+}
+
+interface ILoginData {
+    username: string
+    password: string
+}
+
+export interface ILoginUserAction {
+    (config: IConfig, data: ILoginData): Bluebird<IUserInfo|void>
+}
+
+export function loginUser(dispatch: Dispatch<IState>): ILoginUserAction {
+    return (config, data) => {
+        dispatch(requestLogin())
+        const api: LoginApi = new LoginApi()
+        return api.post<ILoginData>(data, config).then(
+            userInfo => {
+                dispatch(responseLogin(userInfo))
+                return userInfo
+            },
+            error => {
+                dispatch(errorLogin(error))
+                throw new Error('Failed to login')
+            }
+        )
+    }
+}
 //
 // export function requestRegister() {
 //     return {

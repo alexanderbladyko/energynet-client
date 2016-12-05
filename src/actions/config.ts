@@ -32,7 +32,11 @@ export function errorConfig(message: string): IBaseAction {
     }
 }
 
-export function loadConfig(dispatch: Dispatch<IState>): () => Bluebird<void|IConfig> {
+export interface ILoadConfigAction {
+    (): Bluebird<void|IConfig>
+}
+
+export function loadConfig(dispatch: Dispatch<IState>): ILoadConfigAction {
     return function(): Bluebird<void|IConfig> {
         dispatch(requestConfig())
         const api: ConfigApi = new ConfigApi()

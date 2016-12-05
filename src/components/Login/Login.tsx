@@ -8,35 +8,40 @@ import {
 } from 'redux'
 
 import * as State from 'state'
+import * as Routes from 'constants/routes'
 
 import {
-    loadConfig,
-} from 'actions/config'
-import {
-    loadUserInfo,
+    loginUser,
+    ILoginUserAction,
 } from 'actions/userInfo'
 
 
 interface ILoginStateProps {
     config: State.IConfigState
     userInfo: State.IUserInfoState
-    loginUser: () => Bluebird<void>
-    navigate: () => {}
+    loginUser: ILoginUserAction
+    navigate: (path: string) => void
 }
 
 
 class Login extends React.Component<ILoginStateProps, {}> {
-    handleSubmit(e) {
+    refs: {
+        [key: string]: (Element)
+        name: (HTMLInputElement)
+        password: (HTMLInputElement)
+    }
+
+
+    handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault()
         const { config } = this.props
         const { name, password } = this.refs
-        this.props.loginUser({
-            username: name.value,
-            password: password.value,
-        }, config).done()
+        this.props.loginUser(this.props.config.data, {
+            username: this.refs.name.value,
+            password: this.refs.password.value,
+        }).done()
     }
     render() {
-        const handleNavigation = this.props.navigate.bind(this, REGISTER_ROUTE)
         return (
             <form
                 action=""
@@ -67,7 +72,7 @@ class Login extends React.Component<ILoginStateProps, {}> {
                     {'Log in'}
                 </button>
                 <button
-                    onClick={handleNavigation}
+                    onClick={() => { this.props.navigate(Routes.REGISTER_ROUTE) }}
                     type="button"
                 >
                     {'Go to registration'}
@@ -79,8 +84,8 @@ class Login extends React.Component<ILoginStateProps, {}> {
         if (this.props.userInfo.loading) {
             return (<span className="loading">{'Loading'}</span>)
         }
-        if (this.props.userInfo.errorMessage) {
-            return (<span className="error">{this.props.userInfo.errorMessage}</span>)
+        if (this.props.userInfo.message) {
+            return (<span className="error">{this.props.userInfo.message}</span>)
         }
     }
 }
@@ -94,8 +99,8 @@ export default connect(
     },
     (dispatch: Dispatch<State.IState>): any => {
         return {
-            loginUser: null,
-            navigate: null,
+            loginUser: loginUser(dispatch),
+            navigate: () => {},
         }
     }
-)(Layout)
+)(Login)

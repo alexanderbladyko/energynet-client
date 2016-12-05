@@ -1,4 +1,3 @@
-import * as Bluebird from 'bluebird'
 import * as React from 'react'
 import {
     connect,
@@ -13,17 +12,19 @@ import Error from 'components/Error/Error'
 import Loading from 'components/Loading/Loading'
 import {
     loadConfig,
+    ILoadConfigAction,
 } from 'actions/config'
 import {
     loadUserInfo,
+    ILoadUserInfoAction,
 } from 'actions/userInfo'
 
 
 interface ILayoutStateProps {
     config: State.IConfigState
     userInfo: State.IUserInfoState
-    loadConfig: () => Bluebird<void|State.IConfig>
-    loadUserInfo: (config: State.IConfig) => Bluebird<void|State.IUserInfo>
+    loadConfig: ILoadConfigAction
+    loadUserInfo: ILoadUserInfoAction
 }
 
 import './Layout.scss'

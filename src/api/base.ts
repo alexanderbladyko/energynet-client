@@ -22,7 +22,7 @@ export class BaseApi<T> {
             })
         })
     }
-    public post(data: any, ...args: any[]): Bluebird<T> {
+    public post<TData>(data: TData, ...args: any[]): Bluebird<T> {
         const url: string = this.getUrl(...args)
         return new Bluebird<T>(function(resolve: any, reject: any): void {
             fetch(url, {
