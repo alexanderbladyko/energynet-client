@@ -1,4 +1,3 @@
-import * as Bluebird from 'bluebird'
 import * as React from 'react'
 import {
     connect,
@@ -25,30 +24,20 @@ interface ILoginStateProps {
 
 
 class Login extends React.Component<ILoginStateProps, {}> {
-    refs: {
+    public refs: {
         [key: string]: (Element)
         name: (HTMLInputElement)
         password: (HTMLInputElement)
     }
 
-
-    handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault()
-        const { config } = this.props
-        const { name, password } = this.refs
-        this.props.loginUser(this.props.config.data, {
-            username: this.refs.name.value,
-            password: this.refs.password.value,
-        }).done()
-    }
-    render() {
+    public render(): React.ReactElement<{}> {
         return (
             <form
-                action=""
-                className="login"
-                method="post"
+                action=''
+                className='login'
+                method='post'
                 onSubmit={this.handleSubmit.bind(this)}
-                ref="loginForm"
+                ref='loginForm'
             >
                 <h1>
                     {'Login Form'}
@@ -56,37 +45,46 @@ class Login extends React.Component<ILoginStateProps, {}> {
                 {this.renderErrorMessage()}
                 <h3>
                     <input
-                        name="name"
-                        ref="name"
-                        type="text"
+                        name='name'
+                        ref='name'
+                        type='text'
                     />
                 </h3>
                 <h3>
                     <input
-                        name="password"
-                        ref="password"
-                        type="password"
+                        name='password'
+                        ref='password'
+                        type='password'
                     />
                 </h3>
-                <button type="submit">
+                <button type='submit'>
                     {'Log in'}
                 </button>
                 <button
                     onClick={() => { this.props.navigate(Routes.REGISTER_ROUTE) }}
-                    type="button"
+                    type='button'
                 >
                     {'Go to registration'}
                 </button>
             </form>
         )
     }
-    renderErrorMessage() {
+
+    public renderErrorMessage(): React.ReactElement<{}> {
         if (this.props.userInfo.loading) {
-            return (<span className="loading">{'Loading'}</span>)
+            return (<span className='loading'>{'Loading'}</span>)
         }
         if (this.props.userInfo.message) {
-            return (<span className="error">{this.props.userInfo.message}</span>)
+            return (<span className='error'>{this.props.userInfo.message}</span>)
         }
+    }
+
+    private handleSubmit(e: React.MouseEvent<HTMLButtonElement>): void {
+        e.preventDefault()
+        this.props.loginUser(this.props.config.data, {
+            username: this.refs.name.value,
+            password: this.refs.password.value,
+        }).done()
     }
 }
 
@@ -100,7 +98,7 @@ export default connect(
     (dispatch: Dispatch<State.IState>): any => {
         return {
             loginUser: loginUser(dispatch),
-            navigate: () => {},
+            navigate: undefined,
         }
     }
 )(Login)
