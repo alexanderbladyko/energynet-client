@@ -12,6 +12,7 @@ export default function routeReducer(state: IRouteState, action: IBaseAction): I
     }
 
     switch (action.type) {
+    case actionTypes.CONFIG_REQUEST:
     case actionTypes.CONFIG_RESPONSE:
         return Object.assign({}, state, {
             path: routes.LOADING_ROUTE,

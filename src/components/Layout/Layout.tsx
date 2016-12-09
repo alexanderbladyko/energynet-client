@@ -8,8 +8,7 @@ import {
 
 import * as State from 'state'
 
-import Error from 'components/Error/Error'
-import Loading from 'components/Loading/Loading'
+import Body from 'components/Body/Body'
 import {
     loadConfig,
     ILoadConfigAction,
@@ -42,29 +41,13 @@ class Layout extends React.Component<ILayoutStateProps, {}> {
         }
     }
     public render(): React.ReactElement<{}> {
-        const isError: boolean = (
-            this.props.config.error
-            || this.props.userInfo.error
-        )
-        const isLoading: boolean = (
-            this.props.config.loading
-            || this.props.userInfo.loading
-        )
         return (
             <div>
                 <div className='body'>
                     {'Header'}
                 </div>
                 <div>
-                    {'Body'}
-                    {
-                        isError
-                        && <Error />
-                    }
-                    {
-                        !isError && isLoading
-                        && <Loading />
-                    }
+                    <Body />
                 </div>
                 <div>
                     {'Footer'}

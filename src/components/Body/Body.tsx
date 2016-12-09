@@ -10,13 +10,6 @@ import Loading from 'components/Loading/Loading'
 import Error from 'components/Error/Error'
 import Login from 'components/Login/Login'
 
-const routes: { [route: string]: React.Component<any, {}>} = {
-    [Routes.LOADING_ROUTE]: Loading,
-    [Routes.ERROR_ROUTE]: Error,
-    [Routes.LOGIN_ROUTE]: Login,
-}
-
-
 interface IBodyProps {
     route: State.IRouteState
 }
@@ -24,9 +17,15 @@ interface IBodyProps {
 
 class Body extends React.Component<IBodyProps, {}> {
     public render(): React.ReactElement<{}> {
-        const Component: React.Component<any, {}> = routes[this.props.route.path]
-        if (Component) {
-            return <Component />
+        switch (this.props.route.path) {
+            case Routes.LOGIN_ROUTE:
+                return <Login />
+            case Routes.ERROR_ROUTE:
+                return <Error />
+            case Routes.LOADING_ROUTE:
+                return <Loading />
+            default:
+                return null
         }
     }
 }

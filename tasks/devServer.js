@@ -3,7 +3,7 @@ const express = require('express')
 const webpack = require('webpack')
 const config = require('../config/webpack.dev')
 
-const mockApiServer = require('./mockApiServer')
+const mockApiServer = require('./utils/mockApiServer')
 
 const app = express()
 const compiler = webpack(config)

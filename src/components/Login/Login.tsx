@@ -4,6 +4,7 @@ import {
 } from 'react-redux'
 import {
     Dispatch,
+    bindActionCreators,
 } from 'redux'
 
 import * as State from 'state'
@@ -13,13 +14,16 @@ import {
     loginUser,
     ILoginUserAction,
 } from 'actions/userInfo'
+import {
+    navigate,
+} from 'actions/route'
 
 
 interface ILoginStateProps {
     config: State.IConfigState
     userInfo: State.IUserInfoState
     loginUser: ILoginUserAction
-    navigate: (path: string) => void
+    navigate: typeof navigate
 }
 
 
@@ -98,7 +102,7 @@ export default connect(
     (dispatch: Dispatch<State.IState>): any => {
         return {
             loginUser: loginUser(dispatch),
-            navigate: undefined,
+            navigate: bindActionCreators(navigate, dispatch),
         }
     }
 )(Login)
