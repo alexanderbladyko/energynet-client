@@ -9,6 +9,7 @@ import * as Routes from 'constants/routes'
 import Loading from 'components/Loading/Loading'
 import Error from 'components/Error/Error'
 import Login from 'components/Login/Login'
+import Register from 'components/Register/Register'
 
 interface IBodyProps {
     route: State.IRouteState
@@ -24,6 +25,8 @@ class Body extends React.Component<IBodyProps, {}> {
                 return <Error />
             case Routes.LOADING_ROUTE:
                 return <Loading />
+            case Routes.REGISTER_ROUTE:
+                return <Register />
             default:
                 return null
         }

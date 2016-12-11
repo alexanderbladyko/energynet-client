@@ -4,8 +4,9 @@ import { Dispatch, } from 'redux'
 import { IBaseAction, } from 'actions/base'
 import UserInfoApi from 'api/userInfo'
 import LoginApi from 'api/login'
+import RegisterApi from 'api/register'
 import * as actionTypes from 'constants/actionTypes'
-import { IState, IUserInfo, IConfig, } from 'state'
+import { IState, IUserInfo, IRegister, IConfig, } from 'state'
 
 
 export function requestUserInfo(): IBaseAction {
@@ -104,38 +105,55 @@ export function loginUser(dispatch: Dispatch<IState>): ILoginUserAction {
         )
     }
 }
-//
-// export function requestRegister() {
-//     return {
-//         type: USER_REGISTER_REQUEST,
-//     }
-// }
-//
-// export function responseRegister(registerInfo) {
-//     return {
-//         type: USER_REGISTER_RESPONSE,
-//         payload: {
-//             registerInfo,
-//         },
-//     }
-// }
-//
-// export function errorRegister(message) {
-//     return {
-//         type: USER_REGISTER_ERROR,
-//         error: true,
-//         payload: {
-//             message,
-//         },
-//     }
-// }
-//
-// export function registerUser(dispatch) {
-//     return (data, config) => {
-//         dispatch(requestRegister())
-//         return ajax.post(`${config.data.authApi}${REGISTER_URL}`, data).then(
-//             registerInfo => dispatch(responseRegister(registerInfo)),
-//             error => dispatch(errorRegister(error))
-//         )
-//     }
-// }
+
+export function requestRegister(): IBaseAction {
+    return {
+        type: actionTypes.USER_REGISTER_REQUEST,
+    }
+}
+
+export function responseRegister(registerInfo: IRegister): IBaseAction {
+    return {
+        type: actionTypes.USER_REGISTER_RESPONSE,
+        payload: {
+            registerInfo,
+        },
+    }
+}
+
+export function errorRegister(message: string): IBaseAction {
+    return {
+        type: actionTypes.USER_REGISTER_ERROR,
+        error: true,
+        payload: {
+            message,
+        },
+    }
+}
+
+interface IRegisterData {
+    username: string,
+    password: string,
+}
+
+export interface IRegisterUserAction {
+    (config: IConfig, data: IRegisterData): Bluebird<IRegister|void>
+}
+
+
+export function registerUser(dispatch: Dispatch<IState>): IRegisterUserAction {
+    return (config, data) => {
+        dispatch(requestRegister())
+        const api: RegisterApi = new RegisterApi()
+        return api.post<IRegisterData>(data, config).then(
+            userInfo => {
+                dispatch(responseRegister(userInfo))
+                return userInfo
+            },
+            error => {
+                dispatch(errorRegister(error))
+                throw new Error('Failed to register')
+            }
+        )
+    }
+}

@@ -2,71 +2,86 @@ import * as routes from 'constants/routes'
 
 
 interface IBaseState {
-    loading: boolean,
-    error: boolean,
-    message?: string,
+    loading: boolean
+    error: boolean
+    message?: string
 }
 
 export interface IConfigState extends IBaseState {
-    data?: IConfig,
+    data?: IConfig
 }
 
 export interface IConfig {
-    authApi: string,
+    authApi: string
 }
 
 export interface IUserInfoState extends IBaseState {
-    data: IUserInfo,
+    data: IUserInfo
 }
 
 export interface IUserInfo {
-    name?: string,
-    isAuthenticated: boolean,
+    name?: string
+    isAuthenticated: boolean
 }
 
 export interface IRouteState {
-    path: string,
+    path: string
 }
 
 export interface ISocketState {
-    connected: boolean,
+    connected: boolean
 }
 
 export interface IGamesState extends IBaseState {
-    data: Array<IGame>,
+    data: Array<IGame>
 }
 
 export interface IGame {
-    id: number,
+    id: number
 }
 
 export interface ILobbyState extends IBaseState {
-    data?: ILobby,
+    data?: ILobby
 }
 
 export interface ILobby {
-    name: string,
-    playersLimit: number,
-    users: Array<ILobbyUser>,
+    name: string
+    playersLimit: number
+    users: Array<ILobbyUser>
 }
 
 export interface ILobbyUser {
-    id: number,
+    id: number
+}
+
+export interface ILoginState extends IBaseState {
+    data?: IUserInfo
+}
+
+export interface IRegister {
+    success: boolean
+    reason?: string
+}
+
+export interface IRegisterState extends IBaseState {
+    data?: IRegister
 }
 
 export interface IGameState extends IBaseState  {
-    inGame: boolean,
+    inGame: boolean
     inLobby: boolean
 }
 
 export interface IState extends Object {
-    config: IConfigState,
-    games: IGamesState,
-    lobby: ILobbyState,
-    route: IRouteState,
-    socket: ISocketState,
-    state: IGameState,
-    userInfo: IUserInfoState,
+    config: IConfigState
+    games: IGamesState
+    lobby: ILobbyState
+    login: ILoginState
+    register: IRegisterState
+    route: IRouteState
+    socket: ISocketState
+    state: IGameState
+    userInfo: IUserInfoState
 }
 
 export const initialState: IState = {
@@ -80,6 +95,14 @@ export const initialState: IState = {
         data: [],
     },
     lobby: {
+        error: false,
+        loading: false,
+    },
+    login: {
+        error: false,
+        loading: false,
+    },
+    register: {
         error: false,
         loading: false,
     },
