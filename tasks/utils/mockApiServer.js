@@ -53,7 +53,7 @@ module.exports = function mockApiServer(req, res, next) {
             }
         }
         if (resolvedFile) {
-            res.status = correctConfig.status
+            res.statusCode = correctConfig.status
             res.sendFile(resolvedFile)
         } else {
             console.log('Failed to find file', req.url)

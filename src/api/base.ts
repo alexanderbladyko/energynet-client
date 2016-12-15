@@ -1,6 +1,15 @@
 import * as Bluebird from 'bluebird'
 
 
+export class ApiError<T> extends Error {
+    public data: T
+
+    constructor(response: T, message?: string) {
+        super(message)
+        this.data = response
+    }
+}
+
 export class BaseApi<T> {
     public getUrl(...args: any[]): string {
         throw new Error('not implemented')
@@ -10,16 +19,23 @@ export class BaseApi<T> {
         return new Bluebird<T>(function(resolve: any, reject: any): void {
             fetch(url, {
                 method: 'get',
-            }).then(function(response: Response): void {
-                if (response.ok) {
+            }).then(
+                function(response: Response): void {
                     response.json().then((data: any): void => {
-                        resolve(data)
+                        if (response.ok) {
+                            resolve(data)
+                        } else {
+                            reject(new ApiError(data))
+                        }
                     }).catch((error: any): void => {
                         console.error(`Failed to get json by url: ${url}`)
                         reject(error)
                     })
+                },
+                function(reason: Error): void {
+                    reject(reason.message)
                 }
-            })
+            )
         })
     }
     public post<TData>(data: TData, ...args: any[]): Bluebird<T> {
@@ -31,16 +47,20 @@ export class BaseApi<T> {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-            }).then(function(response: Response): void {
-                if (response.ok) {
+            }).then(
+                function(response: Response): void {
                     response.json().then((responseData: any): void => {
-                        resolve(responseData)
+                        if (response.ok) {
+                            resolve(responseData)
+                        } else {
+                            reject(new ApiError(responseData))
+                        }
                     }).catch((error: any): void => {
                         console.error(`Failed to get json by url: ${url}`)
                         reject(error)
                     })
                 }
-            })
+            )
         })
     }
 }

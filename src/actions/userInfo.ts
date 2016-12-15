@@ -99,7 +99,7 @@ export function loginUser(dispatch: Dispatch<IState>): ILoginUserAction {
                 return userInfo
             },
             error => {
-                dispatch(errorLogin(error))
+                dispatch(errorLogin(error.data.reason))
                 throw new Error('Failed to login')
             }
         )
@@ -146,12 +146,12 @@ export function registerUser(dispatch: Dispatch<IState>): IRegisterUserAction {
         dispatch(requestRegister())
         const api: RegisterApi = new RegisterApi()
         return api.post<IRegisterData>(data, config).then(
-            userInfo => {
-                dispatch(responseRegister(userInfo))
-                return userInfo
+            registerInfo => {
+                dispatch(responseRegister(registerInfo))
+                return registerInfo
             },
             error => {
-                dispatch(errorRegister(error))
+                dispatch(errorRegister(error.data.reason))
                 throw new Error('Failed to register')
             }
         )

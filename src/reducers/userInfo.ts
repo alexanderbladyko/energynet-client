@@ -19,7 +19,6 @@ export default function userInfoReducer(state: IUserInfoState, action: IBaseActi
             data: action.payload.userInfo,
         })
     case actionTypes.USER_INFO_ERROR:
-    case actionTypes.USER_LOGIN_ERROR:
         return Object.assign({}, state, {
             loading: false,
             message: action.payload.message,

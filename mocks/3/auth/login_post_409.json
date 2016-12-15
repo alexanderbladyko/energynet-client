@@ -1,3 +1,4 @@
 {
-    "isAuthenticated": true
+    "isAuthenticated": false,
+    "reason": "User does not exist"
 }

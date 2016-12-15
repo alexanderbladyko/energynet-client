@@ -68,6 +68,7 @@ class Register extends React.Component<IRegisterStateProps, IRegisterComponentSt
                 <h1>
                     {'Register Form'}
                 </h1>
+                {this.renderErrorMessage()}
                 <h3>
                     {'Name'}
                     <input
@@ -117,6 +118,15 @@ class Register extends React.Component<IRegisterStateProps, IRegisterComponentSt
         )
     }
 
+    private renderErrorMessage(): React.ReactElement<{}> {
+        if (this.props.register.loading) {
+            return (<span className='loading'>{'Loading'}</span>)
+        }
+        if (this.props.register.error) {
+            return (<span className='error'>{this.props.register.message}</span>)
+        }
+    }
+
     private handleChange(): void {
         const passwordIsValid: boolean = true
         const passwordsMatch: boolean = (this.refs.password.value === this.refs.password2.value)
@@ -139,7 +149,7 @@ class Register extends React.Component<IRegisterStateProps, IRegisterComponentSt
         this.props.registerUser(this.props.config.data, {
             username: this.refs.name.value,
             password: this.refs.password.value,
-        })
+        }).done()
     }
 }
 

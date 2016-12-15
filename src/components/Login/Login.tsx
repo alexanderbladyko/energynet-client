@@ -21,7 +21,7 @@ import {
 
 interface ILoginStateProps {
     config: State.IConfigState
-    userInfo: State.IUserInfoState
+    login: State.IUserInfoState
     loginUser: ILoginUserAction
     navigate: typeof navigate
 }
@@ -75,11 +75,11 @@ class Login extends React.Component<ILoginStateProps, {}> {
     }
 
     public renderErrorMessage(): React.ReactElement<{}> {
-        if (this.props.userInfo.loading) {
+        if (this.props.login.loading) {
             return (<span className='loading'>{'Loading'}</span>)
         }
-        if (this.props.userInfo.message) {
-            return (<span className='error'>{this.props.userInfo.message}</span>)
+        if (this.props.login.error) {
+            return (<span className='error'>{this.props.login.message}</span>)
         }
     }
 
@@ -96,7 +96,7 @@ export default connect(
     (state: State.IState): any => {
         return {
             config: state.config,
-            userInfo: state.userInfo,
+            login: state.login,
         }
     },
     (dispatch: Dispatch<State.IState>): any => {

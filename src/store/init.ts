@@ -17,10 +17,11 @@ declare const __REDUX_DEVTOOLS_EXTENSION__: any
 
 export function configureStore(): Store<IState> {
     const reducer: Reducer<IState> = combineReducers<IState>(reducers)
-    const store: Store<IState> = createStore<IState>(
-        reducer, initialState,
-        __REDUX_DEVTOOLS_EXTENSION__ && __REDUX_DEVTOOLS_EXTENSION__()
-    )
+    let enhancer: any
+    if (window.hasOwnProperty('__REDUX_DEVTOOLS_EXTENSION__')) {
+        enhancer = __REDUX_DEVTOOLS_EXTENSION__ && __REDUX_DEVTOOLS_EXTENSION__()
+    }
+    const store: Store<IState> = createStore<IState>(reducer, initialState, enhancer)
 
     if (module.hot) {
         module.hot.accept('reducers', () => {
