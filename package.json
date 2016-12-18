@@ -16,7 +16,8 @@
     "build": "npm run clean && npm run build:webpack",
     "clean": "rimraf build",
     "start": "node tasks/devServer.js",
-    "test": "karma start"
+    "test": "karma start",
+    "docs:api": "mkdir -p build && raml2html docs/api.raml > build/api.html"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.0.0-beta.3",
