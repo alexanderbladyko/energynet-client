@@ -7,7 +7,7 @@ export function initSocket(): void {
     if (socket) {
         console.error('Socket is already initialized')
     }
-    socket = io()
+    socket = io('/games')
 }
 
 export function send(url: string, options: any): void {

@@ -14,9 +14,11 @@ export const USER_REGISTER_REQUEST: string = 'USER_REGISTER_REQUEST'
 export const USER_REGISTER_RESPONSE: string = 'USER_REGISTER_RESPONSE'
 export const USER_REGISTER_ERROR: string = 'USER_REGISTER_ERROR'
 
-export const SOCKET_CONNECTED: string = 'SOCKET_CONNECT'
-export const SOCKET_DISCONNECTED: string = 'SOCKET_DISCONNECT'
+export const SOCKET_CONNECTING: string = 'SOCKET_CONNECTING'
+export const SOCKET_CONNECTED: string = 'SOCKET_CONNECTED'
+export const SOCKET_DISCONNECTED: string = 'SOCKET_DISCONNECTED'
 
+export const GAMES_REQUEST: string = 'GAMES_REQUEST'
 export const GAMES_RECEIVE: string = 'GAMES_RECEIVE'
 export const GAMES_NEW_CREATE: string = 'GAMES_NEW_CREATE'
 export const GAMES_NEW_SUCCESS: string = 'GAMES_NEW_SUCCESS'

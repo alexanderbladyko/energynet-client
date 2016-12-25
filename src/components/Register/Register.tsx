@@ -109,7 +109,7 @@ class Register extends React.Component<IRegisterStateProps, IRegisterComponentSt
                     {'Register'}
                 </button>
                 <button
-                    onClick={() => {this.props.navigate(Routes.REGISTER_ROUTE)}}
+                    onClick={() => {this.props.navigate(Routes.LOGIN_ROUTE)}}
                     type='button'
                 >
                     {'Log in'}

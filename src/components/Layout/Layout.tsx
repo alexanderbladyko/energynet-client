@@ -8,7 +8,7 @@ import {
 
 import * as State from 'state'
 
-import Body from 'components/Body/Body'
+import Router from 'components/Router/Router'
 import {
     loadConfig,
     ILoadConfigAction,
@@ -47,7 +47,7 @@ class Layout extends React.Component<ILayoutStateProps, {}> {
                     {'Header'}
                 </div>
                 <div>
-                    <Body />
+                    <Router />
                 </div>
                 <div>
                     {'Footer'}

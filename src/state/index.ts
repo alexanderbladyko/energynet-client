@@ -38,6 +38,8 @@ export interface IGamesState extends IBaseState {
 
 export interface IGame {
     id: number
+    name: string
+    userLimit: number
 }
 
 export interface ILobbyState extends IBaseState {

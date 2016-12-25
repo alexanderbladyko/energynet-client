@@ -6,29 +6,66 @@ import {
 import * as State from 'state'
 import * as Routes from 'constants/routes'
 
-import Loading from 'components/Loading/Loading'
-import Error from 'components/Error/Error'
-import Login from 'components/Login/Login'
-import Register from 'components/Register/Register'
+import {
+    navigate,
+} from 'actions/route'
+import {
+    socketConnecting,
+    socketConnected,
+} from 'actions/socket'
+import * as socket from 'api/socket'
+
+import Games from 'components/Games/Games'
 
 interface IBodyProps {
     route: State.IRouteState
+    userInfo: State.IUserInfoState
+    socketConnecting: typeof socketConnecting
+    socketConnected: typeof socketConnected
+    navigate: typeof navigate
 }
 
 
 class Body extends React.Component<IBodyProps, {}> {
+    public componentWillMount(): void {
+        this.initSocket()
+    }
+    public componentWillUpdate(nextProps: IBodyProps): void {
+        if (
+            nextProps.userInfo.data.isAuthenticated
+            && !this.props.userInfo.data.isAuthenticated
+        ) {
+            this.initSocket()
+        }
+    }
     public render(): React.ReactElement<{}> {
         switch (this.props.route.path) {
-            case Routes.LOGIN_ROUTE:
-                return <Login />
-            case Routes.ERROR_ROUTE:
-                return <Error />
-            case Routes.LOADING_ROUTE:
-                return <Loading />
-            case Routes.REGISTER_ROUTE:
-                return <Register />
+
+            // case Routes.LOBBY_ROUTE:
+                // return <Login />
+            case Routes.GAMES_ROUTE:
+                return <Games />
             default:
-                return null
+                return <div>
+                    {'Body'}
+                    <button
+                        title='To games'
+                        onClick={() => { this.props.navigate(Routes.GAMES_ROUTE) }}
+                    >
+                    {'To games'}
+                    </button>
+                </div>
+        }
+    }
+    private initSocket(): void {
+        if (this.props.userInfo.data.isAuthenticated) {
+            this.props.socketConnecting()
+            socket.initSocket()
+
+            socket.subscribe('handshake', (data: any): void => {
+                console.log('Socket connected')
+                this.props.socketConnected()
+            })
         }
     }
 }
@@ -37,6 +74,12 @@ export default connect(
     (state: State.IState): any => {
         return {
             route: state.route,
+            userInfo: state.userInfo,
         }
+    },
+    {
+        socketConnecting,
+        socketConnected,
+        navigate,
     }
 )(Body)
