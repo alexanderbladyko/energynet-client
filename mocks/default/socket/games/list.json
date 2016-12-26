@@ -6,6 +6,11 @@
                 "id": 1,
                 "name": "test",
                 "userLimit": 6
+            },
+            {
+                "id": 2,
+                "name": "test 2",
+                "userLimit": 2
             }
         ]
     }

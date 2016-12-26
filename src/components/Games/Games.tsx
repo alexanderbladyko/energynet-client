@@ -21,9 +21,9 @@ interface IGamesProps {
 
 class Games extends React.Component<IGamesProps, {}> {
     public componentWillMount(): void {
-        this.props.requestGames()
         gamesSocket.initSocket()
 
+        this.props.requestGames()
         gamesSocket.send('list', {})
 
         gamesSocket.subscribe('games', (data: Array<State.IGame>) => {
@@ -34,9 +34,22 @@ class Games extends React.Component<IGamesProps, {}> {
         gamesSocket.disconnect()
     }
     public render(): React.ReactElement<{}> {
-        return <div>
-            {'Games'}
-        </div>
+        return (
+            <div>
+                {'Games'}
+                {
+                    this.props.games.loading
+                    && 'Loading'
+                }
+                {
+                    this.props.games.data.map(game => {
+                        return (
+                            <p data-id={game.id}>{`${game.name} (Кол-во игроков ${game.userLimit})`}</p>
+                        )
+                    })
+                }
+            </div>
+        )
     }
 }
 
