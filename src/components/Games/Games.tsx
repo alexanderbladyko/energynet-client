@@ -44,7 +44,7 @@ class Games extends React.Component<IGamesProps, {}> {
                 {
                     this.props.games.data.map(game => {
                         return (
-                            <p data-id={game.id}>{`${game.name} (Кол-во игроков ${game.userLimit})`}</p>
+                            <p key={game.id}>{`${game.name} (Кол-во игроков ${game.userLimit})`}</p>
                         )
                     })
                 }
@@ -56,7 +56,7 @@ class Games extends React.Component<IGamesProps, {}> {
 export default connect(
     (state: State.IState): any => {
         return {
-            gamesState: state.games,
+            games: state.games,
             userInfo: state.userInfo,
         }
     },

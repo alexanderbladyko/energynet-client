@@ -11,6 +11,12 @@ import {
 
 export default function games(state: IGamesState, action: IBaseAction): IGamesState {
     switch (action.type) {
+    case actionTypes.GAMES_REQUEST:
+        return {
+            ...state,
+            loading: true,
+            data: [],
+        }
     case actionTypes.GAMES_RECEIVE:
         return Object.assign({}, state, {
             loading: false,
