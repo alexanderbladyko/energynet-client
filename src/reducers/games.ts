@@ -18,15 +18,23 @@ export default function games(state: IGamesState, action: IBaseAction): IGamesSt
             data: [],
         }
     case actionTypes.GAMES_RECEIVE:
-        return Object.assign({}, state, {
+        return {
+            ...state,
             loading: false,
             data: action.payload.data,
-        })
+        }
     case actionTypes.GAMES_JOIN:
-        return Object.assign({}, state, {
-            loading: true,
-            data: action.payload.data,
-        })
+        return {
+            ...state,
+            gameJoining: true,
+        }
+    case actionTypes.GAMES_JOIN_SUCCESS:
+    case actionTypes.GAMES_JOIN_ERROR:
+        return {
+            ...state,
+            gameJoining: false,
+        }
+
     default:
         return state || initialState.games
     }

@@ -28,6 +28,11 @@ export function subscribe(url: string, handler: Function): SocketIOClient.Emitte
     return socket.on(url, handler)
 }
 
+export function unsubscribe(url: string): void {
+    socket.removeListener(url)
+}
+
 export function disconnect(): void {
+    socket.removeAllListeners()
     socket = null
 }

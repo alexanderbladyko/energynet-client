@@ -30,6 +30,9 @@ class Body extends React.Component<IBodyProps, {}> {
     public componentWillMount(): void {
         this.initSocket()
     }
+    public componentWillUnmount(): void {
+        socket.unsubscribe('handshake')
+    }
     public componentWillUpdate(nextProps: IBodyProps): void {
         if (
             nextProps.userInfo.data.isAuthenticated

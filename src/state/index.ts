@@ -7,6 +7,11 @@ interface IBaseState {
     message?: string
 }
 
+interface IActionResponse {
+    success: boolean
+    reason?: string
+}
+
 export interface IConfigState extends IBaseState {
     data?: IConfig
 }
@@ -34,6 +39,7 @@ export interface ISocketState {
 
 export interface IGamesState extends IBaseState {
     data: Array<IGame>
+    gameJoining: boolean
 }
 
 export interface IGame {
@@ -60,13 +66,14 @@ export interface ILoginState extends IBaseState {
     data?: IUserInfo
 }
 
-export interface IRegister {
-    success: boolean
-    reason?: string
+export interface IRegister extends IActionResponse {
 }
 
 export interface IRegisterState extends IBaseState {
     data?: IRegister
+}
+
+export interface IGameJoin extends IActionResponse {
 }
 
 export interface IGameState extends IBaseState  {
@@ -95,6 +102,7 @@ export const initialState: IState = {
         error: false,
         loading: false,
         data: [],
+        gameJoining: false,
     },
     lobby: {
         error: false,

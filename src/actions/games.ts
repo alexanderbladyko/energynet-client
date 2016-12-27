@@ -17,3 +17,20 @@ export function receiveGames(data: Array<State.IGame>): IBaseAction {
         },
     }
 }
+
+export function requestGameJoin(): IBaseAction {
+    return {
+        type: actionTypes.GAMES_JOIN,
+    }
+}
+
+export function responseGameJoin(response: State.IGameJoin): IBaseAction {
+    if (response.success) {
+        return {
+            type: actionTypes.GAMES_JOIN_SUCCESS,
+        }
+    }
+    return {
+        type: actionTypes.GAMES_JOIN_ERROR,
+    }
+}

@@ -15,8 +15,7 @@ interface ILobbyProps {
 
 class Lobby extends React.Component<ILobbyProps, {}> {
     public componentWillMount(): void {
-    }
-    public componentWillUnmount(): void {
+        
     }
     public render(): React.ReactElement<{}> {
         return (
