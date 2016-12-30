@@ -53,8 +53,12 @@ export interface ILobbyState extends IBaseState {
 }
 
 export interface ILobby {
-    name: string
-    playersLimit: number
+    id: number
+    data: {
+        name: string
+        playersLimit: number
+    }
+    ownerId: number
     users: Array<ILobbyUser>
 }
 

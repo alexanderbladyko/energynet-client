@@ -11,7 +11,7 @@ import {
 
 export default function lobbyReducer(state: ILobbyState, action: IBaseAction): ILobbyState {
     switch (action.type) {
-    case actionTypes.LOBBY_GET:
+    case actionTypes.LOBBY_REQUEST:
         return Object.assign({}, state, {
             loading: true,
         })

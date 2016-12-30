@@ -32,7 +32,7 @@ export const GAMES_LEAVE: string = 'GAMES_LEAVE'
 export const GAMES_LEAVE_SUCCESS: string = 'GAMES_LEAVE_SUCCESS'
 export const GAMES_LEAVE_ERROR: string = 'GAMES_LEAVE_ERROR'
 
-export const LOBBY_GET: string = 'LOBBY_GET'
+export const LOBBY_REQUEST: string = 'LOBBY_REQUEST'
 export const LOBBY_RECEIVE: string = 'LOBBY_RECEIVE'
 
 export const STATE_GET: string = 'STATE_GET'
