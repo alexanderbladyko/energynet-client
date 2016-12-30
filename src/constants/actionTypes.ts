@@ -20,9 +20,11 @@ export const SOCKET_DISCONNECTED: string = 'SOCKET_DISCONNECTED'
 
 export const GAMES_REQUEST: string = 'GAMES_REQUEST'
 export const GAMES_RECEIVE: string = 'GAMES_RECEIVE'
-export const GAMES_NEW_CREATE: string = 'GAMES_NEW_CREATE'
-export const GAMES_NEW_SUCCESS: string = 'GAMES_NEW_SUCCESS'
-export const GAMES_NEW_ERROR: string = 'GAMES_NEW_ERROR'
+
+export const NEW_GAME_REQUEST: string = 'NEW_GAME_REQUEST'
+export const NEW_GAME_SUCCESS: string = 'NEW_GAME_SUCCESS'
+export const NEW_GAME_ERROR: string = 'NEW_GAME_ERROR'
+export const NEW_GAME_TOGGLE: string = 'NEW_GAME_TOGGLE'
 
 export const GAMES_JOIN: string = 'GAMES_JOIN'
 export const GAMES_JOIN_SUCCESS: string = 'GAMES_JOIN_SUCCESS'
@@ -34,6 +36,9 @@ export const GAMES_LEAVE_ERROR: string = 'GAMES_LEAVE_ERROR'
 
 export const LOBBY_REQUEST: string = 'LOBBY_REQUEST'
 export const LOBBY_RECEIVE: string = 'LOBBY_RECEIVE'
+
+export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
+export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 
 export const STATE_GET: string = 'STATE_GET'
 export const STATE_RECEIVE: string = 'STATE_GET_SUCCESS'

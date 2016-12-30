@@ -37,7 +37,7 @@ export default function routeReducer(state: IRouteState, action: IBaseAction): I
         return Object.assign({}, state, {
             path: action.payload.route,
         })
-    case actionTypes.GAMES_NEW_SUCCESS:
+    case actionTypes.NEW_GAME_SUCCESS:
     case actionTypes.GAMES_JOIN_SUCCESS:
         return Object.assign({}, state, {
             path: routes.LOBBY_ROUTE,

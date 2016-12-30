@@ -48,6 +48,13 @@ export interface IGame {
     userLimit: number
 }
 
+export interface INewGameState extends IBaseState {
+    opened: boolean
+    data?: INewGame
+}
+
+export interface INewGame extends IActionResponse {}
+
 export interface ILobbyState extends IBaseState {
     data?: ILobby
 }
@@ -59,11 +66,13 @@ export interface ILobby {
         playersLimit: number
     }
     ownerId: number
+    players: Array<ILobbyUser>
     users: Array<ILobbyUser>
 }
 
 export interface ILobbyUser {
     id: number
+    name: string
 }
 
 export interface ILoginState extends IBaseState {
@@ -87,6 +96,7 @@ export interface IGameState extends IBaseState  {
 
 export interface IState extends Object {
     config: IConfigState
+    newGame: INewGameState
     games: IGamesState
     lobby: ILobbyState
     login: ILoginState
@@ -101,6 +111,11 @@ export const initialState: IState = {
     config: {
         error: false,
         loading: false,
+    },
+    newGame: {
+        error: false,
+        loading: false,
+        opened: false,
     },
     games: {
         error: false,

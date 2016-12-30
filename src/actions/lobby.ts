@@ -17,3 +17,21 @@ export function receiveLobby(data: State.ILobby): IBaseAction {
         },
     }
 }
+
+export function addUser(id: number): IBaseAction {
+    return {
+        type: actionTypes.LOBBY_ADD_USER,
+        payload: {
+            id,
+        },
+    }
+}
+
+export function removeUser(id: number): IBaseAction {
+    return {
+        type: actionTypes.LOBBY_REMOVE_USER,
+        payload: {
+            id,
+        },
+    }
+}

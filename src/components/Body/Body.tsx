@@ -16,6 +16,7 @@ import {
 import * as socket from 'api/socket'
 
 import Games from 'components/Games/Games'
+import Lobby from 'components/Lobby/Lobby'
 
 interface IBodyProps {
     route: State.IRouteState
@@ -43,11 +44,10 @@ class Body extends React.Component<IBodyProps, {}> {
     }
     public render(): React.ReactElement<{}> {
         switch (this.props.route.path) {
-
-            // case Routes.LOBBY_ROUTE:
-                // return <Login />
             case Routes.GAMES_ROUTE:
                 return <Games />
+            case Routes.LOBBY_ROUTE:
+                return <Lobby />
             default:
                 return <div>
                     {'Body'}

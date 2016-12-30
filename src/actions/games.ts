@@ -32,5 +32,36 @@ export function responseGameJoin(response: State.IGameJoin): IBaseAction {
     }
     return {
         type: actionTypes.GAMES_JOIN_ERROR,
+        error: true,
+        payload: {
+            message: response.reason,
+        },
+    }
+}
+
+export function requestNewGame(): IBaseAction {
+    return {
+        type: actionTypes.NEW_GAME_REQUEST,
+    }
+}
+
+export function responseNewGame(response: State.INewGame): IBaseAction {
+    if (response.success) {
+        return {
+            type: actionTypes.NEW_GAME_SUCCESS,
+        }
+    }
+    return {
+        type: actionTypes.NEW_GAME_ERROR,
+        error: true,
+        payload: {
+            message: response.reason,
+        },
+    }
+}
+
+export function toggleNewGame(): IBaseAction {
+    return {
+        type: actionTypes.NEW_GAME_TOGGLE,
     }
 }

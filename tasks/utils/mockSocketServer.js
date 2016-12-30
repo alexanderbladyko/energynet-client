@@ -34,25 +34,35 @@ function lookupFiles() {
 function getSocketHandler(socket, path, namespace) {
     return function(data) {
         console.log(`Came ${JSON.stringify(data)} from ${path} in namespace ${namespace}`)
-        var responses = []
+        var fileContent = null
         try {
-            responses = fs.readFileSync(mockDirectory + namespace + '/' + path + '.json', 'utf-8')
-            respond(socket, JSON.parse(responses))
-            return
+            fileContent = fs.readFileSync(mockDirectory + namespace + '/' + path + '.json', 'utf-8')
         } catch (e) {}
+        if (fileContent) {
+            respond(socket, fileContent)
+            return
+        }
         try {
-            responses = fs.readFileSync(defaultMockDirectory + namespace + '/' + path + '.json', 'utf-8')
-            respond(socket, JSON.parse(responses))
-            return
+            fileContent = fs.readFileSync(defaultMockDirectory + namespace + '/' + path + '.json', 'utf-8')
         } catch (e) {}
+        if (fileContent) {
+            respond(socket, fileContent)
+            return
+        }
     }
 }
 
-function respond(socket, responses) {
-    console.log(`Responded ${JSON.stringify(responses)}`)
-    responses.forEach(response => {
-        socket.emit(response.name, response.data)
-    })
+function respond(socket, fileContent) {
+    try {
+        var responses = JSON.parse(fileContent)
+        console.log(`Responded:`)
+        responses.forEach(response => {
+            console.log(`  ${response.name}: ${JSON.stringify(response.data)}`)
+            socket.emit(response.name, response.data)
+        })
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 

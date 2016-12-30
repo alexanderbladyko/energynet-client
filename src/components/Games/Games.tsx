@@ -10,17 +10,22 @@ import {
     receiveGames,
     requestGameJoin,
     responseGameJoin,
+    toggleNewGame,
 } from 'actions/games'
 import * as socket from 'api/socket'
 import * as gamesSocket from 'api/gamesSocket'
 
+import NewGame from './NewGame'
+
 interface IGamesProps {
+    newGame: State.INewGameState
     games: State.IGamesState
     userInfo: State.IUserInfoState
     requestGames: typeof requestGames
     receiveGames: typeof receiveGames
     requestGameJoin: typeof requestGameJoin
     responseGameJoin: typeof responseGameJoin
+    toggleNewGame: typeof toggleNewGame
 }
 
 
@@ -57,12 +62,25 @@ class Games extends React.Component<IGamesProps, {}> {
                             <p
                                 key={game.id}
                             >
-                                {`${game.name} (Кол-во игроков ${game.userLimit})`}
-                                <button onClick={() => this.onJoinGame(game.id)}>{'Присоединиться'}</button>
+                                {`${game.name} (Limit of players ${game.userLimit})`}
+                                <button onClick={() => this.onJoinGame(game.id)}>{'Join'}</button>
                             </p>
                         )
                     })
                 }
+                <div>
+                    <button onClick={() => this.props.toggleNewGame()}>
+                    {
+                        !this.props.newGame.opened ?
+                        'Create new' :
+                        'Cancel'
+                    }
+                    </button>
+                    {
+                        this.props.newGame.opened
+                        && <NewGame />
+                    }
+                </div>
             </div>
         )
     }
@@ -75,6 +93,7 @@ class Games extends React.Component<IGamesProps, {}> {
 export default connect(
     (state: State.IState): any => {
         return {
+            newGame: state.newGame,
             games: state.games,
             userInfo: state.userInfo,
         }
@@ -84,5 +103,6 @@ export default connect(
         receiveGames,
         requestGameJoin,
         responseGameJoin,
+        toggleNewGame,
     }
 )(Games)
