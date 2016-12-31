@@ -17,6 +17,7 @@ import * as gamesSocket from 'api/gamesSocket'
 
 import NewGame from './NewGame'
 
+
 interface IGamesProps {
     newGame: State.INewGameState
     games: State.IGamesState
@@ -76,6 +77,7 @@ class Games extends React.Component<IGamesProps, {}> {
                         'Cancel'
                     }
                     </button>
+                    {this.props.newGame.opened}
                     {
                         this.props.newGame.opened
                         && <NewGame />

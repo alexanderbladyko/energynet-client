@@ -40,7 +40,7 @@ export const LOBBY_RECEIVE: string = 'LOBBY_RECEIVE'
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 
-export const STATE_GET: string = 'STATE_GET'
-export const STATE_RECEIVE: string = 'STATE_GET_SUCCESS'
+export const STATE_REQUEST: string = 'STATE_REQUEST'
+export const STATE_RECEIVE: string = 'STATE_RECEIVE'
 
 export const NAVIGATE: string = 'NAVIGATE'

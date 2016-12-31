@@ -9,9 +9,9 @@ import {
 } from 'state'
 
 
-export default function stateReducer(state: IGameState, action: IBaseAction): IGameState {
+export default function gameState(state: IGameState, action: IBaseAction): IGameState {
     switch (action.type) {
-    case actionTypes.STATE_GET:
+    case actionTypes.STATE_REQUEST:
         return Object.assign({}, state, {
             loading: true,
         })
@@ -21,6 +21,6 @@ export default function stateReducer(state: IGameState, action: IBaseAction): IG
             data: action.payload.data,
         })
     default:
-        return state || initialState.state
+        return state || initialState.gameState
     }
 }

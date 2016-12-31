@@ -4,6 +4,10 @@ import {
 } from 'react-redux'
 
 import {
+    requestGameLeave,
+    responseGameLeave,
+} from 'actions/games'
+import {
     requestLobby,
     receiveLobby,
     addUser,
@@ -20,6 +24,8 @@ interface ILobbyProps {
     receiveLobby: typeof receiveLobby
     addUser: typeof addUser
     removeUser: typeof removeUser
+    requestGameLeave: typeof requestGameLeave
+    responseGameLeave: typeof responseGameLeave
 }
 
 
@@ -29,6 +35,9 @@ class Lobby extends React.Component<ILobbyProps, {}> {
         this.props.requestLobby()
         socket.subscribe('lobby', (data: State.ILobby) => {
             this.props.receiveLobby(data)
+        })
+        socket.subscribe('leave_game', (data: State.IGameLeave) => {
+            this.props.responseGameLeave(data)
         })
     }
     public componentWillUnmount(): void {
@@ -74,8 +83,15 @@ class Lobby extends React.Component<ILobbyProps, {}> {
                         })
                     }
                 </div>
+                <button onClick={() => this.onLobbyLeave()}>
+                    {'Leave'}
+                </button>
             </div>
         )
+    }
+    private onLobbyLeave(): void {
+        this.props.requestGameLeave()
+        socket.send('leave_game', {})
     }
     private onUserAdd(id: number): void {
         this.props.addUser(id)
@@ -98,5 +114,7 @@ export default connect(
         receiveLobby,
         addUser,
         removeUser,
+        requestGameLeave,
+        responseGameLeave,
     }
 )(Lobby)

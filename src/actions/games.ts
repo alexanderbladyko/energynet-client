@@ -39,6 +39,27 @@ export function responseGameJoin(response: State.IGameJoin): IBaseAction {
     }
 }
 
+export function requestGameLeave(): IBaseAction {
+    return {
+        type: actionTypes.GAMES_LEAVE,
+    }
+}
+
+export function responseGameLeave(response: State.IGameLeave): IBaseAction {
+    if (response.success) {
+        return {
+            type: actionTypes.GAMES_LEAVE_SUCCESS,
+        }
+    }
+    return {
+        type: actionTypes.GAMES_LEAVE,
+        error: true,
+        payload: {
+            message: response.reason,
+        },
+    }
+}
+
 export function requestNewGame(): IBaseAction {
     return {
         type: actionTypes.NEW_GAME_REQUEST,
@@ -49,6 +70,9 @@ export function responseNewGame(response: State.INewGame): IBaseAction {
     if (response.success) {
         return {
             type: actionTypes.NEW_GAME_SUCCESS,
+            payload: {
+                data: response,
+            },
         }
     }
     return {

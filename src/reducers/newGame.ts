@@ -27,6 +27,7 @@ export default function newGame(state: INewGameState, action: IBaseAction): INew
         return {
             ...state,
             loading: false,
+            error: true,
             message: action.payload.message,
         }
     case actionTypes.NEW_GAME_TOGGLE:

@@ -44,7 +44,7 @@ export default function routeReducer(state: IRouteState, action: IBaseAction): I
         })
     case actionTypes.GAMES_LEAVE_SUCCESS:
         return Object.assign({}, state, {
-            path: routes.HOME_ROUTE,
+            path: routes.GAMES_ROUTE,
         })
     case actionTypes.STATE_RECEIVE:
         if (action.payload.data.inLobby) {

@@ -1,0 +1,9 @@
+[
+    {
+        "name": "new_game",
+        "data": {
+            "success": false,
+            "reason": "Game with such name already exists"
+        }
+    }
+]

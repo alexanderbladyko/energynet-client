@@ -6,7 +6,7 @@ import games from 'reducers/games'
 import register from 'reducers/register'
 import route from 'reducers/route'
 import socket from 'reducers/socket'
-import state from 'reducers/state'
+import gameState from 'reducers/gameState'
 import userInfo from 'reducers/userInfo'
 
 export default {
@@ -18,6 +18,6 @@ export default {
     register,
     route,
     socket,
-    state,
+    gameState,
     userInfo,
 }

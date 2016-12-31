@@ -89,9 +89,14 @@ export interface IRegisterState extends IBaseState {
 export interface IGameJoin extends IActionResponse {
 }
 
+export interface IGameLeave extends IActionResponse {
+}
+
 export interface IGameState extends IBaseState  {
-    inGame: boolean
-    inLobby: boolean
+    data?: {
+        inGame: boolean
+        inLobby: boolean
+    }
 }
 
 export interface IState extends Object {
@@ -103,7 +108,7 @@ export interface IState extends Object {
     register: IRegisterState
     route: IRouteState
     socket: ISocketState
-    state: IGameState
+    gameState: IGameState
     userInfo: IUserInfoState
 }
 
@@ -141,11 +146,9 @@ export const initialState: IState = {
     socket: {
         connected: false,
     },
-    state: {
+    gameState: {
         error: false,
         loading: false,
-        inGame: false,
-        inLobby: false,
     },
     userInfo: {
         data: {
