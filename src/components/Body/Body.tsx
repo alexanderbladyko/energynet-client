@@ -19,6 +19,7 @@ import {
 } from 'actions/status'
 import * as socket from 'api/socket'
 
+import Game from 'components/Game/Game'
 import Games from 'components/Games/Games'
 import Lobby from 'components/Lobby/Lobby'
 
