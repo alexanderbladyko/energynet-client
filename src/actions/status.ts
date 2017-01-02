@@ -9,7 +9,7 @@ export function requestState(): IBaseAction {
     }
 }
 
-export function receiveState(data: State.IGameState): IBaseAction {
+export function receiveState(data: State.IStatusState): IBaseAction {
     return {
         type: actionTypes.STATE_RECEIVE,
         payload: {

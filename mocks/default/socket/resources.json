@@ -1,0 +1,11 @@
+[
+    {
+        "name": "resources",
+        "data": {
+            "coal": 15,
+            "oil": 19,
+            "waste": 5,
+            "uranus": 8
+        }
+    }
+]

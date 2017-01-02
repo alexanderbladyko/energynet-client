@@ -7,7 +7,7 @@
                 "name": "game 1",
                 "userLimit": 5
             },
-            "ownerId": 1,
+            "ownerId": 3,
             "players": [
                 {
                     "id": 1,

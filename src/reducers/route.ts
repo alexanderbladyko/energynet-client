@@ -54,7 +54,7 @@ export default function routeReducer(state: IRouteState, action: IBaseAction): I
         }
         if (action.payload.data.inGame) {
             return Object.assign({}, state, {
-                path: routes.GAMES_ROUTE,
+                path: routes.GAME_ROUTE,
             })
         }
         return state

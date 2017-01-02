@@ -37,6 +37,12 @@ export const GAMES_LEAVE_ERROR: string = 'GAMES_LEAVE_ERROR'
 export const LOBBY_REQUEST: string = 'LOBBY_REQUEST'
 export const LOBBY_RECEIVE: string = 'LOBBY_RECEIVE'
 
+export const PLAYERS_REQUEST: string = 'PLAYERS_REQUEST'
+export const PLAYERS_RECEIVE: string = 'PLAYERS_RECEIVE'
+
+export const GAME_INFO_REQUEST: string = 'GAME_INFO_REQUEST'
+export const GAME_INFO_RECEIVE: string = 'GAME_INFO_RECEIVE'
+
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 

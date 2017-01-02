@@ -18,6 +18,8 @@ export interface IConfigState extends IBaseState {
 
 export interface IConfig {
     authApi: string
+    gameApi: string
+    colors: string[]
 }
 
 export interface IUserInfoState extends IBaseState {
@@ -25,6 +27,7 @@ export interface IUserInfoState extends IBaseState {
 }
 
 export interface IUserInfo {
+    id?: number
     name?: string
     isAuthenticated: boolean
 }
@@ -92,23 +95,70 @@ export interface IGameJoin extends IActionResponse {
 export interface IGameLeave extends IActionResponse {
 }
 
-export interface IGameState extends IBaseState  {
+export interface IStatusState extends IBaseState {
     data?: {
         inGame: boolean
         inLobby: boolean
     }
 }
 
+export interface IPlayer {
+    id: number
+    name: string
+}
+
+export interface IPlayersState extends IBaseState {
+    data?: IPlayer[]
+}
+
+export enum StepType {
+    colors,
+    areas,
+    auction,
+    resources,
+    building,
+}
+
+export interface IGamePlayer {
+    id: number
+    cash: number
+    color: string|null
+    stations: number[]
+    resources: {
+        coal: number
+        oil: number
+        waste: number
+        uranus: number
+    }
+    cities: Array<string|number>
+}
+
+export interface IGame extends IBaseState {
+    meta: {
+        turn?: number,
+        phase?: number,
+        step: StepType,
+        areas?: string[]
+    },
+    data: IGamePlayer[]
+}
+
+export interface IGameState extends IBaseState {
+    data?: IGame
+}
+
 export interface IState extends Object {
     config: IConfigState
     newGame: INewGameState
+    game: IGameState
     games: IGamesState
     lobby: ILobbyState
     login: ILoginState
+    players: IPlayersState
     register: IRegisterState
     route: IRouteState
     socket: ISocketState
-    gameState: IGameState
+    status: IStatusState
     userInfo: IUserInfoState
 }
 
@@ -121,6 +171,10 @@ export const initialState: IState = {
         error: false,
         loading: false,
         opened: false,
+    },
+    game: {
+        error: false,
+        loading: false,
     },
     games: {
         error: false,
@@ -136,6 +190,10 @@ export const initialState: IState = {
         error: false,
         loading: false,
     },
+    players: {
+        error: false,
+        loading: false,
+    },
     register: {
         error: false,
         loading: false,
@@ -146,7 +204,7 @@ export const initialState: IState = {
     socket: {
         connected: false,
     },
-    gameState: {
+    status: {
         error: false,
         loading: false,
     },

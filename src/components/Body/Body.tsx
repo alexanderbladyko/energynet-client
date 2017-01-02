@@ -16,14 +16,14 @@ import {
 import {
     requestState,
     receiveState,
-} from 'actions/gameState'
+} from 'actions/status'
 import * as socket from 'api/socket'
 
 import Games from 'components/Games/Games'
 import Lobby from 'components/Lobby/Lobby'
 
 interface IBodyProps {
-    gameState: State.IGameState,
+    status: State.IStatusState,
     route: State.IRouteState
     userInfo: State.IUserInfoState
     socketConnecting: typeof socketConnecting
@@ -47,7 +47,7 @@ class Body extends React.Component<IBodyProps, {}> {
             socket.send('state', {})
         })
 
-        socket.subscribe('state', (data: State.IGameState): void => {
+        socket.subscribe('state', (data: State.IStatusState): void => {
             this.props.receiveState(data)
         })
 
@@ -72,11 +72,11 @@ class Body extends React.Component<IBodyProps, {}> {
             default:
                 return <div>
                     {
-                        this.props.gameState.loading
+                        this.props.status.loading
                         && 'Loading'
                     }
                     {
-                        !this.props.gameState.loading
+                        !this.props.status.loading
                         && <div>
                             {'Body'}
                             <button
@@ -106,7 +106,7 @@ class Body extends React.Component<IBodyProps, {}> {
 export default connect(
     (state: State.IState): any => {
         return {
-            gameState: state.gameState,
+            status: state.status,
             route: state.route,
             userInfo: state.userInfo,
         }

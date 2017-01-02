@@ -59,9 +59,12 @@ class Lobby extends React.Component<ILobbyProps, {}> {
                             return (
                                 <div key={player.id}>
                                     {player.name}
-                                    <button onClick={() => this.onUserRemove(player.id)}>
-                                        {'Remove'}
-                                    </button>
+                                    {
+                                        this.props.lobby.data.ownerId === this.props.userInfo.data.id
+                                        && <button onClick={() => this.onUserRemove(player.id)}>
+                                            {'Remove'}
+                                        </button>
+                                    }
                                 </div>
                             )
                         })
@@ -75,9 +78,12 @@ class Lobby extends React.Component<ILobbyProps, {}> {
                             return (
                                 <div key={user.id}>
                                     {user.name}
-                                    <button onClick={() => this.onUserAdd(user.id)}>
-                                        {'Add'}
-                                    </button>
+                                    {
+                                        this.props.lobby.data.ownerId === this.props.userInfo.data.id
+                                        && <button onClick={() => this.onUserAdd(user.id)}>
+                                            {'Add'}
+                                        </button>
+                                    }
                                 </div>
                             )
                         })

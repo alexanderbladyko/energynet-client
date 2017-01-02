@@ -4,23 +4,23 @@ import {
 import * as actionTypes from 'constants/actionTypes'
 
 import {
-    IGameState,
+    IPlayersState,
     initialState,
 } from 'state'
 
 
-export default function gameState(state: IGameState, action: IBaseAction): IGameState {
+export default function players(state: IPlayersState, action: IBaseAction): IPlayersState {
     switch (action.type) {
-    case actionTypes.STATE_REQUEST:
+    case actionTypes.PLAYERS_REQUEST:
         return Object.assign({}, state, {
             loading: true,
         })
-    case actionTypes.STATE_RECEIVE:
+    case actionTypes.PLAYERS_RECEIVE:
         return Object.assign({}, state, {
             loading: false,
             data: action.payload.data,
         })
     default:
-        return state || initialState.gameState
+        return state || initialState.players
     }
 }

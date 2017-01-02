@@ -10,6 +10,7 @@ import {
     responseNewGame,
 } from 'actions/games'
 import * as socket from 'api/socket'
+import * as constants from 'constants'
 
 interface INewGameProps {
     newGame: State.INewGameState
@@ -92,8 +93,8 @@ class NewGame extends React.Component<INewGameProps, INewGameComponentState> {
     }
     private onPlayersLimitChanged(newValue: string): void {
         let number: number = parseInt(newValue, 10)
-        number = (number < 2 ? 2 : number)
-        number = (number > 6 ? 6 : number)
+        number = (number < constants.MIN_PLAYERS ? constants.MIN_PLAYERS : number)
+        number = (number > constants.MAX_PLAYERS ? constants.MAX_PLAYERS : number)
         number = (number ? number : 4)
         this.setState({
             playersLimit: number,

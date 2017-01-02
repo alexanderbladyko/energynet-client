@@ -1,0 +1,20 @@
+[
+    {
+        "id": 13,
+        "capacity": 0,
+        "efficiency": 1,
+        "resources": []
+    },
+    {
+        "id": 15,
+        "capacity": 2,
+        "efficiency": 3,
+        "resources": ["coal"]
+    },
+    {
+        "id": 19,
+        "capacity": 2,
+        "efficiency": 3,
+        "resources": ["waste"]
+    }
+]

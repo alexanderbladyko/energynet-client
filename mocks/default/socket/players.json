@@ -1,0 +1,19 @@
+[
+    {
+        "name": "players",
+        "data": [
+            {
+                "id": 3,
+                "name": "snoop_1"
+            },
+            {
+                "id": 31,
+                "name": "that guy"
+            },
+            {
+                "id": 32,
+                "name": "A creep"
+            }
+        ]
+    }
+]

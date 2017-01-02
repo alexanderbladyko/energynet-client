@@ -1,6 +1,7 @@
 export const LOADING_ROUTE: string = 'loading'
 export const LOGIN_ROUTE: string = 'login'
 export const REGISTER_ROUTE: string = 'register'
+export const GAME_ROUTE: string = 'game'
 export const GAMES_ROUTE: string = 'games'
 export const LOBBY_ROUTE: string = 'lobby'
 export const ERROR_ROUTE: string = 'error'
