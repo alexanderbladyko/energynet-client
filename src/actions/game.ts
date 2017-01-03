@@ -9,11 +9,12 @@ export function requestGameInfo(): IBaseAction {
     }
 }
 
-export function receiveState(data: State.IGame): IBaseAction {
+export function receiveGameInfo(response: State.IGame): IBaseAction {
     return {
         type: actionTypes.GAME_INFO_RECEIVE,
+        meta: response.meta,
         payload: {
-            data,
+            data: response.data,
         },
     }
 }

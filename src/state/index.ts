@@ -41,11 +41,11 @@ export interface ISocketState {
 }
 
 export interface IGamesState extends IBaseState {
-    data: Array<IGame>
+    data: Array<IStartingGame>
     gameJoining: boolean
 }
 
-export interface IGame {
+export interface IStartingGame {
     id: number
     name: string
     userLimit: number
@@ -111,14 +111,6 @@ export interface IPlayersState extends IBaseState {
     data?: IPlayer[]
 }
 
-export enum StepType {
-    colors,
-    areas,
-    auction,
-    resources,
-    building,
-}
-
 export interface IGamePlayer {
     id: number
     cash: number
@@ -134,17 +126,17 @@ export interface IGamePlayer {
 }
 
 export interface IGame extends IBaseState {
-    meta: {
+    meta?: {
         turn?: number,
         phase?: number,
-        step: StepType,
+        step: string,
         areas?: string[]
     },
-    data: IGamePlayer[]
+    data?: IGamePlayer[]
 }
 
-export interface IGameState extends IBaseState {
-    data?: IGame
+
+export interface IGameState extends IBaseState, IGame {
 }
 
 export interface IState extends Object {

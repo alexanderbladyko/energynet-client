@@ -70,6 +70,8 @@ class Body extends React.Component<IBodyProps, {}> {
                 return <Games />
             case Routes.LOBBY_ROUTE:
                 return <Lobby />
+            case Routes.GAME_ROUTE:
+                return <Game />
             default:
                 return <div>
                     {

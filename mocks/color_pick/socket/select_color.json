@@ -9,7 +9,7 @@
                 {
                     "id": 3,
                     "cash": 33,
-                    "color": null,
+                    "color": "#2c97c1",
                     "stations": [],
                     "resources": {
                         "coal": 0,
