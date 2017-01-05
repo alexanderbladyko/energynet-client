@@ -43,6 +43,10 @@ export const PLAYERS_RECEIVE: string = 'PLAYERS_RECEIVE'
 export const GAME_INFO_REQUEST: string = 'GAME_INFO_REQUEST'
 export const GAME_INFO_RECEIVE: string = 'GAME_INFO_RECEIVE'
 
+export const GAME_ACTION_REQUEST: string = 'GAME_ACTION_REQUEST'
+export const GAME_ACTION_SUCCESS: string = 'GAME_ACTION_SUCCESS'
+export const GAME_ACTION_ERROR: string = 'GAME_ACTION_ERROR'
+
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 

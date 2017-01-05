@@ -3,10 +3,15 @@ export const MAX_PLAYERS: number = 6
 
 export const DEFAULT_PLAYERS_LIMIT: number = 4
 
-export class StepTypes {
-    public static Auction: string = 'auction'
-    public static Areas: string = 'areas'
-    public static Building: string = 'building'
-    public static Colors: string = 'colors'
-    public static Resources: string = 'resources'
+export class STEP_TYPES {
+    public static AUCTION: string = 'auction'
+    public static AREAS: string = 'areas'
+    public static BUILDING: string = 'building'
+    public static COLORS: string = 'colors'
+    public static RESOURCES: string = 'resources'
+}
+
+export class ACTION_TYPES {
+    public static AUCTION_BET: string = 'auction_bet'
+    public static AUCTION_FOLD: string = 'auction_fold'
 }

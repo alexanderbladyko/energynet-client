@@ -127,19 +127,31 @@ export interface IGamePlayer {
 
 export interface IGame extends IBaseState {
     meta?: {
-        turn?: number,
-        phase?: number,
-        step: string,
+        turn?: number
+        phase?: number
+        step: string
         areas?: string[]
-    },
+        auction?: {
+            lastBet: number
+            station: number
+            userId: number
+        }
+        order?: number[]
+    }
     data?: IGamePlayer[]
 }
 
+export interface IGameActionState extends IBaseState {
+    type: string|null
+}
+
+export interface IGameActionResponse extends IActionResponse {}
 
 export interface IGameState extends IBaseState, IGame {
 }
 
 export interface IState extends Object {
+    action: IGameActionState
     config: IConfigState
     newGame: INewGameState
     game: IGameState
@@ -155,6 +167,11 @@ export interface IState extends Object {
 }
 
 export const initialState: IState = {
+    action: {
+        error: false,
+        loading: false,
+        type: null,
+    },
     config: {
         error: false,
         loading: false,

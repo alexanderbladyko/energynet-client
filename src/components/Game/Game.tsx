@@ -52,7 +52,7 @@ class Game extends React.Component<IGameProps, {}> {
         if (this.props.game.loading) {
             return <div>{'Loading'}</div>
         }
-        if (this.props.game.meta.step === constants.StepTypes.Colors) {
+        if (this.props.game.meta.step === constants.STEP_TYPES.COLORS) {
             return <ColorPick />
         }
         return (
