@@ -1,0 +1,51 @@
+[
+    {
+        "name": "game",
+        "data": {
+            "meta": {
+                "step": "areas"
+            },
+            "data": [
+                {
+                    "id": 3,
+                    "cash": 33,
+                    "color": null,
+                    "stations": [],
+                    "resources": {
+                        "coal": 0,
+                        "oil": 0,
+                        "waste": 0,
+                        "uranus": 0
+                    },
+                    "cities": []
+                },
+                {
+                    "id": 31,
+                    "cash": 53,
+                    "color": "#bc3029",
+                    "stations": [],
+                    "resources": {
+                        "coal": 0,
+                        "oil": 0,
+                        "waste": 0,
+                        "uranus": 0
+                    },
+                    "cities": []
+                },
+                {
+                    "id": 32,
+                    "cash": 13,
+                    "color": null,
+                    "stations": [],
+                    "resources": {
+                        "coal": 0,
+                        "oil": 0,
+                        "waste": 0,
+                        "uranus": 0
+                    },
+                    "cities": []
+                }
+            ]
+        }
+    }
+]

@@ -14,7 +14,10 @@ module.exports = {
     ],
     resolve: {
         root: path.resolve(path.join(__dirname, '..', 'src')),
-        extensions: ["", ".ts", ".tsx", ".js", ".jsx"]
+        extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
+        alias: {
+            "mapbox-gl": 'mapbox-gl/dist/mapbox-gl.js',
+        }
     },
     output: {
         path: path.resolve(path.join(__dirname, '..', 'build')),

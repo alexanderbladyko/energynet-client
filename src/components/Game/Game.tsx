@@ -14,6 +14,7 @@ import {
 import * as socket from 'api/socket'
 import * as constants from 'constants'
 import ColorPick from 'components/ColorPick/ColorPick'
+import Map from 'components/Map/Map'
 import * as State from 'state'
 
 interface IGameProps {
@@ -55,8 +56,7 @@ class Game extends React.Component<IGameProps, {}> {
             return <ColorPick />
         }
         return (
-            <div>
-            </div>
+            <Map />
         )
     }
 }

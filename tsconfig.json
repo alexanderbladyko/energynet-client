@@ -19,6 +19,7 @@
     },
     "filesGlob": [
         "!../node_modules/@types/**/*.*.d.ts",
+        "!../src/components/map/**/*.*.d.ts",
         "**/*.{ts,tsx}"
     ],
     "exclude": [
