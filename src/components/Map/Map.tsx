@@ -22,10 +22,7 @@ class Map extends React.Component<IMapProps, {}> {
     }
     public render(): React.ReactElement<{}> {
         return (
-            <div id='js-map' style={{
-                width: 600,
-                height: 600,
-            }}>
+            <div id='js-map' className='map'>
             </div>
         )
     }

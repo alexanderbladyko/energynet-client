@@ -8,7 +8,7 @@ export function requestAuctionBet(bet: number): IBaseAction {
     return {
         type: actionTypes.GAME_ACTION_REQUEST,
         payload: {
-            type: constants.ACTION_TYPES.AUCTION_BET,
+            type: constants.ActionTypes.AUCTION_BET,
             bet,
         },
     }
@@ -18,7 +18,7 @@ export function requestAuctionFold(): IBaseAction {
     return {
         type: actionTypes.GAME_ACTION_REQUEST,
         payload: {
-            type: constants.ACTION_TYPES.AUCTION_FOLD,
+            type: constants.ActionTypes.AUCTION_FOLD,
         },
     }
 }

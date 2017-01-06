@@ -4,6 +4,7 @@ const url = require('url')
 
 const mock = process.env.MOCK || false
 const mockSituation = process.env.MOCK_CASE || 0
+const verbose = process.env.VERBOSE || false
 
 
 // TODO: make directory search later
@@ -65,6 +66,9 @@ module.exports = function mockApiServer(req, res, next) {
             res.sendFile(resolvedFile)
         } else {
             console.log('Failed to find file', requestUrl.pathname)
+            if (verbose) {
+                console.log('Resolve paths: ', resolvePaths)
+            }
             next()
         }
     } else {

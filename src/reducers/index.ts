@@ -1,3 +1,4 @@
+import action from 'reducers/action'
 import config from 'reducers/config'
 import lobby from 'reducers/lobby'
 import login from 'reducers/login'
@@ -12,6 +13,7 @@ import status from 'reducers/status'
 import userInfo from 'reducers/userInfo'
 
 export default {
+    action,
     config,
     newGame,
     game,

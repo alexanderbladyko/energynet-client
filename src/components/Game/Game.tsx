@@ -4,6 +4,9 @@ import {
 } from 'react-redux'
 
 import {
+    receiveGameAction,
+} from 'actions/action'
+import {
     requestGameInfo,
     receiveGameInfo,
 } from 'actions/game'
@@ -19,6 +22,7 @@ import * as State from 'state'
 
 interface IGameProps {
     game: State.IGameState
+    receiveGameAction: typeof receiveGameAction
     requestGameInfo: typeof requestGameInfo
     receiveGameInfo: typeof receiveGameInfo
     requestPlayers: typeof requestPlayers
@@ -40,6 +44,9 @@ class Game extends React.Component<IGameProps, {}> {
         socket.subscribe('game', (data: State.IGame): void => {
             this.props.receiveGameInfo(data)
         })
+        socket.subscribe('action', (data: State.IGameActionResponse): void => {
+            this.props.receiveGameAction(data)
+        })
     }
     public componentWillUnmount(): void {
         socket.unsubscribe('game')
@@ -52,7 +59,7 @@ class Game extends React.Component<IGameProps, {}> {
         if (this.props.game.loading) {
             return <div>{'Loading'}</div>
         }
-        if (this.props.game.meta.step === constants.STEP_TYPES.COLORS) {
+        if (this.props.game.meta.step === constants.StepTypes.COLORS) {
             return <ColorPick />
         }
         return (
@@ -69,9 +76,10 @@ export default connect(
         }
     },
     {
-        requestPlayers,
-        receivePlayers,
+        receiveGameAction,
         requestGameInfo,
         receiveGameInfo,
+        requestPlayers,
+        receivePlayers,
     }
 )(Game)

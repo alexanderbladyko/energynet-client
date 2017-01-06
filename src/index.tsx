@@ -12,6 +12,8 @@ import Layout from 'components/Layout/Layout'
 import { IState, } from 'state'
 import { configureStore, } from 'store/init'
 
+import 'styles/base.scss'
+
 
 const store: Store<IState> = configureStore()
 
