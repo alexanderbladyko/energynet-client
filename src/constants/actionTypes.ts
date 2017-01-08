@@ -47,6 +47,9 @@ export const GAME_ACTION_REQUEST: string = 'GAME_ACTION_REQUEST'
 export const GAME_ACTION_SUCCESS: string = 'GAME_ACTION_SUCCESS'
 export const GAME_ACTION_ERROR: string = 'GAME_ACTION_ERROR'
 
+export const AUCTION_REQUEST: string = 'AUCTION_REQUEST'
+export const AUCTION_RECEIVE: string = 'AUCTION_RECEIVE'
+
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 

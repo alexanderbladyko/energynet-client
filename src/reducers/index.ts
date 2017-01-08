@@ -1,4 +1,5 @@
 import action from 'reducers/action'
+import auction from 'reducers/auction'
 import config from 'reducers/config'
 import lobby from 'reducers/lobby'
 import login from 'reducers/login'
@@ -14,6 +15,7 @@ import userInfo from 'reducers/userInfo'
 
 export default {
     action,
+    auction,
     config,
     newGame,
     game,

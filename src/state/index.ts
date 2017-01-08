@@ -141,17 +141,34 @@ export interface IGame extends IBaseState {
     data?: IGamePlayer[]
 }
 
+export interface IGameState extends IBaseState, IGame {}
+
 export interface IGameActionState extends IBaseState {
     type: string|null
 }
 
 export interface IGameActionResponse extends IActionResponse {}
 
-export interface IGameState extends IBaseState, IGame {
+export interface IAuctionStation {
+    cost: number
+    capacity: number
+    efficiency: number
+    resources: string[]
+    available: boolean
 }
+
+export interface IAuction {
+    meta?: {
+        left: number
+    }
+    data?: IAuctionStation[]
+}
+
+export interface IAuctionState extends IBaseState, IAuction {}
 
 export interface IState extends Object {
     action: IGameActionState
+    auction: IAuctionState
     config: IConfigState
     newGame: INewGameState
     game: IGameState
@@ -171,6 +188,10 @@ export const initialState: IState = {
         error: false,
         loading: false,
         type: null,
+    },
+    auction: {
+        error: false,
+        loading: false,
     },
     config: {
         error: false,

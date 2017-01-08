@@ -16,6 +16,7 @@ import {
 } from 'actions/players'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
+import Auction from 'components/Auction/Auction'
 import ColorPick from 'components/ColorPick/ColorPick'
 import Map from 'components/Map/Map'
 import * as State from 'state'
@@ -63,7 +64,10 @@ class Game extends React.Component<IGameProps, {}> {
             return <ColorPick />
         }
         return (
-            <Map />
+            <div>
+                <Map />
+                <Auction />
+            </div>
         )
     }
 }
