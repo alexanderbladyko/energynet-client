@@ -14,6 +14,8 @@ import Station from './Station'
 
 interface IAuctionProps {
     auction: State.IAuctionState
+    game: State.IGameState
+    userInfo: State.IUserInfoState
     requestAuction: typeof requestAuction
     receiveAuction: typeof receiveAuction
     requestAuctionBet: typeof requestAuctionBet
@@ -57,6 +59,8 @@ export default connect(
     (state: State.IState): any => {
         return {
             auction: state.auction,
+            game: state.game,
+            userInfo: state.userInfo,
         }
     },
     {

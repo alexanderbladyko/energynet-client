@@ -21,7 +21,7 @@ describe('config reducer', () => {
             type: actionTypes.CONFIG_REQUEST,
         }
 
-        const result: IConfigState = reducer(state, action)
+        const result: IConfigState = reducer[actionTypes.CONFIG_REQUEST](state, action)
 
         const expectedState: IConfigState = {
             error: false,

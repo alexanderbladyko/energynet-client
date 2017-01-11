@@ -164,7 +164,9 @@ export interface IAuction {
     data?: IAuctionStation[]
 }
 
-export interface IAuctionState extends IBaseState, IAuction {}
+export interface IAuctionState extends IBaseState, IAuction {
+    selectedStationId: number
+}
 
 export interface IState extends Object {
     action: IGameActionState
@@ -192,6 +194,7 @@ export const initialState: IState = {
     auction: {
         error: false,
         loading: false,
+        selectedStationId: 0,
     },
     config: {
         error: false,

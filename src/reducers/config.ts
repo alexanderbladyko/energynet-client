@@ -5,27 +5,30 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IConfigState,
-    initialState,
 } from 'state'
 
 
-export default function configReducer(state: IConfigState, action: IBaseAction): IConfigState {
-    switch (action.type) {
-    case actionTypes.CONFIG_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.CONFIG_REQUEST]: function(state: IConfigState, action: IBaseAction): IConfigState {
+        return {
+            ...state,
             loading: true,
-        })
-    case actionTypes.CONFIG_RESPONSE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.CONFIG_RESPONSE]: function(state: IConfigState, action: IBaseAction): IConfigState {
+        return {
+            ...state,
             data: action.payload.config,
             loading: false,
-        })
-    case actionTypes.CONFIG_ERROR:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.CONFIG_ERROR]: function(state: IConfigState, action: IBaseAction): IConfigState {
+        return {
+            ...state,
             loading: false,
             message: action.payload.message,
-        })
-    default:
-        return state || initialState.config
-    }
+        }
+    },
 }

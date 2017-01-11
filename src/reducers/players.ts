@@ -5,22 +5,22 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IPlayersState,
-    initialState,
 } from 'state'
 
 
-export default function players(state: IPlayersState, action: IBaseAction): IPlayersState {
-    switch (action.type) {
-    case actionTypes.PLAYERS_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.PLAYERS_REQUEST]: function(state: IPlayersState, action: IBaseAction): IPlayersState {
+        return {
+            ...state,
             loading: true,
-        })
-    case actionTypes.PLAYERS_RECEIVE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.PLAYERS_RECEIVE]: function(state: IPlayersState, action: IBaseAction): IPlayersState {
+        return {
+            ...state,
             loading: false,
             data: action.payload.data,
-        })
-    default:
-        return state || initialState.players
-    }
+        }
+    },
 }

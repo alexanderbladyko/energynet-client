@@ -49,6 +49,7 @@ export const GAME_ACTION_ERROR: string = 'GAME_ACTION_ERROR'
 
 export const AUCTION_REQUEST: string = 'AUCTION_REQUEST'
 export const AUCTION_RECEIVE: string = 'AUCTION_RECEIVE'
+export const AUCTION_STATION_SELECT: string = 'AUCTION_STATION_SELECT'
 
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'

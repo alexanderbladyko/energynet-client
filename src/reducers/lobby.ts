@@ -5,22 +5,23 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     ILobbyState,
-    initialState,
 } from 'state'
 
 
-export default function lobbyReducer(state: ILobbyState, action: IBaseAction): ILobbyState {
-    switch (action.type) {
-    case actionTypes.LOBBY_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.LOBBY_REQUEST]: function(state: ILobbyState, action: IBaseAction): ILobbyState {
+        return {
+            ...state,
             loading: true,
-        })
-    case actionTypes.LOBBY_RECEIVE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.LOBBY_RECEIVE]: function(state: ILobbyState, action: IBaseAction): ILobbyState {
+        return {
+            ...state,
             loading: false,
             data: action.payload.data,
-        })
-    default:
-        return state || initialState.lobby
-    }
+        }
+    },
+
 }

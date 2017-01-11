@@ -39,3 +39,12 @@ export function requestAuctionFold(): IBaseAction {
         },
     }
 }
+
+export function selectStation(station: State.IAuctionStation): IBaseAction {
+    return {
+        type: actionTypes.AUCTION_STATION_SELECT,
+        payload: {
+            station,
+        },
+    }
+}

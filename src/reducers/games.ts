@@ -5,37 +5,44 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IGamesState,
-    initialState,
 } from 'state'
 
 
-export default function games(state: IGamesState, action: IBaseAction): IGamesState {
-    switch (action.type) {
-    case actionTypes.GAMES_REQUEST:
+export default {
+    [actionTypes.GAMES_REQUEST]: function(state: IGamesState, action: IBaseAction): IGamesState {
         return {
             ...state,
             loading: true,
             data: [],
         }
-    case actionTypes.GAMES_RECEIVE:
+    },
+
+    [actionTypes.GAMES_RECEIVE]: function(state: IGamesState, action: IBaseAction): IGamesState {
         return {
             ...state,
             loading: false,
             data: action.payload.data,
         }
-    case actionTypes.GAMES_JOIN:
+    },
+
+    [actionTypes.GAMES_JOIN]: function(state: IGamesState, action: IBaseAction): IGamesState {
         return {
             ...state,
             gameJoining: true,
         }
-    case actionTypes.GAMES_JOIN_SUCCESS:
-    case actionTypes.GAMES_JOIN_ERROR:
+    },
+
+    [actionTypes.GAMES_JOIN_SUCCESS]: function(state: IGamesState, action: IBaseAction): IGamesState {
         return {
             ...state,
             gameJoining: false,
         }
+    },
 
-    default:
-        return state || initialState.games
-    }
+    [actionTypes.GAMES_JOIN_ERROR]: function(state: IGamesState, action: IBaseAction): IGamesState {
+        return {
+            ...state,
+            gameJoining: false,
+        }
+    },
 }

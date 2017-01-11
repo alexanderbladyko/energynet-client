@@ -5,25 +5,32 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IAuctionState,
-    initialState,
 } from 'state'
 
 
-export default function auction(state: IAuctionState, action: IBaseAction): IAuctionState {
-    switch (action.type) {
-    case actionTypes.AUCTION_REQUEST:
+export default {
+    [actionTypes.AUCTION_REQUEST]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
         return {
             ...state,
             loading: true,
+            selectedStationId: 0,
         }
-    case actionTypes.AUCTION_RECEIVE:
+    },
+
+    [actionTypes.AUCTION_RECEIVE]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
         return {
             ...state,
             loading: false,
             meta: action.meta,
             data: action.payload.data,
+            selectedStationId: 0,
         }
-    default:
-        return state || initialState.auction
-    }
+    },
+
+    [actionTypes.AUCTION_STATION_SELECT]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
+        return {
+            ...state,
+            selectedStationId: action.payload.station.cost,
+        }
+    },
 }

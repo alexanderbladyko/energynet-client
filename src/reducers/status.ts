@@ -5,22 +5,22 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IStatusState,
-    initialState,
 } from 'state'
 
 
-export default function status(state: IStatusState, action: IBaseAction): IStatusState {
-    switch (action.type) {
-    case actionTypes.STATE_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.STATE_REQUEST]: function(state: IStatusState, action: IBaseAction): IStatusState {
+        return {
+            ...state,
             loading: true,
-        })
-    case actionTypes.STATE_RECEIVE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.STATE_RECEIVE]: function(state: IStatusState, action: IBaseAction): IStatusState {
+        return {
+            ...state,
             loading: false,
             data: action.payload.data,
-        })
-    default:
-        return state || initialState.status
-    }
+        }
+    },
 }

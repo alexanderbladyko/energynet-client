@@ -2,28 +2,32 @@ import {
     IBaseAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
-import { IRegisterState, initialState, } from 'state'
+import { IRegisterState, } from 'state'
 
 
-export default function loginReducer(state: IRegisterState, action: IBaseAction): IRegisterState {
-    switch (action.type) {
-    case actionTypes.USER_REGISTER_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.USER_REGISTER_REQUEST]: function(state: IRegisterState, action: IBaseAction): IRegisterState {
+        return {
+            ...state,
             loading: true,
             error: false,
-        })
-    case actionTypes.USER_REGISTER_RESPONSE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.USER_REGISTER_RESPONSE]: function(state: IRegisterState, action: IBaseAction): IRegisterState {
+        return {
+            ...state,
             loading: false,
             data: action.payload.registerInfo,
-        })
-    case actionTypes.USER_REGISTER_ERROR:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.USER_REGISTER_ERROR]: function(state: IRegisterState, action: IBaseAction): IRegisterState {
+        return {
+            ...state,
             loading: false,
             error: true,
             message: action.payload.message,
-        })
-    default:
-        return state || initialState.register
-    }
+        }
+    },
 }

@@ -2,28 +2,45 @@ import {
     IBaseAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
-import { IUserInfoState, initialState, } from 'state'
+import { IUserInfoState, } from 'state'
 
 
-export default function userInfoReducer(state: IUserInfoState, action: IBaseAction): IUserInfoState {
-    switch (action.type) {
-    case actionTypes.USER_INFO_REQUEST:
-    case actionTypes.USER_LOGIN_REQUEST:
-        return Object.assign({}, state, {
+export default {
+    [actionTypes.USER_INFO_REQUEST]: function(state: IUserInfoState, action: IBaseAction): IUserInfoState {
+        return {
+            ...state,
             loading: true,
-        })
-    case actionTypes.USER_INFO_RESPONSE:
-    case actionTypes.USER_LOGIN_RESPONSE:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.USER_LOGIN_REQUEST]: function(state: IUserInfoState, action: IBaseAction): IUserInfoState {
+        return {
+            ...state,
+            loading: true,
+        }
+    },
+
+    [actionTypes.USER_INFO_RESPONSE]: function(state: IUserInfoState, action: IBaseAction): IUserInfoState {
+        return {
+            ...state,
             loading: false,
             data: action.payload.userInfo,
-        })
-    case actionTypes.USER_INFO_ERROR:
-        return Object.assign({}, state, {
+        }
+    },
+
+    [actionTypes.USER_LOGIN_RESPONSE]: function(state: IUserInfoState, action: IBaseAction): IUserInfoState {
+        return {
+            ...state,
+            loading: false,
+            data: action.payload.userInfo,
+        }
+    },
+
+    [actionTypes.USER_INFO_ERROR]: function(state: IUserInfoState, action: IBaseAction): IUserInfoState {
+        return {
+            ...state,
             loading: false,
             message: action.payload.message,
-        })
-    default:
-        return state || initialState.userInfo
-    }
+        }
+    },
 }

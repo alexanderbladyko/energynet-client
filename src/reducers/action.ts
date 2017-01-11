@@ -5,32 +5,31 @@ import * as actionTypes from 'constants/actionTypes'
 
 import {
     IGameActionState,
-    initialState,
 } from 'state'
 
-
-export default function action(state: IGameActionState, action: IBaseAction): IGameActionState {
-    switch (action.type) {
-    case actionTypes.GAME_ACTION_REQUEST:
+export default {
+    [actionTypes.GAME_ACTION_REQUEST]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
         return {
             ...state,
             loading: true,
             error: false,
             type: action.payload.type,
         }
-    case actionTypes.GAME_ACTION_SUCCESS:
+    },
+
+    [actionTypes.GAME_ACTION_REQUEST]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
         return {
             ...state,
             loading: false,
         }
-    case actionTypes.GAME_ACTION_ERROR:
+    },
+
+    [actionTypes.GAME_ACTION_ERROR]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
         return {
             ...state,
             loading: false,
             error: true,
             message: action.payload.message,
         }
-    default:
-        return state || initialState.action
-    }
+    },
 }
