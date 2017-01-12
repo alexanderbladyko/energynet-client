@@ -2,7 +2,23 @@ import { Action } from 'redux'
 
 
 export interface IBaseAction extends Action {
-    meta?: any,
-    payload?: any,
-    error?: boolean,
+}
+
+export interface IErrorAction extends IBaseAction {
+    error: boolean,
+    payload: {
+        message: string
+    }
+}
+
+export interface IDataAction<T> extends IBaseAction {
+    payload: {
+        data: T
+    }
+}
+
+export interface ITypeAction extends IBaseAction {
+    payload: {
+        type: string
+    }
 }

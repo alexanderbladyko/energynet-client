@@ -1,10 +1,14 @@
 import { Dispatch, } from 'redux'
 import * as Bluebird from 'bluebird'
 
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IDataAction,
+    IErrorAction,
+} from 'actions/base'
 import ConfigApi from 'api/config'
 import * as actionTypes from 'constants/actionTypes'
-import { IState, IConfig, } from 'state'
+import * as State from 'state'
 
 
 export function requestConfig(): IBaseAction {
@@ -13,16 +17,16 @@ export function requestConfig(): IBaseAction {
     }
 }
 
-export function responseConfig(config: IConfig): IBaseAction {
+export function responseConfig(config: State.IConfig): IDataAction<State.IConfig> {
     return {
         type: actionTypes.CONFIG_RESPONSE,
         payload: {
-            config,
+            data: config,
         },
     }
 }
 
-export function errorConfig(message: string): IBaseAction {
+export function errorConfig(message: string): IErrorAction {
     return {
         type: actionTypes.CONFIG_ERROR,
         error: true,
@@ -33,11 +37,11 @@ export function errorConfig(message: string): IBaseAction {
 }
 
 export interface ILoadConfigAction {
-    (): Bluebird<void|IConfig>
+    (): Bluebird<void|State.IConfig>
 }
 
-export function loadConfig(dispatch: Dispatch<IState>): ILoadConfigAction {
-    return function(): Bluebird<void|IConfig> {
+export function loadConfig(dispatch: Dispatch<State.IState>): ILoadConfigAction {
+    return function(): Bluebird<void|State.IConfig> {
         dispatch(requestConfig())
         const api: ConfigApi = new ConfigApi()
         return api.get().then(

@@ -1,4 +1,7 @@
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IDataAction,
+} from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 
@@ -9,7 +12,7 @@ export function requestState(): IBaseAction {
     }
 }
 
-export function receiveState(data: State.IStatusState): IBaseAction {
+export function receiveState(data: State.IStatusState): IDataAction<State.IStatusState> {
     return {
         type: actionTypes.STATE_RECEIVE,
         payload: {

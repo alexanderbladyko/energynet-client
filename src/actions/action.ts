@@ -1,9 +1,12 @@
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IErrorAction,
+} from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 
 
-export function receiveGameAction(response: State.IGameActionResponse): IBaseAction {
+export function receiveGameAction(response: State.IGameActionResponse): IBaseAction|IErrorAction {
     if (response.success) {
         return {
             type: actionTypes.GAME_ACTION_SUCCESS,

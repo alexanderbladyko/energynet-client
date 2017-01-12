@@ -1,30 +1,30 @@
 import {
     IBaseAction,
+    IDataAction,
+    IErrorAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
-import {
-    IConfigState,
-} from 'state'
+import * as State from 'state'
 
 
 export default {
-    [actionTypes.CONFIG_REQUEST]: function(state: IConfigState, action: IBaseAction): IConfigState {
+    [actionTypes.CONFIG_REQUEST]: function(state: State.IConfigState, action: IBaseAction): State.IConfigState {
         return {
             ...state,
             loading: true,
         }
     },
 
-    [actionTypes.CONFIG_RESPONSE]: function(state: IConfigState, action: IBaseAction): IConfigState {
+    [actionTypes.CONFIG_RESPONSE]: function(state: State.IConfigState, action: IDataAction<State.IConfig>): State.IConfigState {
         return {
             ...state,
-            data: action.payload.config,
+            data: action.payload.data,
             loading: false,
         }
     },
 
-    [actionTypes.CONFIG_ERROR]: function(state: IConfigState, action: IBaseAction): IConfigState {
+    [actionTypes.CONFIG_ERROR]: function(state: State.IConfigState, action: IErrorAction): State.IConfigState {
         return {
             ...state,
             loading: false,

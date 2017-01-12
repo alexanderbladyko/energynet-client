@@ -1,22 +1,21 @@
 import {
     IBaseAction,
+    IDataAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
-import {
-    ILobbyState,
-} from 'state'
+import * as State from 'state'
 
 
 export default {
-    [actionTypes.LOBBY_REQUEST]: function(state: ILobbyState, action: IBaseAction): ILobbyState {
+    [actionTypes.LOBBY_REQUEST]: function(state: State.ILobbyState, action: IBaseAction): State.ILobbyState {
         return {
             ...state,
             loading: true,
         }
     },
 
-    [actionTypes.LOBBY_RECEIVE]: function(state: ILobbyState, action: IBaseAction): ILobbyState {
+    [actionTypes.LOBBY_RECEIVE]: function(state: State.ILobbyState, action: IDataAction<State.ILobby>): State.ILobbyState {
         return {
             ...state,
             loading: false,

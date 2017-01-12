@@ -1,15 +1,17 @@
 import {
     IBaseAction,
+    IDataAction,
 } from 'actions/base'
+import {
+    IAuctionDataAction,
+} from 'actions/auction'
 import * as actionTypes from 'constants/actionTypes'
 
-import {
-    IAuctionState,
-} from 'state'
+import * as State from 'state'
 
 
 export default {
-    [actionTypes.AUCTION_REQUEST]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
+    [actionTypes.AUCTION_REQUEST]: function(state: State.IAuctionState, action: IBaseAction): State.IAuctionState {
         return {
             ...state,
             loading: true,
@@ -17,7 +19,7 @@ export default {
         }
     },
 
-    [actionTypes.AUCTION_RECEIVE]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
+    [actionTypes.AUCTION_RECEIVE]: function(state: State.IAuctionState, action: IAuctionDataAction): State.IAuctionState {
         return {
             ...state,
             loading: false,
@@ -27,10 +29,11 @@ export default {
         }
     },
 
-    [actionTypes.AUCTION_STATION_SELECT]: function(state: IAuctionState, action: IBaseAction): IAuctionState {
-        return {
-            ...state,
-            selectedStationId: action.payload.station.cost,
-        }
-    },
+    [actionTypes.AUCTION_STATION_SELECT]:
+        function(state: State.IAuctionState, action: IDataAction<State.IAuctionStation>): State.IAuctionState {
+            return {
+                ...state,
+                selectedStationId: action.payload.data.cost,
+            }
+        },
 }

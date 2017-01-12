@@ -41,7 +41,7 @@ export interface ISocketState {
 }
 
 export interface IGamesState extends IBaseState {
-    data: Array<IStartingGame>
+    data: IStartingGame[]
     gameJoining: boolean
 }
 
@@ -95,11 +95,13 @@ export interface IGameJoin extends IActionResponse {
 export interface IGameLeave extends IActionResponse {
 }
 
+export interface IGameStatus {
+    inGame: boolean
+    inLobby: boolean
+}
+
 export interface IStatusState extends IBaseState {
-    data?: {
-        inGame: boolean
-        inLobby: boolean
-    }
+    data?: IGameStatus
 }
 
 export interface IPlayer {
@@ -125,19 +127,21 @@ export interface IGamePlayer {
     cities: Array<string|number>
 }
 
-export interface IGame extends IBaseState {
-    meta?: {
-        turn?: number
-        phase?: number
-        step: string
-        areas?: string[]
-        auction?: {
-            lastBet: number
-            station: number
-            userId: number
-        }
-        order?: number[]
+export interface IGameMeta {
+    turn?: number
+    phase?: number
+    step: string
+    areas?: string[]
+    auction?: {
+        lastBet: number
+        station: number
+        userId: number
     }
+    order?: number[]
+}
+
+export interface IGame extends IBaseState {
+    meta?: IGameMeta
     data?: IGamePlayer[]
 }
 
@@ -157,10 +161,12 @@ export interface IAuctionStation {
     available: boolean
 }
 
+export interface IAuctionMeta {
+    left: number
+}
+
 export interface IAuction {
-    meta?: {
-        left: number
-    }
+    meta?: IAuctionMeta
     data?: IAuctionStation[]
 }
 

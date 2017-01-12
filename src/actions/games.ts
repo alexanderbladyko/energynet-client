@@ -1,4 +1,8 @@
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IDataAction,
+    IErrorAction,
+} from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 
@@ -9,7 +13,7 @@ export function requestGames(): IBaseAction {
     }
 }
 
-export function receiveGames(data: Array<State.IGame>): IBaseAction {
+export function receiveGames(data: State.IGame[]): IDataAction<State.IGame[]> {
     return {
         type: actionTypes.GAMES_RECEIVE,
         payload: {
@@ -24,7 +28,7 @@ export function requestGameJoin(): IBaseAction {
     }
 }
 
-export function responseGameJoin(response: State.IGameJoin): IBaseAction {
+export function responseGameJoin(response: State.IGameJoin): IBaseAction|IErrorAction {
     if (response.success) {
         return {
             type: actionTypes.GAMES_JOIN_SUCCESS,
@@ -45,7 +49,7 @@ export function requestGameLeave(): IBaseAction {
     }
 }
 
-export function responseGameLeave(response: State.IGameLeave): IBaseAction {
+export function responseGameLeave(response: State.IGameLeave): IBaseAction|IErrorAction {
     if (response.success) {
         return {
             type: actionTypes.GAMES_LEAVE_SUCCESS,
@@ -66,7 +70,7 @@ export function requestNewGame(): IBaseAction {
     }
 }
 
-export function responseNewGame(response: State.INewGame): IBaseAction {
+export function responseNewGame(response: State.INewGame): IDataAction<State.INewGame>|IErrorAction {
     if (response.success) {
         return {
             type: actionTypes.NEW_GAME_SUCCESS,

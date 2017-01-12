@@ -1,12 +1,16 @@
 import * as Bluebird from 'bluebird'
 import { Dispatch, } from 'redux'
 
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IDataAction,
+    IErrorAction,
+} from 'actions/base'
 import UserInfoApi from 'api/userInfo'
 import LoginApi from 'api/login'
 import RegisterApi from 'api/register'
 import * as actionTypes from 'constants/actionTypes'
-import { IState, IUserInfo, IRegister, IConfig, } from 'state'
+import * as State from 'state'
 
 
 export function requestUserInfo(): IBaseAction {
@@ -15,16 +19,16 @@ export function requestUserInfo(): IBaseAction {
     }
 }
 
-export function responseUserInfo(userInfo: IUserInfo): IBaseAction {
+export function responseUserInfo(userInfo: State.IUserInfo): IDataAction<State.IUserInfo> {
     return {
         type: actionTypes.USER_INFO_RESPONSE,
         payload: {
-            userInfo,
+            data: userInfo,
         },
     }
 }
 
-export function errorUserInfo(message: string): IBaseAction {
+export function errorUserInfo(message: string): IErrorAction {
     return {
         type: actionTypes.USER_INFO_ERROR,
         error: true,
@@ -35,10 +39,10 @@ export function errorUserInfo(message: string): IBaseAction {
 }
 
 export interface ILoadUserInfoAction {
-    (config: IConfig): Bluebird<IUserInfo|void>
+    (config: State.IConfig): Bluebird<State.IUserInfo|void>
 }
 
-export function loadUserInfo(dispatch: Dispatch<IState>): ILoadUserInfoAction {
+export function loadUserInfo(dispatch: Dispatch<State.IState>): ILoadUserInfoAction {
     return (config) => {
         dispatch(requestUserInfo())
         const api: UserInfoApi = new UserInfoApi()
@@ -61,16 +65,16 @@ export function requestLogin(): IBaseAction {
     }
 }
 
-export function responseLogin(userInfo: IUserInfo): IBaseAction {
+export function responseLogin(userInfo: State.IUserInfo): IDataAction<State.IUserInfo> {
     return {
         type: actionTypes.USER_LOGIN_RESPONSE,
         payload: {
-            userInfo,
+            data: userInfo,
         },
     }
 }
 
-export function errorLogin(message: string): IBaseAction {
+export function errorLogin(message: string): IErrorAction {
     return {
         type: actionTypes.USER_LOGIN_ERROR,
         error: true,
@@ -86,10 +90,10 @@ interface ILoginData {
 }
 
 export interface ILoginUserAction {
-    (config: IConfig, data: ILoginData): Bluebird<IUserInfo|void>
+    (config: State.IConfig, data: ILoginData): Bluebird<State.IUserInfo|void>
 }
 
-export function loginUser(dispatch: Dispatch<IState>): ILoginUserAction {
+export function loginUser(dispatch: Dispatch<State.IState>): ILoginUserAction {
     return (config, data) => {
         dispatch(requestLogin())
         const api: LoginApi = new LoginApi()
@@ -112,16 +116,16 @@ export function requestRegister(): IBaseAction {
     }
 }
 
-export function responseRegister(registerInfo: IRegister): IBaseAction {
+export function responseRegister(registerInfo: State.IRegister): IDataAction<State.IRegister> {
     return {
         type: actionTypes.USER_REGISTER_RESPONSE,
         payload: {
-            registerInfo,
+            data: registerInfo,
         },
     }
 }
 
-export function errorRegister(message: string): IBaseAction {
+export function errorRegister(message: string): IErrorAction {
     return {
         type: actionTypes.USER_REGISTER_ERROR,
         error: true,
@@ -137,11 +141,11 @@ interface IRegisterData {
 }
 
 export interface IRegisterUserAction {
-    (config: IConfig, data: IRegisterData): Bluebird<IRegister|void>
+    (config: State.IConfig, data: IRegisterData): Bluebird<State.IRegister|void>
 }
 
 
-export function registerUser(dispatch: Dispatch<IState>): IRegisterUserAction {
+export function registerUser(dispatch: Dispatch<State.IState>): IRegisterUserAction {
     return (config, data) => {
         dispatch(requestRegister())
         const api: RegisterApi = new RegisterApi()

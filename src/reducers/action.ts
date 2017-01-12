@@ -1,5 +1,7 @@
 import {
     IBaseAction,
+    IErrorAction,
+    ITypeAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
@@ -8,7 +10,7 @@ import {
 } from 'state'
 
 export default {
-    [actionTypes.GAME_ACTION_REQUEST]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
+    [actionTypes.GAME_ACTION_REQUEST]: function(state: IGameActionState, action: ITypeAction): IGameActionState {
         return {
             ...state,
             loading: true,
@@ -17,14 +19,14 @@ export default {
         }
     },
 
-    [actionTypes.GAME_ACTION_REQUEST]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
+    [actionTypes.GAME_ACTION_SUCCESS]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
         return {
             ...state,
             loading: false,
         }
     },
 
-    [actionTypes.GAME_ACTION_ERROR]: function(state: IGameActionState, action: IBaseAction): IGameActionState {
+    [actionTypes.GAME_ACTION_ERROR]: function(state: IGameActionState, action: IErrorAction): IGameActionState {
         return {
             ...state,
             loading: false,

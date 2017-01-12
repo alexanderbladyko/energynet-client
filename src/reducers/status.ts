@@ -1,22 +1,21 @@
 import {
     IBaseAction,
+    IDataAction,
 } from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 
-import {
-    IStatusState,
-} from 'state'
+import * as State from 'state'
 
 
 export default {
-    [actionTypes.STATE_REQUEST]: function(state: IStatusState, action: IBaseAction): IStatusState {
+    [actionTypes.STATE_REQUEST]: function(state: State.IStatusState, action: IBaseAction): State.IStatusState {
         return {
             ...state,
             loading: true,
         }
     },
 
-    [actionTypes.STATE_RECEIVE]: function(state: IStatusState, action: IBaseAction): IStatusState {
+    [actionTypes.STATE_RECEIVE]: function(state: State.IStatusState, action: IDataAction<State.IGameStatus>): State.IStatusState {
         return {
             ...state,
             loading: false,

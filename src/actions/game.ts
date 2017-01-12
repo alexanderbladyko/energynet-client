@@ -9,7 +9,14 @@ export function requestGameInfo(): IBaseAction {
     }
 }
 
-export function receiveGameInfo(response: State.IGame): IBaseAction {
+export interface IGameAction extends IBaseAction {
+    meta: State.IGameMeta
+    payload: {
+        data: State.IGamePlayer[]
+    }
+}
+
+export function receiveGameInfo(response: State.IGame): IGameAction {
     return {
         type: actionTypes.GAME_INFO_RECEIVE,
         meta: response.meta,

@@ -1,4 +1,7 @@
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IDataAction,
+} from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 
@@ -9,7 +12,7 @@ export function requestLobby(): IBaseAction {
     }
 }
 
-export function receiveLobby(data: State.ILobby): IBaseAction {
+export function receiveLobby(data: State.ILobby): IDataAction<State.ILobby> {
     return {
         type: actionTypes.LOBBY_RECEIVE,
         payload: {
@@ -18,20 +21,20 @@ export function receiveLobby(data: State.ILobby): IBaseAction {
     }
 }
 
-export function addUser(id: number): IBaseAction {
+export function addUser(id: number): IDataAction<number> {
     return {
         type: actionTypes.LOBBY_ADD_USER,
         payload: {
-            id,
+            data: id,
         },
     }
 }
 
-export function removeUser(id: number): IBaseAction {
+export function removeUser(id: number): IDataAction<number> {
     return {
         type: actionTypes.LOBBY_REMOVE_USER,
         payload: {
-            id,
+            data: id,
         },
     }
 }
