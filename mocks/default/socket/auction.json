@@ -8,30 +8,18 @@
             "data": [
                 {
                     "cost": 13,
-                    "capacity": 0,
-                    "efficiency": 1,
-                    "resources": [],
                     "available": true
                 },
                 {
                     "cost": 15,
-                    "capacity": 3,
-                    "efficiency": 3,
-                    "resources": ["coal"],
                     "available": true
                 },
                 {
                     "cost": 19,
-                    "capacity": 1,
-                    "efficiency": 3,
-                    "resources": ["uranus"],
                     "available": true
                 },
                 {
                     "cost": 22,
-                    "capacity": 2,
-                    "efficiency": 4,
-                    "resources": ["waste"],
                     "available": false
                 }
             ]

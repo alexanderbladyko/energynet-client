@@ -122,7 +122,7 @@ export interface IGamePlayer {
         coal: number
         oil: number
         waste: number
-        uranus: number
+        uranium: number
     }
     cities: Array<string|number>
 }
@@ -138,6 +138,7 @@ export interface IGameMeta {
         userId: number
     }
     order?: number[]
+    map: string
 }
 
 export interface IGame extends IBaseState {
@@ -155,9 +156,6 @@ export interface IGameActionResponse extends IActionResponse {}
 
 export interface IAuctionStation {
     cost: number
-    capacity: number
-    efficiency: number
-    resources: string[]
     available: boolean
 }
 
@@ -174,17 +172,78 @@ export interface IAuctionState extends IBaseState, IAuction {
     selectedStationId: number
 }
 
+export interface IResources {
+    coal: number
+    oil: number
+    waste: number
+    uranium: number
+}
+
+export interface IResourcesState extends IBaseState {
+    data?: IResources
+}
+
+export interface IArea {
+    name: string
+    color: string
+}
+
+export interface ICity {
+    name: string
+    slots: number[]
+    area: string
+}
+
+export interface IJunction {
+    cost: number
+    between: string[]
+}
+
+export interface IRefill {
+    coal: number[]
+    oil: number[]
+    waste: number[]
+    uranium: number[]
+}
+
+export interface IMapStation {
+    cost: number
+    capacity: number
+    efficiency: number
+    resources: string[]
+}
+
+export interface IMap {
+    areas: IArea[]
+    cities: ICity[]
+    junctions: IJunction[]
+    payments: number[]
+    areasCount: number[]
+    removeStationsCount: number[]
+    userStationsCount: number[]
+    secondPhaseCitiesCount: number[]
+    endGameCitiesCount: number[]
+    refill: IRefill[]
+    stations: IMapStation[]
+}
+
+export interface IMapState extends IBaseState {
+    data?: IMap
+}
+
 export interface IState extends Object {
     action: IGameActionState
     auction: IAuctionState
     config: IConfigState
-    newGame: INewGameState
     game: IGameState
     games: IGamesState
     lobby: ILobbyState
     login: ILoginState
+    map: IMapState
+    newGame: INewGameState
     players: IPlayersState
     register: IRegisterState
+    resources: IResourcesState
     route: IRouteState
     socket: ISocketState
     status: IStatusState
@@ -206,11 +265,6 @@ export const initialState: IState = {
         error: false,
         loading: false,
     },
-    newGame: {
-        error: false,
-        loading: false,
-        opened: false,
-    },
     game: {
         error: false,
         loading: false,
@@ -229,11 +283,24 @@ export const initialState: IState = {
         error: false,
         loading: false,
     },
+    newGame: {
+        error: false,
+        loading: false,
+        opened: false,
+    },
+    map: {
+        error: false,
+        loading: false,
+    },
     players: {
         error: false,
         loading: false,
     },
     register: {
+        error: false,
+        loading: false,
+    },
+    resources: {
         error: false,
         loading: false,
     },

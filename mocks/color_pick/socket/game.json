@@ -3,7 +3,8 @@
         "name": "game",
         "data": {
             "meta": {
-                "step": "colors"
+                "step": "colors",
+                "map": "russia"
             },
             "data": [
                 {
@@ -15,7 +16,7 @@
                         "coal": 0,
                         "oil": 0,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": []
                 },
@@ -28,7 +29,7 @@
                         "coal": 0,
                         "oil": 0,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": []
                 },
@@ -41,7 +42,7 @@
                         "coal": 0,
                         "oil": 0,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": []
                 }

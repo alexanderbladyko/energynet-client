@@ -23,9 +23,6 @@ export default class Station extends React.Component<IStationProps, {}> {
                 }}
             >
                 <p>{this.props.station.cost}</p>
-                <p>{this.props.station.capacity}</p>
-                <p>{this.props.station.efficiency}</p>
-                <p>{this.props.station.resources}</p>
             </div>
         )
     }

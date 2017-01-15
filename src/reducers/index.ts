@@ -9,9 +9,11 @@ import game from 'reducers/game'
 import games from 'reducers/games'
 import lobby from 'reducers/lobby'
 import login from 'reducers/login'
+import map from 'reducers/map'
 import newGame from 'reducers/newGame'
 import players from 'reducers/players'
 import register from 'reducers/register'
+import resources from 'reducers/resources'
 import route from 'reducers/route'
 import socket from 'reducers/socket'
 import status from 'reducers/status'
@@ -43,11 +45,13 @@ export default {
     config: getReducer(config, initialState.config),
     game: getReducer(game, initialState.game),
     games: getReducer(games, initialState.games),
+    map: getReducer(map, initialState.map),
     lobby: getReducer(lobby, initialState.lobby),
     login: getReducer(login, initialState.login),
     newGame: getReducer(newGame, initialState.newGame),
     players: getReducer(players, initialState.players),
     register: getReducer(register, initialState.register),
+    resources: getReducer(resources, initialState.resources),
     route: getReducer(route, initialState.route),
     socket: getReducer(socket, initialState.socket),
     status: getReducer(status, initialState.status),

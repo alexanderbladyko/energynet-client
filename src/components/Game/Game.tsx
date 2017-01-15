@@ -2,6 +2,10 @@ import * as React from 'react'
 import {
     connect,
 } from 'react-redux'
+import {
+    Dispatch,
+    bindActionCreators,
+} from 'redux'
 
 import {
     receiveGameAction,
@@ -10,6 +14,10 @@ import {
     requestGameInfo,
     receiveGameInfo,
 } from 'actions/game'
+import {
+    loadMapInfo,
+    ILoadMapInfoAction,
+} from 'actions/map'
 import {
     requestPlayers,
     receivePlayers,
@@ -22,12 +30,14 @@ import Map from 'components/Map/Map'
 import * as State from 'state'
 
 interface IGameProps {
+    config: State.IConfigState
     game: State.IGameState
     receiveGameAction: typeof receiveGameAction
     requestGameInfo: typeof requestGameInfo
     receiveGameInfo: typeof receiveGameInfo
     requestPlayers: typeof requestPlayers
     receivePlayers: typeof receivePlayers
+    loadMapInfo: ILoadMapInfoAction
 }
 
 
@@ -44,6 +54,8 @@ class Game extends React.Component<IGameProps, {}> {
         })
         socket.subscribe('game', (data: State.IGame): void => {
             this.props.receiveGameInfo(data)
+
+            this.props.loadMapInfo(this.props.config, this.props.game)
         })
         socket.subscribe('action', (data: State.IGameActionResponse): void => {
             this.props.receiveGameAction(data)
@@ -75,15 +87,19 @@ class Game extends React.Component<IGameProps, {}> {
 export default connect(
     (state: State.IState): any => {
         return {
+            config: state.config,
             game: state.game,
             userInfo: state.userInfo,
         }
     },
-    {
-        receiveGameAction,
-        requestGameInfo,
-        receiveGameInfo,
-        requestPlayers,
-        receivePlayers,
+    (dispatch: Dispatch<State.IState>): any => {
+        return {
+            receiveGameAction: bindActionCreators(receiveGameAction, dispatch),
+            requestGameInfo: bindActionCreators(requestGameInfo, dispatch),
+            receiveGameInfo: bindActionCreators(receiveGameInfo, dispatch),
+            requestPlayers: bindActionCreators(requestPlayers, dispatch),
+            receivePlayers: bindActionCreators(receivePlayers, dispatch),
+            loadMapInfo: loadMapInfo(dispatch),
+        }
     }
 )(Game)

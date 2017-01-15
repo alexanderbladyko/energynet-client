@@ -8,7 +8,8 @@
                 "step": "auction",
                 "areas": [
                     "area_01", "area_02", "area_03", "area_04"
-                ]
+                ],
+                "map": "russia"
             },
             "data": [
                 {
@@ -22,7 +23,7 @@
                         "coal": 3,
                         "oil": 1,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": [
                         "orenburg", 10,
@@ -40,7 +41,7 @@
                         "coal": 3,
                         "oil": 1,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": [
                         "moscow", 10,
@@ -58,7 +59,7 @@
                         "coal": 3,
                         "oil": 1,
                         "waste": 0,
-                        "uranus": 0
+                        "uranium": 0
                     },
                     "cities": [
                         "novosibirsk", 10,

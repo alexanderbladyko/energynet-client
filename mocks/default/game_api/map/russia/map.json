@@ -1,0 +1,117 @@
+{
+    "areas": [
+        {
+            "name": "area_01",
+            "color": "#123123"
+        },
+        {
+            "name": "area_02",
+            "color": "#939323"
+        }
+    ],
+    "cities": [
+        {
+            "name": "orenburg",
+            "slots": [10, 15, 20],
+            "area": "area_01"
+        },
+        {
+            "name": "ufa",
+            "slots": [10, 15, 20],
+            "area": "area_01"
+        },
+        {
+            "name": "samara",
+            "slots": [10, 15, 20],
+            "area": "area_01"
+        },
+        {
+            "name": "naberezhnye_chelny",
+            "slots": [10, 15, 20],
+            "area": "area_01"
+        }
+    ],
+    "junctions": [
+        {
+            "between": ["orenburg", "ufa"],
+            "cost": 6
+        },
+        {
+            "between": ["orenburg", "samara"],
+            "cost": 6
+        },
+        {
+            "between": ["orenburg", "naberezhnye_chelny"],
+            "cost": 7
+        },
+        {
+            "between": ["ufa", "naberezhnye_chelny"],
+            "cost": 4
+        },
+        {
+            "between": ["samara", "naberezhnye_chelny"],
+            "cost": 5
+        }
+    ],
+    "stations": [
+        {
+            "cost": 13,
+            "capacity": 0,
+            "efficiency": 1,
+            "resources": []
+        },
+        {
+            "cost": 15,
+            "capacity": 2,
+            "efficiency": 3,
+            "resources": ["coal"]
+        },
+        {
+            "cost": 19,
+            "capacity": 2,
+            "efficiency": 3,
+            "resources": ["waste"]
+        }
+    ],
+    "payments": [
+        10, 22, 33, 44, 54, 64, 73, 82, 90, 98, 105,
+        112, 118, 124, 129, 134, 138, 142, 145, 148, 150
+    ],
+    "areasCount": [
+        3, 3, 4, 5, 5
+    ],
+    "removeStationsCount": [
+        8, 8, 4, 0, 0
+    ],
+    "userStationsCount": [
+        4, 3, 3, 3, 3
+    ],
+    "secondPhaseCitiesCount": [
+        10, 7, 7, 7, 6
+    ],
+    "endGameCitiesCount": [
+        21, 17, 17, 15, 14
+    ],
+    "openAuctionStationsCount": 6,
+    "actionAuctionStationsCount": 3,
+    "refill": [
+        {
+            "coal": [0, 2, 2, 3, 4, 5],
+            "oil": [0, 3, 3, 5, 5, 7],
+            "waste": [0, 2, 2, 3, 4, 4],
+            "uranium": [0, 1, 1, 1, 2, 2]
+        },
+        {
+            "coal": [0, 2, 3, 4, 5, 6],
+            "oil": [0, 4, 4, 6, 7, 9],
+            "waste": [0, 2, 2, 3, 3, 5],
+            "uranium": [0, 1, 1, 1, 2, 2]
+        },
+        {
+            "coal": [0, 2, 2, 3, 4, 5],
+            "oil": [0, 3, 3, 5, 5, 7],
+            "waste": [0, 2, 2, 3, 4, 4],
+            "uranium": [0, 1, 1, 1, 2, 2]
+        }
+    ]
+}

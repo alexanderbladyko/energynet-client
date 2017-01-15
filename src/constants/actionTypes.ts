@@ -51,10 +51,17 @@ export const AUCTION_REQUEST: string = 'AUCTION_REQUEST'
 export const AUCTION_RECEIVE: string = 'AUCTION_RECEIVE'
 export const AUCTION_STATION_SELECT: string = 'AUCTION_STATION_SELECT'
 
+export const RESOURCES_REQUEST: string = 'RESOURCES_REQUEST'
+export const RESOURCES_RECEIVE: string = 'RESOURCES_RECEIVE'
+
 export const LOBBY_ADD_USER: string = 'LOBBY_ADD_USER'
 export const LOBBY_REMOVE_USER: string = 'LOBBY_REMOVE_USER'
 
 export const STATE_REQUEST: string = 'STATE_REQUEST'
 export const STATE_RECEIVE: string = 'STATE_RECEIVE'
+
+export const MAP_INFO_REQUEST: string = 'MAP_INFO_REQUEST'
+export const MAP_INFO_RESPONSE: string = 'MAP_INFO_RESPONSE'
+export const MAP_INFO_ERROR: string = 'MAP_INFO_ERROR'
 
 export const NAVIGATE: string = 'NAVIGATE'
