@@ -214,21 +214,52 @@ export interface IMapStation {
 }
 
 export interface IMap {
-    areas: IArea[]
-    cities: ICity[]
-    junctions: IJunction[]
-    payments: number[]
     areasCount: number[]
-    removeStationsCount: number[]
-    userStationsCount: number[]
-    secondPhaseCitiesCount: number[]
-    endGameCitiesCount: number[]
     refill: IRefill[]
     stations: IMapStation[]
+    endGameCitiesCount: number[]
+    secondPhaseCitiesCount: number[]
+    userStationsCount: number[]
+    payment: number[]
 }
 
 export interface IMapState extends IBaseState {
     data?: IMap
+}
+
+export interface ICityProps {
+    id: string
+    area: string
+    slots: number[]
+}
+
+export interface IAreaProps {
+    id: string
+    color: string
+}
+
+export interface IJunctionProps {
+    between: string[]
+    cost: number
+}
+
+export interface IFeature {
+    type: string
+    properties: any
+    geometry: {
+        type: string
+        coordinates: any
+    }
+}
+
+export interface IFeatureCollection {
+    type: string
+    bbox: number[][]
+    features: IFeature[]
+}
+
+export interface IMapGeoState extends IBaseState {
+    data?: IFeatureCollection
 }
 
 export interface IState extends Object {
@@ -237,6 +268,7 @@ export interface IState extends Object {
     config: IConfigState
     game: IGameState
     games: IGamesState
+    geo: IMapGeoState
     lobby: ILobbyState
     login: ILoginState
     map: IMapState
@@ -274,6 +306,10 @@ export const initialState: IState = {
         loading: false,
         data: [],
         gameJoining: false,
+    },
+    geo: {
+        error: false,
+        loading: false,
     },
     lobby: {
         error: false,

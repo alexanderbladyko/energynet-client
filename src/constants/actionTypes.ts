@@ -64,4 +64,8 @@ export const MAP_INFO_REQUEST: string = 'MAP_INFO_REQUEST'
 export const MAP_INFO_RESPONSE: string = 'MAP_INFO_RESPONSE'
 export const MAP_INFO_ERROR: string = 'MAP_INFO_ERROR'
 
+export const MAP_GEO_REQUEST: string = 'MAP_GEO_REQUEST'
+export const MAP_GEO_RESPONSE: string = 'MAP_GEO_RESPONSE'
+export const MAP_GEO_ERROR: string = 'MAP_GEO_ERROR'
+
 export const NAVIGATE: string = 'NAVIGATE'

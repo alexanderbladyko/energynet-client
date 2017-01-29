@@ -51,7 +51,7 @@ export function loadMapInfo(dispatch: Dispatch<State.IState>): ILoadMapInfoActio
             },
             error => {
                 dispatch(errorMapInfo(error))
-                throw new Error('Failed to load user info')
+                throw new Error('Failed to load map info')
             }
         )
     }

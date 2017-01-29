@@ -19,6 +19,10 @@ import {
     ILoadMapInfoAction,
 } from 'actions/map'
 import {
+    loadMapGeo,
+    ILoadMapGeoAction,
+} from 'actions/geo'
+import {
     requestPlayers,
     receivePlayers,
 } from 'actions/players'
@@ -32,12 +36,15 @@ import * as State from 'state'
 interface IGameProps {
     config: State.IConfigState
     game: State.IGameState
+    map: State.IMapState
+    geo: State.IMapGeoState
     receiveGameAction: typeof receiveGameAction
     requestGameInfo: typeof requestGameInfo
     receiveGameInfo: typeof receiveGameInfo
     requestPlayers: typeof requestPlayers
     receivePlayers: typeof receivePlayers
     loadMapInfo: ILoadMapInfoAction
+    loadMapGeo: ILoadMapGeoAction
 }
 
 
@@ -55,7 +62,12 @@ class Game extends React.Component<IGameProps, {}> {
         socket.subscribe('game', (data: State.IGame): void => {
             this.props.receiveGameInfo(data)
 
-            this.props.loadMapInfo(this.props.config, this.props.game)
+            if (!this.props.map.data && !this.props.map.loading) {
+                this.props.loadMapInfo(this.props.config, this.props.game)
+            }
+            if (!this.props.geo.data && !this.props.geo.loading) {
+                this.props.loadMapGeo(this.props.config, this.props.game)
+            }
         })
         socket.subscribe('action', (data: State.IGameActionResponse): void => {
             this.props.receiveGameAction(data)
@@ -90,6 +102,8 @@ export default connect(
             config: state.config,
             game: state.game,
             userInfo: state.userInfo,
+            map: state.map,
+            geo: state.geo,
         }
     },
     (dispatch: Dispatch<State.IState>): any => {
@@ -100,6 +114,7 @@ export default connect(
             requestPlayers: bindActionCreators(requestPlayers, dispatch),
             receivePlayers: bindActionCreators(receivePlayers, dispatch),
             loadMapInfo: loadMapInfo(dispatch),
+            loadMapGeo: loadMapGeo(dispatch),
         }
     }
 )(Game)

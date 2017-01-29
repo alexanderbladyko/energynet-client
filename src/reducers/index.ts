@@ -7,6 +7,7 @@ import auction from 'reducers/auction'
 import config from 'reducers/config'
 import game from 'reducers/game'
 import games from 'reducers/games'
+import geo from 'reducers/geo'
 import lobby from 'reducers/lobby'
 import login from 'reducers/login'
 import map from 'reducers/map'
@@ -45,6 +46,7 @@ export default {
     config: getReducer(config, initialState.config),
     game: getReducer(game, initialState.game),
     games: getReducer(games, initialState.games),
+    geo: getReducer(geo, initialState.geo),
     map: getReducer(map, initialState.map),
     lobby: getReducer(lobby, initialState.lobby),
     login: getReducer(login, initialState.login),
