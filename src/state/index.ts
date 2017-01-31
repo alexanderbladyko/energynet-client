@@ -255,6 +255,10 @@ export interface IFeature {
 export interface IFeatureCollection {
     type: string
     bbox: number[][]
+    properties?: {
+        maxZoom?: number
+        minZoom?: number
+    }
     features: IFeature[]
 }
 
