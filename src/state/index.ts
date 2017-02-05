@@ -252,14 +252,11 @@ export interface IFeature {
     }
 }
 
-export interface IFeatureCollection {
-    type: string
-    bbox: number[][]
+export interface IFeatureCollection extends GeoJSON.FeatureCollection<GeoJSON.GeometryObject> {
     properties?: {
         maxZoom?: number
         minZoom?: number
     }
-    features: IFeature[]
 }
 
 export interface IMapGeoState extends IBaseState {

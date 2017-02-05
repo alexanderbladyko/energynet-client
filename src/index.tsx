@@ -5,17 +5,12 @@ import 'isomorphic-fetch'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { Store, } from 'redux'
 import { Provider, } from 'react-redux'
 
 import Layout from 'components/Layout/Layout'
-import { IState, } from 'state'
-import { configureStore, } from 'store/init'
+import { store, } from 'store'
 
 import 'styles/base.scss'
-
-
-const store: Store<IState> = configureStore()
 
 
 class Main extends React.Component<{}, {}> {

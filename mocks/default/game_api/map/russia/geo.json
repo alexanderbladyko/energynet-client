@@ -1,17 +1,10 @@
 {
     "bbox": [
-        [
-            20,
-            45
-        ],
-        [
-            179,
-            75
-        ]
+        18, 40, 120, 70
     ],
     "properties": {
-        "maxZoom": 9,
-        "minZoom": 2
+        "maxZoom": 8,
+        "minZoom": 3
     },
     "type": "FeatureCollection",
     "features": [
@@ -117,7 +110,7 @@
             },
             "properties": {
                 "id": "area2",
-                "color": "#393939",
+                "color": "#c9619d",
                 "type": "AREA"
             },
             "type": "Feature"
@@ -212,7 +205,7 @@
             },
             "properties": {
                 "id": "area3",
-                "color": "#393939",
+                "color": "#e2dc3e",
                 "type": "AREA"
             },
             "type": "Feature"
@@ -371,7 +364,7 @@
             },
             "properties": {
                 "id": "area1",
-                "color": "#393939",
+                "color": "#70d06f",
                 "type": "AREA"
             },
             "type": "Feature"
@@ -446,7 +439,7 @@
             },
             "properties": {
                 "id": "area4",
-                "color": "#393939",
+                "color": "#f11616",
                 "type": "AREA"
             },
             "type": "Feature"
@@ -537,7 +530,7 @@
             },
             "properties": {
                 "id": "area5",
-                "color": "#393939",
+                "color": "#5e74b0",
                 "type": "AREA"
             },
             "type": "Feature"
@@ -656,7 +649,7 @@
             },
             "properties": {
                 "id": "area6",
-                "color": "#393939",
+                "color": "#ec6c18",
                 "type": "AREA"
             },
             "type": "Feature"

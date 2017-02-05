@@ -14,8 +14,8 @@ export default class Station extends React.Component<IStationProps, {}> {
             <div
                 onClick={this.props.onClick}
                 style={{
-                    width: 200,
-                    height: 300,
+                    width: 20,
+                    height: 30,
                     borderWidth: 1,
                     borderColor: '#123123',
                     borderStyle: 'solid',

@@ -23,3 +23,15 @@ export class ResourceTypes {
     public static WASTE: string = 'waste'
     public static uranium: string = 'uranium'
 }
+
+export enum AdapterTypes {
+    MARKER,
+    LINE,
+    POLYGON,
+}
+
+export class FeatureTypes {
+    public static CITY: string = 'CITY'
+    public static JUNCTION: string = 'JUNCTION'
+    public static AREA: string = 'AREA'
+}

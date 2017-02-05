@@ -33,3 +33,9 @@ body {
     height: 100%;
     position: absolute;
 }
+
+.marker {
+    position: fixed;
+    text-align: center;
+    user-select: none;
+}
