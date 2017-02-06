@@ -24,7 +24,7 @@ export class ResourceTypes {
     public static uranium: string = 'uranium'
 }
 
-export enum AdapterTypes {
+export enum GeometryTypes {
     MARKER,
     LINE,
     POLYGON,

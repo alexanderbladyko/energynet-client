@@ -4,15 +4,22 @@ import {
 } from 'react-redux'
 import * as mapboxgl from 'mapbox-gl'
 
+import { BaseAdapter, } from 'components/Map/adapters/baseAdapters'
+import CityMarkerAdapter from 'components/Map/adapters/cityMarkerAdapter'
+
 import { setAccessToken, } from 'MapboxMap'
+import { store, } from 'store'
 import * as State from 'state'
-import * as constants from 'constants'
+
+
+const adapters: BaseAdapter<any>[] = [
+    new CityMarkerAdapter(),
+]
 
 interface IMapProps {
     game: State.IGameState
     geo: State.IMapGeoState
 }
-
 
 class Map extends React.Component<IMapProps, {}> {
     private mapComponent: mapboxgl.Map
@@ -51,53 +58,63 @@ class Map extends React.Component<IMapProps, {}> {
                     data: this.props.geo.data,
                 })
 
-                this.props.geo.data.features.forEach(feature => {
-                    if (feature.properties.type === constants.FeatureTypes.CITY) {
-                        const el: HTMLElement = document.createElement('DIV')
-                        el.className = 'marker'
-                        el.style.width = '120px'
-                        el.style.height = '40px'
+                this.refreshAdapters()
 
-                        el.innerHTML = `<span> \
-                            ${feature.properties.id} \
-                        </span>`
-                        const marker: mapboxgl.Marker = new mapboxgl.Marker(el, { offset: [ -60, -20, ], })
-                        marker.setLngLat(feature.geometry.coordinates)
-                        marker.addTo(this.mapComponent)
-                    }
+                store.subscribe(this.refreshAdapters)
 
-                    if (feature.properties.type === constants.FeatureTypes.AREA) {
-                        this.mapComponent.addLayer({
-                            id: feature.properties.id,
-                            type: 'fill',
-                            source: 'map_data',
-                            filter: [ '==', 'id', feature.properties.id, ],
-                            layout: {},
-                            paint: {
-                                'fill-color': feature.properties.color,
-                                'fill-opacity': 0.5,
-                            },
-                        })
-                    }
-                })
-
-                this.mapComponent.addLayer({
-                    id: 'junctions',
-                    type: 'line',
-                    source: 'map_data',
-                    layout: {
-                        'line-join': 'round',
-                        'line-cap': 'round',
-                    },
-                    paint: {
-                        'line-color': '#888',
-                        'line-width': 3,
-                    },
-                    filter: [ '==', 'type', constants.FeatureTypes.JUNCTION, ],
-                })
+                // this.props.geo.data.features.forEach(feature => {
+                //     if (feature.properties.type === constants.FeatureTypes.CITY) {
+                //         const el: HTMLElement = document.createElement('DIV')
+                //         el.className = 'marker'
+                //         el.style.width = '120px'
+                //         el.style.height = '40px'
+                //
+                //         el.innerHTML = `<span> \
+                //             ${feature.properties.id} \
+                //         </span>`
+                //         const marker: mapboxgl.Marker = new mapboxgl.Marker(el, { offset: [ -60, -20, ], })
+                //         marker.setLngLat(feature.geometry.coordinates)
+                //         marker.addTo(this.mapComponent)
+                //     }
+                //
+                //     if (feature.properties.type === constants.FeatureTypes.AREA) {
+                //         this.mapComponent.addLayer({
+                //             id: feature.properties.id,
+                //             type: 'fill',
+                //             source: 'map_data',
+                //             filter: [ '==', 'id', feature.properties.id, ],
+                //             layout: {},
+                //             paint: {
+                //                 'fill-color': feature.properties.color,
+                //                 'fill-opacity': 0.5,
+                //             },
+                //         })
+                //     }
+                // })
+                //
+                // this.mapComponent.addLayer({
+                //     id: 'junctions',
+                //     type: 'line',
+                //     source: 'map_data',
+                //     layout: {
+                //         'line-join': 'round',
+                //         'line-cap': 'round',
+                //     },
+                //     paint: {
+                //         'line-color': '#888',
+                //         'line-width': 3,
+                //     },
+                //     filter: [ '==', 'type', constants.FeatureTypes.JUNCTION, ],
+                // })
             })
-
         }
+    }
+
+    private refreshAdapters(): void {
+        adapters.forEach(adapter => adapter.setState(store.getState()))
+
+        adapters.forEach(adapter => adapter.update(this.mapComponent, this.props.geo.data.features))
+
     }
 }
 
