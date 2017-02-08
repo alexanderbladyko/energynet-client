@@ -28,7 +28,7 @@ export class BaseAdapter<T> {
     }
 
     protected stateLens(state: State.IState): T {
-        throw new Error('Not implemented')
+        return undefined
     }
 
     protected shouldUpdate(oldState: T, newState: T): boolean {
@@ -97,7 +97,7 @@ export class BaseMarkerAdapter<T> extends BaseAdapter<T> {
 export class BaseLayerAdapter<T> extends BaseAdapter<T> {
     protected markerProperties: IMarkerProperties
 
-    private _layers: string[]
+    private _layers: string[] = []
 
     protected removeAll(map: mapboxgl.Map): void {
         this._layers.forEach(layer => map.removeLayer(layer))

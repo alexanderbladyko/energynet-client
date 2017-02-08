@@ -6,6 +6,9 @@ import * as mapboxgl from 'mapbox-gl'
 
 import { BaseAdapter, } from 'components/Map/adapters/baseAdapters'
 import CityMarkerAdapter from 'components/Map/adapters/cityMarkerAdapter'
+import JunctionAdapter from 'components/Map/adapters/junctionAdapter'
+import AreaAdapter from 'components/Map/adapters/areaAdapter'
+
 
 import { setAccessToken, } from 'MapboxMap'
 import { store, } from 'store'
@@ -14,6 +17,8 @@ import * as State from 'state'
 
 const adapters: BaseAdapter<any>[] = [
     new CityMarkerAdapter(),
+    new JunctionAdapter(),
+    new AreaAdapter(),
 ]
 
 interface IMapProps {
@@ -61,51 +66,6 @@ class Map extends React.Component<IMapProps, {}> {
                 this.refreshAdapters()
 
                 store.subscribe(this.refreshAdapters)
-
-                // this.props.geo.data.features.forEach(feature => {
-                //     if (feature.properties.type === constants.FeatureTypes.CITY) {
-                //         const el: HTMLElement = document.createElement('DIV')
-                //         el.className = 'marker'
-                //         el.style.width = '120px'
-                //         el.style.height = '40px'
-                //
-                //         el.innerHTML = `<span> \
-                //             ${feature.properties.id} \
-                //         </span>`
-                //         const marker: mapboxgl.Marker = new mapboxgl.Marker(el, { offset: [ -60, -20, ], })
-                //         marker.setLngLat(feature.geometry.coordinates)
-                //         marker.addTo(this.mapComponent)
-                //     }
-                //
-                //     if (feature.properties.type === constants.FeatureTypes.AREA) {
-                //         this.mapComponent.addLayer({
-                //             id: feature.properties.id,
-                //             type: 'fill',
-                //             source: 'map_data',
-                //             filter: [ '==', 'id', feature.properties.id, ],
-                //             layout: {},
-                //             paint: {
-                //                 'fill-color': feature.properties.color,
-                //                 'fill-opacity': 0.5,
-                //             },
-                //         })
-                //     }
-                // })
-                //
-                // this.mapComponent.addLayer({
-                //     id: 'junctions',
-                //     type: 'line',
-                //     source: 'map_data',
-                //     layout: {
-                //         'line-join': 'round',
-                //         'line-cap': 'round',
-                //     },
-                //     paint: {
-                //         'line-color': '#888',
-                //         'line-width': 3,
-                //     },
-                //     filter: [ '==', 'type', constants.FeatureTypes.JUNCTION, ],
-                // })
             })
         }
     }
