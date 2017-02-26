@@ -69,3 +69,6 @@ export const MAP_GEO_RESPONSE: string = 'MAP_GEO_RESPONSE'
 export const MAP_GEO_ERROR: string = 'MAP_GEO_ERROR'
 
 export const NAVIGATE: string = 'NAVIGATE'
+
+export const USER_TABS_SELECT: string = 'USER_TABS_SELECT'
+export const USER_TABS_TOGGLE_LOCK: string = 'USER_TABS_TOGGLE_LOCK'

@@ -1,0 +1,19 @@
+.currency {
+    &::after {
+        display: inline-block;
+        vertical-align: middle;
+        background-image: url(./images/currency.svg);
+        background-size: cover;
+        content: '';
+    }
+
+    &__small::after {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__big::after {
+        width: 32px;
+        height: 32px;
+    }
+}

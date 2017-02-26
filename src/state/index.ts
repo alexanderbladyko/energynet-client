@@ -263,6 +263,11 @@ export interface IMapGeoState extends IBaseState {
     data?: IFeatureCollection
 }
 
+export interface IUserTabsState {
+    selectedUserId: number
+    locked: boolean
+}
+
 export interface IState extends Object {
     action: IGameActionState
     auction: IAuctionState
@@ -281,6 +286,7 @@ export interface IState extends Object {
     socket: ISocketState
     status: IStatusState
     userInfo: IUserInfoState
+    userTabs: IUserTabsState
 }
 
 export const initialState: IState = {
@@ -357,5 +363,9 @@ export const initialState: IState = {
         },
         error: false,
         loading: false,
+    },
+    userTabs: {
+        selectedUserId: undefined,
+        locked: false,
     },
 }

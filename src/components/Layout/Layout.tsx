@@ -42,17 +42,7 @@ class Layout extends React.Component<ILayoutStateProps, {}> {
     }
     public render(): React.ReactElement<{}> {
         return (
-            <div className='layout'>
-                <div className='header'>
-                    {'Header'}
-                </div>
-                <div className='content'>
-                    <Router />
-                </div>
-                <div className='footer'>
-                    {'Footer'}
-                </div>
-            </div>
+            <Router />
         )
     }
 }

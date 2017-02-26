@@ -65,6 +65,36 @@
                         "novosibirsk", 10,
                         "samara", 10
                     ]
+                },
+                {
+                    "id": 35,
+                    "cash": 13,
+                    "color": "#8f22ab",
+                    "stations": [
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                    ]
+                },
+                {
+                    "id": 38,
+                    "cash": 13,
+                    "color": "#8f82ab",
+                    "stations": [
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                    ]
                 }
             ]
         }

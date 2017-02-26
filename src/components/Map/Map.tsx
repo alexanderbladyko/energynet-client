@@ -17,8 +17,8 @@ import * as State from 'state'
 
 const adapters: BaseAdapter<any>[] = [
     new CityMarkerAdapter(),
-    new JunctionAdapter(),
     new AreaAdapter(),
+    new JunctionAdapter(),
 ]
 
 interface IMapProps {
@@ -32,7 +32,7 @@ class Map extends React.Component<IMapProps, {}> {
         setAccessToken()
         this.mapComponent = new mapboxgl.Map({
             container: 'js-map',
-            style: 'mapbox://styles/mapbox/streets-v9',
+            style: 'mapbox://styles/sanechekz/ciz4hu5gc00982rmergetmqt5',
         })
         this.initMap()
     }

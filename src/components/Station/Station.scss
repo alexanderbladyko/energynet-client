@@ -1,0 +1,16 @@
+.station {
+    float: left;
+    width: 45%;
+    height: 35px;
+    border: 1px solid #454545;
+    margin: 3px;
+
+    &_resources {
+        display: inline-block;
+        line-height: 30px;
+    }
+
+    &_efficiency {
+        display: inline-block;
+    }
+}

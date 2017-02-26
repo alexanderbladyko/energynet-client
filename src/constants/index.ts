@@ -21,7 +21,7 @@ export class ResourceTypes {
     public static COAL: string = 'coal'
     public static OIL: string = 'oil'
     public static WASTE: string = 'waste'
-    public static uranium: string = 'uranium'
+    public static URANIUM: string = 'uranium'
 }
 
 export enum GeometryTypes {

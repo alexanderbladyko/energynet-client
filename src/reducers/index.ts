@@ -19,6 +19,7 @@ import route from 'reducers/route'
 import socket from 'reducers/socket'
 import status from 'reducers/status'
 import userInfo from 'reducers/userInfo'
+import userTabs from 'reducers/userTabs'
 
 import {
     initialState,
@@ -58,4 +59,5 @@ export default {
     socket: getReducer(socket, initialState.socket),
     status: getReducer(status, initialState.status),
     userInfo: getReducer(userInfo, initialState.userInfo),
+    userTabs: getReducer(userTabs, initialState.userTabs),
 }
