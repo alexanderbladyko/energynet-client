@@ -34,7 +34,9 @@ class Station extends React.Component<IStationOwnProps & IStationProps, {}> {
                 className='station'
                 onClick={() => this.props.onClick && this.props.onClick(this.props.stationId)}
             >
-                <Currency value={station.cost} size={Currency.IconSize.SMALL}/>
+                <div className='station_cost'>
+                    <Currency value={station.cost} size={Currency.IconSize.SMALL}/>
+                </div>
                 {this.renderResources(station)}
                 <div className='station_efficiency'>{station.efficiency}</div>
             </div>

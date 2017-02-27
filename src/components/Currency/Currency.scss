@@ -1,4 +1,8 @@
 .currency {
+    font-size: 24px;
+    text-shadow: 0 1px 0 #545454;
+    color: #fff;
+
     &::after {
         display: inline-block;
         vertical-align: middle;

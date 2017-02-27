@@ -4,7 +4,6 @@
     position: absolute;
     text-align: center;
     z-index: 1;
-    font: 12px/20px 'Arial Narrow';
     background-color: #fff;
 }
 
@@ -51,28 +50,28 @@
 @media only screen and (min-width: 320px) and (max-width: 768px) {
     .users-tabs_item {
         min-width: 50px;
-        font: 28px/32px 'Arial Narrow';
+        font: 28px/32px RobotoRegular;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .users-tabs_item {
         min-width: 120px;
-        font: 20px/24px 'Arial Narrow';
+        font: 20px/24px RobotoRegular;
     }
 }
 
 @media only screen  and (min-width: 1024px) {
     .users-tabs_item {
         min-width: 160px;
-        font: 20px/24px 'Arial Narrow';
+        font: 20px/24px RobotoRegular;
     }
 }
 
 .users-info {
     display: flex;
     flex-flow: row;
-    background-color: #fff;
+    background-image: url(./images/pattern.svg);
 
     &_stations {
         flex: 1 1 auto;

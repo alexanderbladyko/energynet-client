@@ -38,16 +38,20 @@ module.exports = {
             {
                test: /\.scss$/,
                loader: 'style!css!sass',
-           },
-           {
-               test: /.\.(gif|png|jpe?g|svg)$/,
-               loaders: [
-                   // FIXME: Use smart url-loader to load image to bundle
-                   // (IS_PRODUCTION ? 'url-loader' : 'file?hash=sha512&digest=hex&name=[name].[hash:8].[ext]'),
-                   'file?hash=sha512&digest=hex&name=[name].[hash:8].[ext]',
-                   'image-webpack',
-               ],
-           },
+            },
+            {
+                test: /\.(eot|ttf|woff|woff2)$/,
+                loader: 'file?name=public/fonts/[name].[ext]'
+            },
+            {
+                test: /.\.(gif|png|jpe?g|svg)$/,
+                loaders: [
+                    // FIXME: Use smart url-loader to load image to bundle
+                    // (IS_PRODUCTION ? 'url-loader' : 'file?hash=sha512&digest=hex&name=[name].[hash:8].[ext]'),
+                    'file?hash=sha512&digest=hex&name=[name].[hash:8].[ext]',
+                    'image-webpack',
+                ],
+            }
         ]
     },
     plugins: [

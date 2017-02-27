@@ -92,28 +92,28 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                         {userInfo.resources.coal}
                         <Resource
                             resources={[constants.ResourceTypes.COAL, ]}
-                            size={Resource.IconSize.BIG}
+                            size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='resources_item resources_item__oil'>
                         {userInfo.resources.oil}
                         <Resource
                             resources={[constants.ResourceTypes.OIL, ]}
-                            size={Resource.IconSize.BIG}
+                            size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='resources_item resources_item__waste'>
                         {userInfo.resources.waste}
                         <Resource
                             resources={[constants.ResourceTypes.WASTE, ]}
-                            size={Resource.IconSize.BIG}
+                            size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='resources_item resources_item__uranium'>
                         {userInfo.resources.uranium}
                         <Resource
                             resources={[constants.ResourceTypes.URANIUM, ]}
-                            size={Resource.IconSize.BIG}
+                            size={Resource.IconSize.SMALL}
                         />
                     </div>
                 </div>
