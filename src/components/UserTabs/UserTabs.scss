@@ -75,11 +75,44 @@
 
     &_stations {
         flex: 1 1 auto;
-        width: 80%;
+        width: 85%;
     }
 
     &_resources {
         flex: 1 1 auto;
-        width: 20%;
+        width: 15%;
+
+        &_item {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        &_stations {
+            width: 80%;
+        }
+
+        &_resources {
+            width: 20%;
+
+            &_item {
+                width: 50%;
+            }
+        }
+    }
+
+    @media only screen  and (min-width: 1024px) {
+        &_stations {
+            width: 80%;
+        }
+
+        &_resources {
+            width: 20%;
+
+            &_item {
+                width: 50%;
+            }
+        }
     }
 }

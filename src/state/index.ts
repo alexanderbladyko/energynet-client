@@ -268,6 +268,18 @@ export interface IUserTabsState {
     locked: boolean
 }
 
+export enum MainPanelTabs {
+    Auction,
+    Resources,
+    Action,
+}
+
+export interface IMainPanelState {
+    selectedTab: MainPanelTabs
+    locked: boolean
+    showActionTab: boolean
+}
+
 export interface IState extends Object {
     action: IGameActionState
     auction: IAuctionState
@@ -277,6 +289,7 @@ export interface IState extends Object {
     geo: IMapGeoState
     lobby: ILobbyState
     login: ILoginState
+    mainPanel: IMainPanelState
     map: IMapState
     newGame: INewGameState
     players: IPlayersState
@@ -330,6 +343,11 @@ export const initialState: IState = {
         error: false,
         loading: false,
         opened: false,
+    },
+    mainPanel: {
+        selectedTab: MainPanelTabs.Auction,
+        locked: false,
+        showActionTab: false,
     },
     map: {
         error: false,

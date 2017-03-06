@@ -28,9 +28,10 @@ import {
 } from 'actions/players'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
-import UserTabs from 'components/UserTabs/UserTabs'
 import ColorPick from 'components/ColorPick/ColorPick'
+import MainPanel from 'components/MainPanel/MainPanel'
 import Map from 'components/Map/Map'
+import UserTabs from 'components/UserTabs/UserTabs'
 import * as State from 'state'
 
 interface IGameProps {
@@ -90,6 +91,7 @@ class Game extends React.Component<IGameProps, {}> {
         return (
             <div>
                 <UserTabs />
+                <MainPanel />
             </div>
         )
     }

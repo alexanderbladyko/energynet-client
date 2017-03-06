@@ -2,6 +2,10 @@ import * as React from 'react'
 import {
     connect,
 } from 'react-redux'
+// // Hotfix for scrollbar module
+declare function require(arg: string): any;
+const ReactScrollbarModule: any = require('react-scrollbar')
+const ScrollArea: any = ReactScrollbarModule.default
 
 import {
     requestAuction,
@@ -12,7 +16,10 @@ import {
 } from 'actions/auction'
 import * as socket from 'api/socket'
 import * as State from 'state'
-import Station from './Station'
+import Station from 'components/Station/Station'
+
+import './Auction.scss'
+
 
 interface IAuctionProps {
     auction: State.IAuctionState
@@ -29,6 +36,9 @@ interface IAuctionProps {
 class Auction extends React.Component<IAuctionProps, {}> {
     public refs: {
         betRange: (HTMLInputElement)
+    }
+    constructor(props: any) {
+        super(props)
     }
     public componentWillMount(): void {
         this.props.requestAuction()
@@ -77,18 +87,25 @@ class Auction extends React.Component<IAuctionProps, {}> {
                         <button onClick={() => this.handleAuctionFold}>{'Fold'}</button>
                     </div>
                 }
+                <ScrollArea
+                    horizontal={true}
+                    vertical={false}
+                    contentClassName='auction-stations auction-stations__4'
+                >
                 {
                     this.props.auction.data
                     && this.props.auction.data.map(station => {
                         return (
                             <Station
+                                ref='station'
                                 key={station.cost}
-                                station={station}
+                                stationId={station.cost}
                                 onClick={() => this.handleStationSelect(station)}
                             />
                         )
                     })
                 }
+                </ScrollArea>
             </div>
         )
     }

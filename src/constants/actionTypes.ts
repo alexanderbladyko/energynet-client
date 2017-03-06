@@ -72,3 +72,6 @@ export const NAVIGATE: string = 'NAVIGATE'
 
 export const USER_TABS_SELECT: string = 'USER_TABS_SELECT'
 export const USER_TABS_TOGGLE_LOCK: string = 'USER_TABS_TOGGLE_LOCK'
+
+export const MAIN_PANEL_SELECT: string = 'MAIN_PANEL_SELECT'
+export const MAIN_PANEL_TOGGLE_LOCK: string = 'MAIN_PANEL_TOGGLE_LOCK'

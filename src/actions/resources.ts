@@ -1,9 +1,7 @@
 import {
     IBaseAction,
     IDataAction,
-    ITypeAction,
 } from 'actions/base'
-import * as constants from 'constants'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 

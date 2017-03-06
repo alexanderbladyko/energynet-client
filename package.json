@@ -13,9 +13,9 @@
   "license": "MIT",
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "build": "npm run clean && npm run build:webpack",
+    "build": "npm rebuild node-sass && npm run clean && npm run build:webpack",
     "clean": "rimraf build",
-    "start": "node tasks/devServer.js",
+    "start": "npm rebuild node-sass && node tasks/devServer.js",
     "mocks": "node tasks/mockServer.js",
     "test": "karma start",
     "docs:api": "mkdir -p build && raml2html docs/api.raml > build/api.html"
@@ -63,6 +63,7 @@
     "@types/react": "^0.14.41",
     "@types/react-dom": "^0.14.17",
     "@types/react-redux": "^4.4.32",
+    "@types/react-scrollbar": "^0.4.6",
     "@types/redux": "^3.6.31",
     "@types/sinon": "^1.16.31",
     "@types/socket.io-client": "^1.4.28",
@@ -82,6 +83,7 @@
     "react": "^15.4.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
+    "react-scrollbar": "^0.5.1",
     "redux": "^3.6.0",
     "sass-loader": "^4.0.2",
     "scss-loader": "^0.0.1",

@@ -1,0 +1,10 @@
+.auction-stations {
+    white-space: nowrap;
+
+    $station_width: 136;
+    @for $i from 1 through 10 {
+        &__#{$i} {
+            width: #{$station_width * $i}px;
+        }
+    }
+}

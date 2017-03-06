@@ -10,6 +10,7 @@ import games from 'reducers/games'
 import geo from 'reducers/geo'
 import lobby from 'reducers/lobby'
 import login from 'reducers/login'
+import mainPanel from 'reducers/mainPanel'
 import map from 'reducers/map'
 import newGame from 'reducers/newGame'
 import players from 'reducers/players'
@@ -48,6 +49,7 @@ export default {
     game: getReducer(game, initialState.game),
     games: getReducer(games, initialState.games),
     geo: getReducer(geo, initialState.geo),
+    mainPanel: getReducer(mainPanel, initialState.mainPanel),
     map: getReducer(map, initialState.map),
     lobby: getReducer(lobby, initialState.lobby),
     login: getReducer(login, initialState.login),

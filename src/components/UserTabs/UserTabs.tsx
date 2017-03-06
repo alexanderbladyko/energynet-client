@@ -88,32 +88,32 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                     }
                 </div>
                 <div className='users-info_resources'>
-                    <div className='resources_item resources_item__coal'>
+                    <div className='users-info_resources_item'>
                         {userInfo.resources.coal}
                         <Resource
-                            resources={[constants.ResourceTypes.COAL, ]}
-                            size={Resource.IconSize.SMALL}
+                        resources={[constants.ResourceTypes.COAL, ]}
+                        size={Resource.IconSize.SMALL}
                         />
                     </div>
-                    <div className='resources_item resources_item__oil'>
+                    <div className='users-info_resources_item'>
                         {userInfo.resources.oil}
                         <Resource
-                            resources={[constants.ResourceTypes.OIL, ]}
-                            size={Resource.IconSize.SMALL}
+                        resources={[constants.ResourceTypes.OIL, ]}
+                        size={Resource.IconSize.SMALL}
                         />
                     </div>
-                    <div className='resources_item resources_item__waste'>
+                    <div className='users-info_resources_item'>
                         {userInfo.resources.waste}
                         <Resource
-                            resources={[constants.ResourceTypes.WASTE, ]}
-                            size={Resource.IconSize.SMALL}
+                        resources={[constants.ResourceTypes.WASTE, ]}
+                        size={Resource.IconSize.SMALL}
                         />
                     </div>
-                    <div className='resources_item resources_item__uranium'>
+                    <div className='users-info_resources_item'>
                         {userInfo.resources.uranium}
                         <Resource
-                            resources={[constants.ResourceTypes.URANIUM, ]}
-                            size={Resource.IconSize.SMALL}
+                        resources={[constants.ResourceTypes.URANIUM, ]}
+                        size={Resource.IconSize.SMALL}
                         />
                     </div>
                 </div>

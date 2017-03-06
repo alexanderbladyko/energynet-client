@@ -1,0 +1,22 @@
+.main-panel {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+    &_tab {
+        position: absolute;
+        width: 30%;
+        top: -20px;
+        border: 1px solid #454545;
+        border-radius: 5px 5px 0 0;
+        text-align: center;
+
+        &__right {
+            right: 0;
+        }
+
+        &__center {
+            left: 34.5%;
+        }
+    }
+}
