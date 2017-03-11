@@ -4,17 +4,22 @@
         "data": {
             "meta": {
                 "map": "russia",
-                "turn": 31,
+                "turn": 3,
                 "phase": 1,
                 "step": "auction",
                 "areas": [
                     "area_01", "area_02", "area_03", "area_04"
-                ]
+                ],
+                "auction": {
+                    "bet": 34,
+                    "station": 13,
+                    "user": 31
+                }
             },
             "data": [
                 {
                     "id": 3,
-                    "cash": 33,
+                    "cash": 63,
                     "color": "#4286f4",
                     "stations": [
                         13, 15, 19

@@ -9,6 +9,7 @@ export class StepTypes {
     public static BUILDING: string = 'building'
     public static COLORS: string = 'colors'
     public static RESOURCES: string = 'resources'
+    public static AUCTION_STATIONS: string = 'auction_stations'
 }
 
 export class ActionTypes {

@@ -1,106 +1,336 @@
 {
-    "refill": [
+    "resourceLimits": {
+        "coal": 24,
+        "oil": 24,
+        "waste": 24,
+        "uranium": 12
+    },
+    "stations": [
         {
-            "uranium": [
-                0,
-                1,
-                1,
-                1,
-                2,
-                2
-            ],
-            "oil": [
-                0,
-                3,
-                3,
-                5,
-                5,
-                7
-            ],
-            "coal": [
-                0,
-                2,
-                2,
-                3,
-                4,
-                5
-            ],
-            "waste": [
-                0,
-                2,
-                2,
-                3,
-                4,
-                4
+            "capacity": 2,
+            "cost": 3,
+            "efficiency": 1,
+            "resources": [
+                "oil"
             ]
         },
         {
-            "uranium": [
-                0,
-                1,
-                1,
-                1,
-                2,
-                2
-            ],
-            "oil": [
-                0,
-                4,
-                4,
-                6,
-                7,
-                9
-            ],
-            "coal": [
-                0,
-                2,
-                3,
-                4,
-                5,
-                6
-            ],
-            "waste": [
-                0,
-                2,
-                2,
-                3,
-                3,
-                5
+            "capacity": 2,
+            "cost": 4,
+            "efficiency": 1,
+            "resources": [
+                "coal"
             ]
         },
         {
-            "uranium": [
-                0,
-                1,
-                1,
-                2,
-                2,
-                3
-            ],
-            "oil": [
-                0,
-                3,
-                3,
-                4,
-                5,
-                6
-            ],
-            "coal": [
-                0,
-                4,
-                4,
-                5,
-                6,
-                7
-            ],
-            "waste": [
-                0,
-                3,
-                3,
-                4,
-                5,
-                6
+            "capacity": 2,
+            "cost": 5,
+            "efficiency": 1,
+            "resources": [
+                "coal",
+                "oil"
             ]
+        },
+        {
+            "capacity": 3,
+            "cost": 7,
+            "efficiency": 2,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 8,
+            "efficiency": 2,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 9,
+            "efficiency": 1,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 10,
+            "efficiency": 2,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 11,
+            "efficiency": 2,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 12,
+            "efficiency": 2,
+            "resources": [
+                "coal",
+                "oil"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 13,
+            "efficiency": 1,
+            "resources": []
+        },
+        {
+            "capacity": 2,
+            "cost": 15,
+            "efficiency": 3,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 16,
+            "efficiency": 3,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 17,
+            "efficiency": 2,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 18,
+            "efficiency": 2,
+            "resources": []
+        },
+        {
+            "capacity": 2,
+            "cost": 19,
+            "efficiency": 3,
+            "resources": [
+                "waste"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 20,
+            "efficiency": 5,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 21,
+            "efficiency": 4,
+            "resources": [
+                "coal",
+                "oil"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 22,
+            "efficiency": 2,
+            "resources": []
+        },
+        {
+            "capacity": 1,
+            "cost": 23,
+            "efficiency": 3,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 24,
+            "efficiency": 4,
+            "resources": [
+                "waste"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 25,
+            "efficiency": 5,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 26,
+            "efficiency": 5,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 27,
+            "efficiency": 3,
+            "resources": []
+        },
+        {
+            "capacity": 1,
+            "cost": 28,
+            "efficiency": 4,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 29,
+            "efficiency": 4,
+            "resources": [
+                "coal",
+                "oil"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 30,
+            "efficiency": 6,
+            "resources": [
+                "waste"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 31,
+            "efficiency": 6,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 32,
+            "efficiency": 6,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 33,
+            "efficiency": 4,
+            "resources": []
+        },
+        {
+            "capacity": 3,
+            "cost": 33.5,
+            "efficiency": 6,
+            "resources": [
+                "coal",
+                "oil",
+                "waste",
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 34,
+            "efficiency": 5,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 35,
+            "efficiency": 5,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 3,
+            "cost": 36,
+            "efficiency": 7,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 37,
+            "efficiency": 4,
+            "resources": []
+        },
+        {
+            "capacity": 3,
+            "cost": 38,
+            "efficiency": 7,
+            "resources": [
+                "waste"
+            ]
+        },
+        {
+            "capacity": 1,
+            "cost": 39,
+            "efficiency": 6,
+            "resources": [
+                "uranium"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 40,
+            "efficiency": 6,
+            "resources": [
+                "oil"
+            ]
+        },
+        {
+            "capacity": 2,
+            "cost": 42,
+            "efficiency": 6,
+            "resources": [
+                "coal"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 44,
+            "efficiency": 5,
+            "resources": []
+        },
+        {
+            "capacity": 3,
+            "cost": 46,
+            "efficiency": 7,
+            "resources": [
+                "coal",
+                "oil"
+            ]
+        },
+        {
+            "capacity": 0,
+            "cost": 50,
+            "efficiency": 6,
+            "resources": []
+        },
+        {
+            "capacity": 0,
+            "cost": -1,
+            "efficiency": 0,
+            "resources": []
         }
     ],
     "userStationsCount": [
@@ -110,12 +340,109 @@
         3,
         3
     ],
-    "areasCount": [
-        3,
-        3,
-        4,
-        5,
-        5
+    "refill": [
+        {
+            "coal": [
+                0,
+                2,
+                2,
+                3,
+                4,
+                5
+            ],
+            "oil": [
+                0,
+                3,
+                3,
+                5,
+                5,
+                7
+            ],
+            "waste": [
+                0,
+                2,
+                2,
+                3,
+                4,
+                4
+            ],
+            "uranium": [
+                0,
+                1,
+                1,
+                1,
+                2,
+                2
+            ]
+        },
+        {
+            "coal": [
+                0,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "oil": [
+                0,
+                4,
+                4,
+                6,
+                7,
+                9
+            ],
+            "waste": [
+                0,
+                2,
+                2,
+                3,
+                3,
+                5
+            ],
+            "uranium": [
+                0,
+                1,
+                1,
+                1,
+                2,
+                2
+            ]
+        },
+        {
+            "coal": [
+                0,
+                4,
+                4,
+                5,
+                6,
+                7
+            ],
+            "oil": [
+                0,
+                3,
+                3,
+                4,
+                5,
+                6
+            ],
+            "waste": [
+                0,
+                3,
+                3,
+                4,
+                5,
+                6
+            ],
+            "uranium": [
+                0,
+                1,
+                1,
+                2,
+                2,
+                3
+            ]
+        }
     ],
     "secondPhaseCitiesCount": [
         10,
@@ -124,333 +451,12 @@
         7,
         6
     ],
-    "stations": [
-        {
-            "cost": 3,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 1,
-            "capacity": 2
-        },
-        {
-            "cost": 4,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 1,
-            "capacity": 2
-        },
-        {
-            "cost": 5,
-            "resources": [
-                "coal",
-                "oil"
-            ],
-            "efficiency": 1,
-            "capacity": 2
-        },
-        {
-            "cost": 7,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 2,
-            "capacity": 3
-        },
-        {
-            "cost": 8,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 2,
-            "capacity": 3
-        },
-        {
-            "cost": 9,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 1,
-            "capacity": 1
-        },
-        {
-            "cost": 10,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 2,
-            "capacity": 2
-        },
-        {
-            "cost": 11,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 2,
-            "capacity": 1
-        },
-        {
-            "cost": 12,
-            "resources": [
-                "coal",
-                "oil"
-            ],
-            "efficiency": 2,
-            "capacity": 2
-        },
-        {
-            "cost": 13,
-            "resources": [],
-            "efficiency": 1,
-            "capacity": 0
-        },
-        {
-            "cost": 15,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 3,
-            "capacity": 2
-        },
-        {
-            "cost": 16,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 3,
-            "capacity": 2
-        },
-        {
-            "cost": 17,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 2,
-            "capacity": 1
-        },
-        {
-            "cost": 18,
-            "resources": [],
-            "efficiency": 2,
-            "capacity": 0
-        },
-        {
-            "cost": 19,
-            "resources": [
-                "waste"
-            ],
-            "efficiency": 3,
-            "capacity": 2
-        },
-        {
-            "cost": 20,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 5,
-            "capacity": 3
-        },
-        {
-            "cost": 21,
-            "resources": [
-                "coal",
-                "oil"
-            ],
-            "efficiency": 4,
-            "capacity": 2
-        },
-        {
-            "cost": 22,
-            "resources": [],
-            "efficiency": 2,
-            "capacity": 0
-        },
-        {
-            "cost": 23,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 3,
-            "capacity": 1
-        },
-        {
-            "cost": 24,
-            "resources": [
-                "waste"
-            ],
-            "efficiency": 4,
-            "capacity": 2
-        },
-        {
-            "cost": 25,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 5,
-            "capacity": 2
-        },
-        {
-            "cost": 26,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 5,
-            "capacity": 2
-        },
-        {
-            "cost": 27,
-            "resources": [],
-            "efficiency": 3,
-            "capacity": 0
-        },
-        {
-            "cost": 28,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 4,
-            "capacity": 1
-        },
-        {
-            "cost": 29,
-            "resources": [
-                "coal",
-                "oil"
-            ],
-            "efficiency": 4,
-            "capacity": 1
-        },
-        {
-            "cost": 30,
-            "resources": [
-                "waste"
-            ],
-            "efficiency": 6,
-            "capacity": 3
-        },
-        {
-            "cost": 31,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 6,
-            "capacity": 3
-        },
-        {
-            "cost": 32,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 6,
-            "capacity": 3
-        },
-        {
-            "cost": 33,
-            "resources": [],
-            "efficiency": 4,
-            "capacity": 0
-        },
-        {
-            "cost": 33.5,
-            "resources": [
-                "coal",
-                "oil",
-                "waste",
-                "uranium"
-            ],
-            "efficiency": 6,
-            "capacity": 3
-        },
-        {
-            "cost": 34,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 5,
-            "capacity": 1
-        },
-        {
-            "cost": 35,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 5,
-            "capacity": 1
-        },
-        {
-            "cost": 36,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 7,
-            "capacity": 3
-        },
-        {
-            "cost": 37,
-            "resources": [],
-            "efficiency": 4,
-            "capacity": 0
-        },
-        {
-            "cost": 38,
-            "resources": [
-                "waste"
-            ],
-            "efficiency": 7,
-            "capacity": 3
-        },
-        {
-            "cost": 39,
-            "resources": [
-                "uranium"
-            ],
-            "efficiency": 6,
-            "capacity": 1
-        },
-        {
-            "cost": 40,
-            "resources": [
-                "oil"
-            ],
-            "efficiency": 6,
-            "capacity": 2
-        },
-        {
-            "cost": 42,
-            "resources": [
-                "coal"
-            ],
-            "efficiency": 6,
-            "capacity": 2
-        },
-        {
-            "cost": 44,
-            "resources": [],
-            "efficiency": 5,
-            "capacity": 0
-        },
-        {
-            "cost": 46,
-            "resources": [
-                "coal",
-                "oil"
-            ],
-            "efficiency": 7,
-            "capacity": 3
-        },
-        {
-            "cost": 50,
-            "resources": [],
-            "efficiency": 6,
-            "capacity": 0
-        },
-        {
-            "cost": -1,
-            "resources": [],
-            "efficiency": 0,
-            "capacity": 0
-        }
+    "endGameCitiesCount": [
+        21,
+        17,
+        17,
+        15,
+        14
     ],
     "payment": [
         10,
@@ -475,11 +481,11 @@
         148,
         150
     ],
-    "endGameCitiesCount": [
-        21,
-        17,
-        17,
-        15,
-        14
+    "areasCount": [
+        3,
+        3,
+        4,
+        5,
+        5
     ]
 }

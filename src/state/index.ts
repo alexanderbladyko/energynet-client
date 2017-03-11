@@ -133,11 +133,10 @@ export interface IGameMeta {
     step: string
     areas?: string[]
     auction?: {
-        lastBet: number
+        bet: number
         station: number
-        userId: number
+        user: number
     }
-    order?: number[]
     map: string
 }
 
@@ -199,6 +198,13 @@ export interface IJunction {
     between: string[]
 }
 
+export interface IResourceLimits {
+    coal: number
+    oil: number
+    waste: number
+    uranium: number
+}
+
 export interface IRefill {
     coal: number[]
     oil: number[]
@@ -221,6 +227,7 @@ export interface IMap {
     secondPhaseCitiesCount: number[]
     userStationsCount: number[]
     payment: number[]
+    resourceLimits: IResourceLimits
 }
 
 export interface IMapState extends IBaseState {

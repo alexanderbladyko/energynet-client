@@ -1,10 +1,37 @@
-.auction-stations {
-    white-space: nowrap;
+.auction {
+    &_stations {
+        white-space: nowrap;
+        margin: 0 auto;
 
-    $station_width: 136;
-    @for $i from 1 through 10 {
-        &__#{$i} {
-            width: #{$station_width * $i}px;
+        $station_width: 132;
+        @for $i from 1 through 10 {
+            &__#{$i} {
+                width: #{$station_width * $i}px;
+            }
         }
+    }
+
+    &_action {
+        width: 100%;
+        height: 48px;
+        display: flex;
+        flex-flow: row;
+    }
+
+    &_control {
+        flex: 1 1 auto;
+    }
+
+    &_slider {
+        width: 100%;
+        height: 100%;
+    }
+
+    &_bet {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        pointer-events: none;
     }
 }

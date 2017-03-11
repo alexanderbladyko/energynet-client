@@ -1,19 +1,21 @@
 .currency {
-    font-size: 24px;
-    text-shadow: 0 1px 0 #545454;
+    font-size: 20px;
+    text-shadow: 1px 1px 0 #545454;
     color: #fff;
 
     &::after {
         display: inline-block;
-        vertical-align: middle;
         background-image: url(./images/currency.svg);
         background-size: cover;
         content: '';
+        vertical-align: middle;
+        margin-left: 3px;
+        margin-bottom: 3px;
     }
 
     &__small::after {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 
     &__big::after {

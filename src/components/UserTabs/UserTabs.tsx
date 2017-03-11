@@ -89,28 +89,36 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                 </div>
                 <div className='users-info_resources'>
                     <div className='users-info_resources_item'>
-                        {userInfo.resources.coal}
+                        <span className='users-info_resources_text'>
+                            {userInfo.resources.coal}
+                        </span>
                         <Resource
                         resources={[constants.ResourceTypes.COAL, ]}
                         size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='users-info_resources_item'>
-                        {userInfo.resources.oil}
+                        <span className='users-info_resources_text'>
+                            {userInfo.resources.oil}
+                        </span>
                         <Resource
                         resources={[constants.ResourceTypes.OIL, ]}
                         size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='users-info_resources_item'>
-                        {userInfo.resources.waste}
+                        <span className='users-info_resources_text'>
+                            {userInfo.resources.waste}
+                        </span>
                         <Resource
                         resources={[constants.ResourceTypes.WASTE, ]}
                         size={Resource.IconSize.SMALL}
                         />
                     </div>
                     <div className='users-info_resources_item'>
-                        {userInfo.resources.uranium}
+                        <span className='users-info_resources_text'>
+                            {userInfo.resources.uranium}
+                        </span>
                         <Resource
                         resources={[constants.ResourceTypes.URANIUM, ]}
                         size={Resource.IconSize.SMALL}

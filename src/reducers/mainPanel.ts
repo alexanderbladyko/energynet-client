@@ -6,7 +6,7 @@ import {
     IGameAction,
 } from 'actions/game'
 import * as actionTypes from 'constants/actionTypes'
-
+import * as constants from 'constants'
 import * as State from 'state'
 
 
@@ -15,7 +15,7 @@ export default {
             function(state: State.IMainPanelState, action: IDataAction<State.MainPanelTabs>): State.IMainPanelState {
         return {
             ...state,
-            selectedUserId: action.payload.data,
+            selectedTab: action.payload.data,
         }
     },
 
@@ -30,9 +30,15 @@ export default {
         if (state.locked) {
             return state
         }
+        let selectedTab: State.MainPanelTabs = State.MainPanelTabs.Action
+        if (action.meta.step === constants.StepTypes.AUCTION) {
+            selectedTab = State.MainPanelTabs.Auction
+        } else if (action.meta.step === constants.StepTypes.RESOURCES) {
+            selectedTab = State.MainPanelTabs.Resources
+        }
         return {
             ...state,
-            selectedUserId: action.meta.turn,
+            selectedTab,
         }
     },
 }
