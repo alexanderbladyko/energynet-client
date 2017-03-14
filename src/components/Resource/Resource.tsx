@@ -9,6 +9,7 @@ interface IResourceProps {
     width?: number
     height?: number
     size?: IconSize
+    disabled?: boolean
 }
 
 
@@ -28,6 +29,7 @@ export default class Resource extends React.Component<IResourceProps, {}> {
                     classNames('resource', {
                         'resource__big': this.props.size === IconSize.BIG,
                         'resource__small': this.props.size === IconSize.SMALL,
+                        'resource__disabled': this.props.disabled,
                     })
                 }
                 style={{

@@ -6,9 +6,10 @@
     &_tab {
         position: absolute;
         width: 30%;
-        top: -20px;
-        border: 1px solid #454545;
-        border-radius: 5px 5px 0 0;
+        height: 28px;
+        line-height: 28px;
+        border: 1px solid #393939;
+        top: -28px;
         text-align: center;
 
         &__right {

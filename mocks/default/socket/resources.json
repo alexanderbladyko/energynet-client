@@ -2,7 +2,7 @@
     {
         "name": "resources",
         "data": {
-            "coal": 15,
+            "coal": 14,
             "oil": 19,
             "waste": 5,
             "uranium": 8

@@ -172,6 +172,7 @@ export interface IAuctionState extends IBaseState, IAuction {
 }
 
 export interface IResources {
+    [name: string]: number
     coal: number
     oil: number
     waste: number
@@ -199,6 +200,7 @@ export interface IJunction {
 }
 
 export interface IResourceLimits {
+    [name: string]: number
     coal: number
     oil: number
     waste: number
@@ -206,6 +208,7 @@ export interface IResourceLimits {
 }
 
 export interface IRefill {
+    [name: string]: number[]
     coal: number[]
     oil: number[]
     waste: number[]
@@ -228,6 +231,7 @@ export interface IMap {
     userStationsCount: number[]
     payment: number[]
     resourceLimits: IResourceLimits
+    resourceGroup: IResourceLimits
 }
 
 export interface IMapState extends IBaseState {

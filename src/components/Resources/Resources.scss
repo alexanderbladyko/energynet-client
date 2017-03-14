@@ -1,0 +1,12 @@
+.resources {
+    height: 104px;
+
+    &_line {
+        width: 100%;
+        display: inline-block;
+    }
+
+    &_item {
+        float: left;
+    }
+}

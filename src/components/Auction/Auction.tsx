@@ -17,6 +17,7 @@ import {
 import * as socket from 'api/socket'
 import * as State from 'state'
 import Station from 'components/Station/Station'
+import Currency from 'components/Currency/Currency'
 
 import './Auction.scss'
 
@@ -133,7 +134,9 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
                         value={this.state.bet}
                         onChange={this.handleSliderChange.bind(this)}
                     />
-                    <span className='auction_bet'>{this.state.bet}</span>
+                    <span className='auction_bet'>
+                        <Currency value={this.state.bet} size={Currency.IconSize.SMALL} />
+                    </span>
                 </div>
                 <button
                     className='button'
