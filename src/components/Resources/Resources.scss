@@ -1,12 +1,25 @@
 .resources {
     height: 104px;
+    padding: 0;
+    margin: 0;
+
+    &_lines {
+        height: 104px;
+        padding: 0;
+        margin: 0;
+    }
 
     &_line {
         width: 100%;
         display: inline-block;
     }
 
-    &_item {
+    &_price {
+        float: left;
+    }
+
+    &_items {
+        width: 24px * 3;
         float: left;
     }
 }

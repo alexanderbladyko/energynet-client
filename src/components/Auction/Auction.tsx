@@ -15,6 +15,7 @@ import {
     selectStation,
 } from 'actions/auction'
 import * as socket from 'api/socket'
+import * as constants from 'constants'
 import * as State from 'state'
 import Station from 'components/Station/Station'
 import Currency from 'components/Currency/Currency'
@@ -61,9 +62,11 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
         socket.unsubscribe('auction')
     }
     public componentWillReceiveProps(nextProps: IAuctionProps): void {
-        this.setState({
-            bet: nextProps.game.meta.auction.bet,
-        })
+        if (nextProps.game.meta.auction) {
+            this.setState({
+                bet: nextProps.game.meta.auction.bet,
+            })
+        }
     }
     public render(): React.ReactElement<{}> {
         if (this.props.auction.loading) {
@@ -77,6 +80,7 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
         const userId: number = this.props.userInfo.data.id
         const yourTurn: boolean = (this.props.game.meta.turn === userId)
         const lastBet: number = this.props.game.meta.auction && this.props.game.meta.auction.bet
+        const isAuctionStep: boolean = (this.props.game.meta.step === constants.StepTypes.AUCTION)
 
         return (
             <div className='auction'>
@@ -90,8 +94,8 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
                     && this.props.auction.data.map(station => {
                         return (
                             <Station
-                                ref='station'
                                 key={station.cost}
+                                expanded={!isAuctionStep}
                                 stationId={station.cost}
                                 onClick={() => this.handleStationSelect(station)}
                             />

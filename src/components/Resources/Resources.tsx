@@ -68,21 +68,22 @@ class Resources extends React.Component<IResourcesProps, {}> {
         const resources: any[] = []
         for (let i: number = 0; i < resourceGroupCount; i++) {
             resources.push(
-                <div key={i} className='resources_item'>
-                    <Resource
-                        resources={[resource]}
-                        size={Resource.IconSize.SMALL}
-                        disabled={i < resourceGroupCount - rest}
-                    />
-                </div>
+                <Resource
+                    key={i}
+                    resources={[resource]}
+                    size={Resource.IconSize.SMALL}
+                    disabled={i < resourceGroupCount - rest}
+                />
             )
         }
         return (
             <div className='resources_line'>
-                <div className='resources_item'>
+                <div className='resources_price'>
                     <Currency value={cost} size={Currency.IconSize.SMALL} />
                 </div>
-                {resources}
+                <div className='resources_items'>
+                    {resources}
+                </div>
             </div>
         )
     }

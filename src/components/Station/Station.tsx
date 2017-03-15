@@ -1,3 +1,4 @@
+import * as classNames from 'classnames'
 import * as React from 'react'
 import {
     connect,
@@ -12,6 +13,7 @@ import './Station.scss'
 
 interface IStationOwnProps {
     stationId: number
+    expanded?: boolean
     onClick?: (stationId: number) => void
 }
 
@@ -31,7 +33,11 @@ class Station extends React.Component<IStationOwnProps & IStationProps, {}> {
         }
         return (
             <div
-                className='station'
+                className={
+                    classNames('station', {
+                        'station__expanded': this.props.expanded,
+                    })
+                }
                 onClick={() => this.props.onClick && this.props.onClick(this.props.stationId)}
             >
                 <div className='station_cost'>
