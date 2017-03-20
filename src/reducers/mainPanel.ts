@@ -31,11 +31,6 @@ export default {
             return state
         }
         let selectedTab: State.MainPanelTabs = State.MainPanelTabs.Action
-        if (action.meta.step === constants.StepTypes.AUCTION) {
-            selectedTab = State.MainPanelTabs.Auction
-        } else if (action.meta.step === constants.StepTypes.RESOURCES) {
-            selectedTab = State.MainPanelTabs.Resources
-        }
         return {
             ...state,
             selectedTab,

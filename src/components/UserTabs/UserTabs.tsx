@@ -8,6 +8,8 @@ import {
     selectTab,
     toggleTab,
 } from 'actions/userTabs'
+import Currency from 'components/Currency/Currency'
+import Buildings from 'components/Buildings/Buildings'
 import Resource from 'components/Resource/Resource'
 import Station from 'components/Station/Station'
 import * as constants from 'constants'
@@ -62,9 +64,18 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                                 }}
                                 onClick={() => this.handleTabClick(user.id)}
                             >
-                            {
-                                user.cash
-                            }
+                                <div>
+                                    <Currency
+                                        value={user.cash}
+                                        size={Currency.IconSize.SMALL}
+                                    />
+                                </div>
+                                <div>
+                                    <Buildings
+                                        value={user.cities.length}
+                                        size={Buildings.IconSize.SMALL}
+                                    />
+                                </div>
                             </div>
                         )
                     })

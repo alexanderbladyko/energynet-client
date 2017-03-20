@@ -11,6 +11,10 @@ import {
     receiveGameAction,
 } from 'actions/action'
 import {
+    requestAuction,
+    receiveAuction,
+} from 'actions/auction'
+import {
     requestGameInfo,
     receiveGameInfo,
 } from 'actions/game'
@@ -42,6 +46,8 @@ interface IGameProps {
     receiveGameAction: typeof receiveGameAction
     requestGameInfo: typeof requestGameInfo
     receiveGameInfo: typeof receiveGameInfo
+    requestAuction: typeof requestAuction
+    receiveAuction: typeof receiveAuction
     requestPlayers: typeof requestPlayers
     receivePlayers: typeof receivePlayers
     loadMapInfo: ILoadMapInfoAction
@@ -73,10 +79,17 @@ class Game extends React.Component<IGameProps, {}> {
         socket.subscribe('action', (data: State.IGameActionResponse): void => {
             this.props.receiveGameAction(data)
         })
+        this.props.requestAuction()
+        socket.send('auction', {})
+
+        socket.subscribe('auction', (data: State.IGameActionResponse): void => {
+            this.props.receiveAuction(data)
+        })
     }
     public componentWillUnmount(): void {
         socket.unsubscribe('game')
         socket.unsubscribe('players')
+        socket.unsubscribe('auction')
     }
     public render(): React.ReactElement<{}> {
         if (!this.props.game.data) {
@@ -114,6 +127,8 @@ export default connect(
             receiveGameInfo: bindActionCreators(receiveGameInfo, dispatch),
             requestPlayers: bindActionCreators(requestPlayers, dispatch),
             receivePlayers: bindActionCreators(receivePlayers, dispatch),
+            requestAuction: bindActionCreators(requestAuction, dispatch),
+            receiveAuction: bindActionCreators(receiveAuction, dispatch),
             loadMapInfo: loadMapInfo(dispatch),
             loadMapGeo: loadMapGeo(dispatch),
         }

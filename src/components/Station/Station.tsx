@@ -5,6 +5,7 @@ import {
 } from 'react-redux'
 
 import Currency from 'components/Currency/Currency'
+import Buildings from 'components/Buildings/Buildings'
 import Resource from 'components/Resource/Resource'
 import * as State from 'state'
 
@@ -43,12 +44,17 @@ class Station extends React.Component<IStationOwnProps & IStationProps, {}> {
                 <div className='station_cost'>
                     <Currency value={station.cost} size={Currency.IconSize.SMALL}/>
                 </div>
-                {this.renderResources(station)}
-                <div className='station_efficiency'>{station.efficiency}</div>
+                {this.renderStationEffects(station)}
+                <div className='station_buildings'>
+                    <Buildings
+                        value={station.efficiency}
+                        size={Buildings.IconSize.SMALL}
+                    />
+                </div>
             </div>
         )
     }
-    private renderResources(station: State.IMapStation): React.ReactElement<{}> {
+    private renderStationEffects(station: State.IMapStation): React.ReactElement<{}> {
         const resources: React.ReactElement<{}>[] = []
         for (let i: number = 0; i < station.capacity; i++) {
             resources.push(

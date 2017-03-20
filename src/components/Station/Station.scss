@@ -1,10 +1,13 @@
+$station_width: 102px;
+
+
 .station {
     display: inline-block;
-    width: 124px;
+    box-sizing: border-box;
+    width: $station_width;
     background-color: #efefef;
     border-radius: 5px;
     border: 3px solid #7a7279;
-    margin: 1px;
     text-align: center;
     vertical-align: middle;
     white-space: normal;
@@ -16,35 +19,25 @@
         height: 24px;
     }
 
-    @media only screen and (min-width: 320px) and (max-width: 768px) and (orientation: portrait) {
+    @media only screen and (min-width: 320px) and (max-width: 768px) {
         &_cost {
             margin-bottom: 0;
-
-            .station__expanded & {
-                margin-bottom: 76px;
-            }
         }
-    }
 
-    @media only screen and (min-width: 320px) and (max-width: 768px) and (orientation: landscape) {
-        &_cost {
-            margin-bottom: 0;
-
-            .station__expanded & {
-                margin-bottom: 0;
-            }
+        &__expanded &_cost {
+            margin-bottom: 66px;
         }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
         &_cost {
-            margin-bottom: 76px;
+            margin-bottom: 66px;
         }
     }
 
     @media only screen  and (min-width: 1024px) {
         &_cost {
-            margin-bottom: 76px;
+            margin-bottom: 66px;
         }
     }
 
@@ -54,14 +47,7 @@
         height: 24px;
     }
 
-    &_efficiency {
+    &_buildings {
         display: inline-block;
-        background-image: url(./images/efficiency.svg);
-        background-size: cover;
-        font-size: 20px;
-        background-repeat: no-repeat;
-        width: 24px;
-        height: 24px;
-        vertical-align: middle;
     }
 }

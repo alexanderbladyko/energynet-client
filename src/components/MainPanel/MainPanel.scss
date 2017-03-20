@@ -2,11 +2,18 @@
     position: absolute;
     width: 100%;
     bottom: 0;
+    display: flex;
+    flex-flow: row;
+
+    &_tabs {
+        width: 40px;
+        height: 100%;
+    }
 
     &_tab {
-        position: absolute;
-        width: 30%;
-        height: 28px;
+        width: 40px;
+        height: 40px;
+        box-sizing: border-box;
         border: 1px solid #393939;
         top: -30px;
         text-align: center;
@@ -18,5 +25,9 @@
         &__center {
             left: 34.5%;
         }
+    }
+
+    &_container {
+        flex: 1 1 auto;
     }
 }

@@ -1,14 +1,13 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 
-import './Currency.scss'
+import './Buildings.scss'
 
 
-interface ICurrencyProps {
+interface IBuildingsProps {
     value: number
     size?: IconSize
 }
-
 
 enum IconSize {
     SMALL,
@@ -16,16 +15,16 @@ enum IconSize {
 }
 
 
-export default class Currency extends React.Component<ICurrencyProps, {}> {
+export default class Buildings extends React.Component<IBuildingsProps, {}> {
     public static IconSize: typeof IconSize = IconSize
 
     public render(): React.ReactElement<{}> {
         return (
             <div
                 className={
-                    classNames('currency', {
-                        'currency__big': this.props.size === IconSize.BIG,
-                        'currency__small': this.props.size === IconSize.SMALL,
+                    classNames('buildings', {
+                        'buildings__big': this.props.size === IconSize.BIG,
+                        'buildings__small': this.props.size === IconSize.SMALL,
                     })
                 }
             >
