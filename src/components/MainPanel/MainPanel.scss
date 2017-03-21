@@ -3,31 +3,23 @@
     width: 100%;
     bottom: 0;
     display: flex;
-    flex-flow: row;
+    flex-direction: row;
 
     &_tabs {
-        width: 40px;
+        width: 60px;
         height: 100%;
+        flex: 0 1 auto;
     }
 
     &_tab {
-        width: 40px;
         height: 40px;
         box-sizing: border-box;
         border: 1px solid #393939;
-        top: -30px;
         text-align: center;
-
-        &__right {
-            right: 0;
-        }
-
-        &__center {
-            left: 34.5%;
-        }
     }
 
     &_container {
         flex: 1 1 auto;
+        overflow: hidden;
     }
 }

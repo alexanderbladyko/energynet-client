@@ -58,6 +58,20 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
         const actionSelected: boolean = selectedTab === State.MainPanelTabs.Action
         return (
             <div className='main-panel_tabs'>
+                {
+                    !this.props.mainPanel.showActionTab
+                    &&
+                    <div
+                        className={
+                            classNames('main-panel_tab', {
+                                'main-panel_tab__selected': actionSelected,
+                            })
+                        }
+                        onClick={() => this.handleTabClick(State.MainPanelTabs.Action)}
+                    >
+                        {'Action'}
+                    </div>
+                }
                 <div
                     className={
                         classNames('main-panel_tab', {
@@ -70,7 +84,7 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
                 </div>
                 <div
                     className={
-                        classNames('main-panel_tab', 'main-panel_tab__right', {
+                        classNames('main-panel_tab', {
                             'main-panel_tab__selected': resourcesSelected,
                         })
                     }
@@ -78,25 +92,11 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
                 >
                     {'Resources'}
                 </div>
-                {
-                    !this.props.mainPanel.showActionTab
-                    &&
-                    <div
-                        className={
-                            classNames('main-panel_tab', 'main-panel_tab__center', {
-                                'main-panel_tab__selected': actionSelected,
-                            })
-                        }
-                        onClick={() => this.handleTabClick(State.MainPanelTabs.Action)}
-                    >
-                        {'Action'}
-                    </div>
-                }
             </div>
         )
     }
     private renderActionComponent(): React.ReactElement<{}> {
-        switch(this.props.game.meta.step) {
+        switch (this.props.game.meta.step) {
             case constants.StepTypes.AUCTION:
                 return <AuctionAction />
             case constants.StepTypes.AUCTION_STATIONS:

@@ -3,14 +3,10 @@ import {
     connect,
 } from 'react-redux'
 
-
 import {
     requestAuctionBet,
     requestAuctionFold,
-    selectStation,
 } from 'actions/auction'
-import * as socket from 'api/socket'
-import * as constants from 'constants'
 import * as State from 'state'
 import Station from 'components/Station/Station'
 import Currency from 'components/Currency/Currency'
@@ -24,7 +20,6 @@ interface IAuctionActionProps {
     userInfo: State.IUserInfoState
     requestAuctionBet: typeof requestAuctionBet
     requestAuctionFold: typeof requestAuctionFold
-    selectStation: typeof selectStation
 }
 
 interface IAuctionActionState {
@@ -37,9 +32,11 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         betRange: (HTMLInputElement)
     }
     public componentWillMount(): void {
-        this.setState({
-            bet: 0,
-        })
+        if (this.props.game.meta.auction) {
+            this.setState({
+                bet: this.props.game.meta.auction.bet,
+            })
+        }
     }
     public componentWillReceiveProps(nextProps: IAuctionActionProps): void {
         if (nextProps.game.meta.auction) {
@@ -82,14 +79,15 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         const userId: number = this.props.userInfo.data.id
         const user: State.IGamePlayer = this.props.game.data.find(player => player.id === userId)
         return (
-            <div>
+            <div className='action-bet_action'>
                 <div className='action-bet_value'>
-
-                    <button
-                        className='button'
-                        onClick={() => this.handleBetChange(-1)}
-                        disabled={this.state.bet === minBet}
-                    >{'-'}</button>
+                    <div className='action-bet_value-button'>
+                        <button
+                            className='button'
+                            onClick={() => this.handleBetChange(-1)}
+                            disabled={this.state.bet === minBet}
+                        >{'-'}</button>
+                    </div>
                     <div className='auction_control'>
                         <input
                             className=' '
@@ -103,14 +101,15 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                             <Currency value={this.state.bet} size={Currency.IconSize.SMALL} />
                         </span>
                     </div>
-                    <button
-                        className='button'
-                        onClick={() => this.handleBetChange(1)}
-                        disabled={this.state.bet === user.cash}
-                    >{'+'}</button>
-
+                    <div className='action-bet_value-button'>
+                        <button
+                            className='button'
+                            onClick={() => this.handleBetChange(1)}
+                            disabled={this.state.bet === user.cash}
+                        >{'+'}</button>
+                    </div>
                 </div>
-                <div>
+                <div className='action-bet_action-button'>
                     <button
                         className='button'
                         onClick={() => this.handleAuctionFold()}
@@ -118,6 +117,8 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                             visibility: user.stations.length === 0 ? 'none' : '',
                         }}
                     >{'Fold'}</button>
+                </div>
+                <div className='action-bet_action-button action-bet_action-button__right'>
                     <button
                         className='button'
                         onClick={() => this.handleAuctionBet()}
@@ -136,16 +137,6 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         this.setState({
             bet: newValue,
         })
-    }
-    private handleStationSelect(station: State.IAuctionStation): void {
-        if (this.props.game.meta.turn !== this.props.userInfo.data.id) {
-            return
-        }
-        if (this.props.auction.selectedStationId === station.cost) {
-            return
-        }
-
-        this.props.selectStation(station)
     }
     private handleAuctionBet(): void {
         this.props.requestAuctionBet(this.state.bet)
@@ -166,6 +157,5 @@ export default connect(
     {
         requestAuctionBet,
         requestAuctionFold,
-        selectStation,
     }
 )(AuctionAction)

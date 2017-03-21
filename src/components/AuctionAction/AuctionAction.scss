@@ -5,10 +5,16 @@
     &_value {
         display: flex;
         flex-flow: row;
+        height: 40px;
+        width: 100%;
     }
 
-    &_auction {
-        flex: 1 0 auto;
+    &_value-button {
+        width: 40px;
+    }
+
+    &_station {
+        flex: 0 1 auto;
     }
 
     &_action {
@@ -30,5 +36,17 @@
         left: 50%;
         transform: translate(-50%, -50%);
         pointer-events: none;
+    }
+
+    &_action-button {
+        position: absolute;
+        bottom: 10px;
+        width: 60px;
+        height: 60px;
+        margin: 0 10px;
+
+        &__right {
+            right: 0;
+        }
     }
 }

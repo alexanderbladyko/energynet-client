@@ -6,7 +6,6 @@ import {
     IGameAction,
 } from 'actions/game'
 import * as actionTypes from 'constants/actionTypes'
-import * as constants from 'constants'
 import * as State from 'state'
 
 

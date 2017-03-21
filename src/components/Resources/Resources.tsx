@@ -49,14 +49,10 @@ class Resources extends React.Component<IResourcesProps, {}> {
                     {this.renderResourceLine(constants.ResourceTypes.WASTE)}
                     {this.renderResourceLine(constants.ResourceTypes.URANIUM)}
                 </div>
-                <div className='resources_action'>
-                </div>
             </div>
         )
     }
     private renderResourceLine(resource: string): React.ReactElement<{}> {
-        const userId: number = this.props.userInfo.data.id
-        const yourTurn: boolean = (this.props.game.meta.turn === userId)
         const resourceGroupCount: number = this.props.map.data.resourceGroup[resource]
         const resourceLimit: number = this.props.map.data.resourceLimits[resource]
         const resourceCount: number = this.props.resources.data[resource]
@@ -70,7 +66,7 @@ class Resources extends React.Component<IResourcesProps, {}> {
             resources.push(
                 <Resource
                     key={i}
-                    resources={[resource]}
+                    resources={[resource, ]}
                     size={Resource.IconSize.SMALL}
                     disabled={i < resourceGroupCount - rest}
                 />
