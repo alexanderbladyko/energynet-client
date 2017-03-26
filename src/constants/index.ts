@@ -23,6 +23,13 @@ export class ResourceTypes {
     public static OIL: string = 'oil'
     public static WASTE: string = 'waste'
     public static URANIUM: string = 'uranium'
+
+    public static ALL: string[] = [
+        ResourceTypes.COAL,
+        ResourceTypes.OIL,
+        ResourceTypes.WASTE,
+        ResourceTypes.URANIUM,
+    ]
 }
 
 export enum GeometryTypes {

@@ -71,6 +71,11 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                     && lastBet
                     && this.renderYourTurnAction()
                 }
+                {
+                    !yourTurn
+                    && lastBet
+                    && this.renderWaitForAction()
+                }
             </div>
         )
     }
@@ -88,7 +93,7 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                             disabled={this.state.bet === minBet}
                         >{'-'}</button>
                     </div>
-                    <div className='auction_control'>
+                    <div className='action-bet_control'>
                         <input
                             className=' '
                             type='range'
@@ -97,7 +102,7 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                             value={this.state.bet}
                             onChange={this.handleSliderChange.bind(this)}
                         />
-                        <span className='auction_bet'>
+                        <span className='action-bet_bet'>
                             <Currency value={this.state.bet} size={Currency.IconSize.SMALL} />
                         </span>
                     </div>
@@ -124,6 +129,24 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                         onClick={() => this.handleAuctionBet()}
                     >{'Bet'}</button>
                 </div>
+            </div>
+        )
+    }
+    private renderWaitForAction(): React.ReactElement<{}> {
+        const bet: number = this.props.game.meta.auction.bet
+        const userId: number = this.props.userInfo.data.id
+        const user: State.IGamePlayer = this.props.game.data.find(player => player.id === userId)
+        return (
+            <div className='action-bet_action'>
+                <span className='action-bet_value'>
+                    {'Current bet: '}
+                    <Currency value={bet} size={Currency.IconSize.SMALL} />
+                </span>
+                <span className='action-bet_user'>
+                    {'Waiting for '}
+                    <span style={{color: user.color,}}>{user.id}</span>
+                    {' to bet'}
+                </span>
             </div>
         )
     }

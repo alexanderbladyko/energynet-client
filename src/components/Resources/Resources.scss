@@ -1,7 +1,18 @@
 .resources {
-    height: 104px;
+    height: 120px;
     padding: 0;
     margin: 0;
+
+    &_block {
+        width: 72px;
+        height: 120px;
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    &_block-cost {
+        text-align: center;
+    }
 
     &_lines {
         height: 104px;
@@ -11,6 +22,7 @@
 
     &_line {
         width: 100%;
+        height: 24px;
         display: inline-block;
     }
 
@@ -19,7 +31,8 @@
     }
 
     &_items {
-        width: 24px * 3;
-        float: left;
+        width: 72px;
+        height: 24px;
+        text-align: center;
     }
 }

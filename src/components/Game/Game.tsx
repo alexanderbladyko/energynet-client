@@ -30,6 +30,10 @@ import {
     requestPlayers,
     receivePlayers,
 } from 'actions/players'
+import {
+    requestResources,
+    receiveResources,
+} from 'actions/resources'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
 import ColorPick from 'components/ColorPick/ColorPick'
@@ -50,6 +54,8 @@ interface IGameProps {
     receiveAuction: typeof receiveAuction
     requestPlayers: typeof requestPlayers
     receivePlayers: typeof receivePlayers
+    requestResources: typeof requestResources
+    receiveResources: typeof receiveResources
     loadMapInfo: ILoadMapInfoAction
     loadMapGeo: ILoadMapGeoAction
 }
@@ -79,17 +85,27 @@ class Game extends React.Component<IGameProps, {}> {
         socket.subscribe('action', (data: State.IGameActionResponse): void => {
             this.props.receiveGameAction(data)
         })
+
         this.props.requestAuction()
         socket.send('auction', {})
 
         socket.subscribe('auction', (data: State.IGameActionResponse): void => {
             this.props.receiveAuction(data)
+
+        })
+
+        this.props.requestResources()
+        socket.send('resources', {})
+
+        socket.subscribe('resources', (data: State.IResources): void => {
+            this.props.receiveResources(data)
         })
     }
     public componentWillUnmount(): void {
         socket.unsubscribe('game')
         socket.unsubscribe('players')
         socket.unsubscribe('auction')
+        socket.unsubscribe('resources')
     }
     public render(): React.ReactElement<{}> {
         if (!this.props.game.data) {
@@ -129,6 +145,8 @@ export default connect(
             receivePlayers: bindActionCreators(receivePlayers, dispatch),
             requestAuction: bindActionCreators(requestAuction, dispatch),
             receiveAuction: bindActionCreators(receiveAuction, dispatch),
+            requestResources: bindActionCreators(requestResources, dispatch),
+            receiveResources: bindActionCreators(receiveResources, dispatch),
             loadMapInfo: loadMapInfo(dispatch),
             loadMapGeo: loadMapGeo(dispatch),
         }

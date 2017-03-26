@@ -2,12 +2,11 @@ import * as React from 'react'
 import {
     connect,
 } from 'react-redux'
+// hotfix for scrollbar module
+declare function require(arg: string): any;
+const ReactScrollbarModule: any = require('react-scrollbar')
+const ScrollArea: any = ReactScrollbarModule.default
 
-import {
-    requestResources,
-    receiveResources,
-} from 'actions/resources'
-import * as socket from 'api/socket'
 import * as constants from 'constants'
 import Currency from 'components/Currency/Currency'
 import Resource from 'components/Resource/Resource'
@@ -21,45 +20,55 @@ interface IResourcesProps {
     userInfo: State.IUserInfoState
     resources: State.IResourcesState
     map: State.IMapState
-    requestResources: typeof requestResources
-    receiveResources: typeof receiveResources
 }
 
 class Resources extends React.Component<IResourcesProps, {}> {
-    public componentWillMount(): void {
-        this.props.requestResources()
-        socket.send('resources', {})
-
-        socket.subscribe('resources', (data: State.IResources): void => {
-            this.props.receiveResources(data)
-        })
-    }
-    public componentWillUnmount(): void {
-        socket.unsubscribe('resources')
-    }
     public render(): React.ReactElement<{}> {
         if (!this.props.resources.data || !this.props.map.data) {
             return null
         }
+        const minCost: number = this.getMinCost()
+        const limitCost: number = this.getLimitCost()
+
+        const blocks: any[] = []
+        for (let i: number = minCost; i <= limitCost; i++) {
+            blocks.push(this.renderResourceBlock(i))
+        }
         return (
-            <div className='resources'>
-                <div className='resources_lines'>
-                    {this.renderResourceLine(constants.ResourceTypes.OIL)}
-                    {this.renderResourceLine(constants.ResourceTypes.COAL)}
-                    {this.renderResourceLine(constants.ResourceTypes.WASTE)}
-                    {this.renderResourceLine(constants.ResourceTypes.URANIUM)}
+            <ScrollArea
+                horizontal={true}
+                vertical={false}
+                contentClassName={`resources`}
+            >
+                {blocks}
+            </ScrollArea>
+        )
+    }
+    private renderResourceBlock(cost: number): React.ReactElement<{}> {
+        return (
+            <div className='resources_block' key={cost}>
+                <div className='resources_block-cost'>
+                    <Currency value={cost} size={Currency.IconSize.SMALL} />
                 </div>
+                {
+                    constants.ResourceTypes.ALL.map(resource => {
+                        return this.renderResourceLine(resource, cost)
+                    })
+                }
             </div>
         )
     }
-    private renderResourceLine(resource: string): React.ReactElement<{}> {
+    private renderResourceLine(resource: string, cost: number): React.ReactElement<{}> {
         const resourceGroupCount: number = this.props.map.data.resourceGroup[resource]
         const resourceLimit: number = this.props.map.data.resourceLimits[resource]
         const resourceCount: number = this.props.resources.data[resource]
-        const cost: number = Math.ceil((resourceLimit - resourceCount) / resourceGroupCount)
-        let rest: number = (resourceLimit - resourceCount) % resourceGroupCount
-        if (rest === 0) {
-            rest++
+        const minFullCost: number = Math.ceil((resourceLimit - resourceCount) / resourceGroupCount)
+        let after: number = (minFullCost - cost) * resourceGroupCount
+        if (minFullCost === cost) {
+            after = (resourceLimit - resourceCount) % resourceGroupCount - 1
+            if (resourceGroupCount === 1) {
+                after++
+            }
         }
         const resources: any[] = []
         for (let i: number = 0; i < resourceGroupCount; i++) {
@@ -68,20 +77,32 @@ class Resources extends React.Component<IResourcesProps, {}> {
                     key={i}
                     resources={[resource, ]}
                     size={Resource.IconSize.SMALL}
-                    disabled={i < resourceGroupCount - rest}
+                    disabled={i <= after}
                 />
             )
         }
         return (
-            <div className='resources_line'>
-                <div className='resources_price'>
-                    <Currency value={cost} size={Currency.IconSize.SMALL} />
-                </div>
-                <div className='resources_items'>
-                    {resources}
-                </div>
+            <div key={resource} className='resources_items'>
+                {resources}
             </div>
         )
+    }
+    private getMinCost(): number {
+        const minPrices: number[] = constants.ResourceTypes.ALL.map(resource => {
+            const resourceGroupCount: number = this.props.map.data.resourceGroup[resource]
+            const resourceLimit: number = this.props.map.data.resourceLimits[resource]
+            const resourceCount: number = this.props.resources.data[resource]
+            return Math.ceil((resourceLimit - resourceCount) / resourceGroupCount)
+        })
+        return Math.min(...minPrices)
+    }
+    private getLimitCost(): number {
+        const maxPrices: number[] = constants.ResourceTypes.ALL.map(resource => {
+            const resourceGroupCount: number = this.props.map.data.resourceGroup[resource]
+            const resourceLimit: number = this.props.map.data.resourceLimits[resource]
+            return Math.ceil(resourceLimit / resourceGroupCount)
+        })
+        return Math.min(...maxPrices)
     }
 }
 
@@ -94,8 +115,4 @@ export default connect(
             resources: state.resources,
         }
     },
-    {
-        requestResources,
-        receiveResources,
-    }
 )(Resources)

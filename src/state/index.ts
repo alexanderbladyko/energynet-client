@@ -135,7 +135,6 @@ export interface IGameMeta {
     auction?: {
         bet: number
         station: number
-        user: number
     }
     map: string
 }
