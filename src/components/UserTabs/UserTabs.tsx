@@ -64,13 +64,13 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                                 }}
                                 onClick={() => this.handleTabClick(user.id)}
                             >
-                                <div>
+                                <div className='users-tabs_value'>
                                     <Currency
                                         value={user.cash}
                                         size={Currency.IconSize.SMALL}
                                     />
                                 </div>
-                                <div>
+                                <div className='users-tabs_value'>
                                     <Buildings
                                         value={user.cities.length}
                                         size={Buildings.IconSize.SMALL}

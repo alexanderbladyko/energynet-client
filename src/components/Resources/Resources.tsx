@@ -11,6 +11,7 @@ import * as constants from 'constants'
 import Currency from 'components/Currency/Currency'
 import Resource from 'components/Resource/Resource'
 import * as State from 'state'
+import { fixContainerWidth, } from 'utils/react'
 
 import './Resources.scss'
 
@@ -23,6 +24,9 @@ interface IResourcesProps {
 }
 
 class Resources extends React.Component<IResourcesProps, {}> {
+    public componentDidMount(): void {
+        fixContainerWidth('.js-resources')
+    }
     public render(): React.ReactElement<{}> {
         if (!this.props.resources.data || !this.props.map.data) {
             return null
@@ -38,7 +42,7 @@ class Resources extends React.Component<IResourcesProps, {}> {
             <ScrollArea
                 horizontal={true}
                 vertical={false}
-                contentClassName={`resources`}
+                contentClassName={`resources js-resources`}
             >
                 {blocks}
             </ScrollArea>

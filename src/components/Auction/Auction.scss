@@ -8,4 +8,8 @@
             width: #{$station_width * $i}px;
         }
     }
+
+    &_station {
+        display: inline-block;
+    }
 }

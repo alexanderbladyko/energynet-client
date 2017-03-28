@@ -12,6 +12,7 @@ import {
 } from 'actions/auction'
 import * as State from 'state'
 import Station from 'components/Station/Station'
+import { fixContainerWidth, } from 'utils/react'
 
 import './Auction.scss'
 
@@ -29,6 +30,9 @@ interface IAuctionState {
 
 
 class Auction extends React.Component<IAuctionProps, IAuctionState> {
+    public componentDidMount(): void {
+        fixContainerWidth('.js-auction')
+    }
     public render(): React.ReactElement<{}> {
         if (this.props.auction.loading) {
             return (
@@ -43,17 +47,19 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
             <ScrollArea
                 horizontal={true}
                 vertical={false}
-                contentClassName={`auction auction__${this.props.auction.data.length}`}
+                contentClassName={`js-auction auction auction__${this.props.auction.data.length}`}
             >
             {
                 this.props.auction.data
                 && this.props.auction.data.map(station => {
                     return (
-                        <Station
-                            key={station.cost}
-                            expanded={true}
-                            stationId={station.cost}
-                        />
+                        <div key={station.cost} className='js-auction_station auction_station'>
+                            <Station
+
+                                expanded={true}
+                                stationId={station.cost}
+                            />
+                        </div>
                     )
                 })
             }
