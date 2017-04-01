@@ -10,6 +10,7 @@ import {
 } from 'actions/mainPanel'
 import Auction from 'components/Auction/Auction'
 import AuctionAction from 'components/AuctionAction/AuctionAction'
+import AuctionChoose from 'components/AuctionChoose/AuctionChoose'
 import Resources from 'components/Resources/Resources'
 import * as constants from 'constants'
 import * as State from 'state'
@@ -99,6 +100,8 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
         switch (this.props.game.meta.step) {
             case constants.StepTypes.AUCTION:
                 return <AuctionAction />
+            case constants.StepTypes.AUCTION_CHOOSE:
+                return <AuctionChoose />
             case constants.StepTypes.AUCTION_STATIONS:
                 return null  // TODO: change to real component
             case constants.StepTypes.RESOURCES:

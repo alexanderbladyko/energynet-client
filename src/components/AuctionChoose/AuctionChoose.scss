@@ -1,0 +1,18 @@
+.auction-choose {
+    display: flex;
+
+    &_stations {
+        white-space: nowrap;
+    }
+
+    &_station {
+        display: inline-block;
+    }
+
+    .auction-choose &_button {
+        position: relative;
+        height: 40px;
+        top: 100%;
+        transform: translateY(-100%);
+    }
+}

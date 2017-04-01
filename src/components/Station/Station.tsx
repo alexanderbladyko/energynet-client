@@ -16,6 +16,8 @@ interface IStationOwnProps {
     stationId: number
     expanded?: boolean
     onClick?: (stationId: number) => void
+    disabled?: boolean
+    highlighted?: boolean
 }
 
 interface IStationProps {
@@ -37,6 +39,8 @@ class Station extends React.Component<IStationOwnProps & IStationProps, {}> {
                 className={
                     classNames('station', {
                         'station__expanded': this.props.expanded,
+                        'station__highlighted': this.props.highlighted,
+                        'station__disabled': this.props.disabled,
                     })
                 }
                 onClick={() => this.props.onClick && this.props.onClick(this.props.stationId)}

@@ -7,9 +7,6 @@ declare function require(arg: string): any;
 const ReactScrollbarModule: any = require('react-scrollbar')
 const ScrollArea: any = ReactScrollbarModule.default
 
-import {
-    selectStation,
-} from 'actions/auction'
 import * as State from 'state'
 import Station from 'components/Station/Station'
 import { fixContainerWidth, } from 'utils/react'
@@ -21,7 +18,6 @@ interface IAuctionProps {
     auction: State.IAuctionState
     game: State.IGameState
     userInfo: State.IUserInfoState
-    selectStation: typeof selectStation
 }
 
 interface IAuctionState {
@@ -47,15 +43,14 @@ class Auction extends React.Component<IAuctionProps, IAuctionState> {
             <ScrollArea
                 horizontal={true}
                 vertical={false}
-                contentClassName={`js-auction auction auction__${this.props.auction.data.length}`}
+                contentClassName={`js-auction auction`}
             >
             {
                 this.props.auction.data
                 && this.props.auction.data.map(station => {
                     return (
-                        <div key={station.cost} className='js-auction_station auction_station'>
+                        <div key={station.cost} className='auction_station'>
                             <Station
-
                                 expanded={true}
                                 stationId={station.cost}
                             />
@@ -75,8 +70,5 @@ export default connect(
             game: state.game,
             userInfo: state.userInfo,
         }
-    },
-    {
-        selectStation,
     }
 )(Auction)

@@ -51,4 +51,12 @@ $station_width: 102px;
     &_buildings {
         display: inline-block;
     }
+
+    &__disabled {
+        opacity: .2;
+    }
+
+    &__highlighted {
+        box-shadow: 1px 1px 0 #343243;
+    }
 }

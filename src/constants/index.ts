@@ -5,6 +5,7 @@ export const DEFAULT_PLAYERS_LIMIT: number = 4
 
 export class StepTypes {
     public static AUCTION: string = 'auction'
+    public static AUCTION_CHOOSE: string = 'auction_choose'
     public static AREAS: string = 'areas'
     public static BUILDING: string = 'building'
     public static COLORS: string = 'colors'
@@ -16,6 +17,7 @@ export class ActionTypes {
     public static AUCTION_BET: string = 'auction_bet'
     public static AUCTION_FOLD: string = 'auction_fold'
     public static RESOURCE_BUY: string = 'resource_buy'
+    public static AUCTION_SELECT_STATION: string = 'auction_select'
 }
 
 export class ResourceTypes {

@@ -4,9 +4,9 @@ import {
 } from 'react-redux'
 
 import {
-    requestAuctionBet,
-    requestAuctionFold,
-} from 'actions/auction'
+    requestGameAction,
+} from 'actions/action'
+import * as constants from 'constants'
 import * as State from 'state'
 import Station from 'components/Station/Station'
 import Currency from 'components/Currency/Currency'
@@ -18,8 +18,7 @@ interface IAuctionActionProps {
     auction: State.IAuctionState
     game: State.IGameState
     userInfo: State.IUserInfoState
-    requestAuctionBet: typeof requestAuctionBet
-    requestAuctionFold: typeof requestAuctionFold
+    requestGameAction: typeof requestGameAction
 }
 
 interface IAuctionActionState {
@@ -162,10 +161,10 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         })
     }
     private handleAuctionBet(): void {
-        this.props.requestAuctionBet(this.state.bet)
+        this.props.requestGameAction(constants.ActionTypes.AUCTION_BET, this.state.bet)
     }
     private handleAuctionFold(): void {
-        this.props.requestAuctionFold()
+        this.props.requestGameAction(constants.ActionTypes.AUCTION_FOLD, undefined)
     }
 }
 
@@ -178,7 +177,6 @@ export default connect(
         }
     },
     {
-        requestAuctionBet,
-        requestAuctionFold,
+        requestGameAction,
     }
 )(AuctionAction)

@@ -22,3 +22,10 @@ export interface ITypeAction extends IBaseAction {
         type: string
     }
 }
+
+export interface ITypeDataAction<T> extends IBaseAction {
+    payload: {
+        type: string
+        data: T
+    }
+}

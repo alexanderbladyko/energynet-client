@@ -2,13 +2,6 @@
     white-space: nowrap;
     margin: 0 auto;
 
-    $station_width: 102;
-    @for $i from 1 through 10 {
-        &__#{$i} {
-            width: #{$station_width * $i}px;
-        }
-    }
-
     &_station {
         display: inline-block;
     }

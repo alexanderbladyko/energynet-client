@@ -7,6 +7,7 @@ declare function require(arg: string): any;
 const ReactScrollbarModule: any = require('react-scrollbar')
 const ScrollArea: any = ReactScrollbarModule.default
 
+
 import * as constants from 'constants'
 import Currency from 'components/Currency/Currency'
 import Resource from 'components/Resource/Resource'
@@ -22,6 +23,7 @@ interface IResourcesProps {
     resources: State.IResourcesState
     map: State.IMapState
 }
+
 
 class Resources extends React.Component<IResourcesProps, {}> {
     public componentDidMount(): void {
