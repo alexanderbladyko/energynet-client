@@ -9,8 +9,8 @@ export class StepTypes {
     public static AREAS: string = 'areas'
     public static BUILDING: string = 'building'
     public static COLORS: string = 'colors'
-    public static RESOURCES: string = 'resources'
-    public static AUCTION_STATIONS: string = 'auction_stations'
+    public static RESOURCES_BUY: string = 'resources_buy'
+    public static EXCLUDE_STATION: string = 'exclude_station'
 }
 
 export class ActionTypes {
@@ -18,6 +18,7 @@ export class ActionTypes {
     public static AUCTION_FOLD: string = 'auction_fold'
     public static RESOURCE_BUY: string = 'resource_buy'
     public static AUCTION_SELECT_STATION: string = 'auction_select'
+    public static EXCLUDE_STATION: string = 'exclude_station'
 }
 
 export class ResourceTypes {

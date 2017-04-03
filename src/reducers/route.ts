@@ -120,5 +120,9 @@ export default {
                 path: routes.GAME_ROUTE,
             }
         }
+        return {
+            ...state,
+            path: routes.HOME_ROUTE,
+        }
     },
 }

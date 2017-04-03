@@ -1,0 +1,48 @@
+.resources-buy {
+    display: flex;
+
+    &_resources {
+        flex: 1 1 auto;
+    }
+
+    &_block-cost {
+        text-align: center;
+    }
+
+    &_lines {
+        height: 104px;
+        padding: 0;
+        margin: 0;
+    }
+
+    &_items {
+        height: 24px;
+        text-align: center;
+    }
+
+    &_tabs {
+        display: flex;
+    }
+
+    &_tab {
+        flex: 1 1 auto;
+        text-align: center;
+        border: 1px solid #454545;
+    }
+
+    &_controls {
+        display: flex;
+    }
+
+    &_control {
+        width: 40px;
+        height: 40px;
+    }
+
+    .resources-buy &_button {
+        position: relative;
+        height: 40px;
+        top: 100%;
+        transform: translateY(-100%);
+    }
+}

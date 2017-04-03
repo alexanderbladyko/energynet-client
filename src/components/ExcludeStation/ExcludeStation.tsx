@@ -16,75 +16,74 @@ import * as State from 'state'
 import Station from 'components/Station/Station'
 import { fixContainerWidth, } from 'utils/react'
 
-import './AuctionChoose.scss'
+import './ExcludeStation.scss'
 
 
-interface IAuctionChooseProps {
-    auction: State.IAuctionState
+interface IExcludeStationProps {
     game: State.IGameState
     map: State.IMapState
     userInfo: State.IUserInfoState
     requestGameAction: typeof requestGameAction
 }
 
-interface IAuctionChooseState {
+interface IExcludeStationState {
     selectedStation: number|void
 }
 
 
-class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseState> {
+class ExcludeStation extends React.Component<IExcludeStationProps, IExcludeStationState> {
     public componentWillMount(): void {
         this.setState({
             selectedStation: undefined,
         })
     }
     public componentDidMount(): void {
-        fixContainerWidth('.js-auction_choose')
+        fixContainerWidth('.js-exclude_station')
     }
     public componentWillUpdate(): void {
-        fixContainerWidth('.js-auction_choose')
+        fixContainerWidth('.js-exclude_station')
     }
     public componentDidUpdate(): void {
-        fixContainerWidth('.js-auction_choose')
+        fixContainerWidth('.js-exclude_station')
     }
     public render(): React.ReactElement<{}> {
-        if (this.props.auction.loading) {
+        if (this.props.game.loading) {
             return (
                 <div>{'Loading...'}</div>
             )
         }
-        if (!this.props.auction.data) {
+        if (!this.props.game.data) {
             return null
         }
 
+        const userId: number = this.props.userInfo.data.id
+        const user: State.IGamePlayer = this.props.game.data.find(player => player.id === userId)
         return (
-            <div className='auction-choose'>
+            <div className='exclude-station'>
                 <ScrollArea
                     horizontal={true}
                     vertical={false}
-                    className='auction-choose_container'
-                    contentClassName={`js-auction_choose auction-choose_stations`}
+                    className='exclude-station_container'
+                    contentClassName={`js-exclude_station exclude-station_stations`}
                 >
                 {
-                    this.props.auction.data
-                    && this.props.auction.data.map(station => {
+                    user.stations.map(stationId => {
                         return (
-                            <div key={station.cost} className='auction-choose_station'>
+                            <div key={stationId} className='exclude-station_station'>
                                 <Station
                                     expanded={true}
-                                    disabled={!station.available}
-                                    highlighted={station.cost === this.state.selectedStation}
-                                    stationId={station.cost}
-                                    onClick={() => this.handleStationSelect(station.cost)}
+                                    highlighted={stationId === this.state.selectedStation}
+                                    stationId={stationId}
+                                    onClick={() => this.handleStationSelect(stationId)}
                                 />
                             </div>
                         )
                     })
                 }
                 </ScrollArea>
-                <div className='auction-choose_action'>
+                <div className='exclude-station_action'>
                     <button
-                        className='button auction-choose_button'
+                        className='button exclude-station_button'
                         onClick={() => this.handleApplyClick()}
                     >{
                         'Apply'
@@ -100,8 +99,8 @@ class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseS
     }
     private handleApplyClick(): void {
         if (this.state.selectedStation) {
-            socket.send(constants.ActionTypes.AUCTION_SELECT_STATION, this.state.selectedStation)
-            this.props.requestGameAction(constants.ActionTypes.AUCTION_SELECT_STATION, this.state.selectedStation)
+            socket.send(constants.ActionTypes.EXCLUDE_STATION, this.state.selectedStation)
+            this.props.requestGameAction(constants.ActionTypes.EXCLUDE_STATION, this.state.selectedStation)
         }
     }
 }
@@ -109,7 +108,6 @@ class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseS
 export default connect(
     (state: State.IState): any => {
         return {
-            auction: state.auction,
             game: state.game,
             map: state.map,
             userInfo: state.userInfo,
@@ -118,4 +116,4 @@ export default connect(
     {
         requestGameAction,
     }
-)(AuctionChoose)
+)(ExcludeStation)

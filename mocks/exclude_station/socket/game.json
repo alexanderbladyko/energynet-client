@@ -1,0 +1,119 @@
+[
+    {
+        "name": "game",
+        "data": {
+            "meta": {
+                "map": "russia",
+                "turn": 3,
+                "phase": 1,
+                "step": "exclude_station",
+                "areas": [
+                    "area_01", "area_02", "area_03", "area_04"
+                ]
+            },
+            "data": [
+                {
+                    "id": 3,
+                    "cash": 63,
+                    "color": "#4286f4",
+                    "stations": [
+                        13, 15, 19
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                        "orenburg", 10,
+                        "ekaterinburg", 10
+                    ]
+                },
+                {
+                    "id": 31,
+                    "cash": 53,
+                    "color": "#ce2fcb",
+                    "stations": [
+                        5, 9, 23
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                        "moscow", 10,
+                        "tomsk", 10
+                    ]
+                },
+                {
+                    "id": 32,
+                    "cash": 13,
+                    "color": "#ede631",
+                    "stations": [
+                        9, 17
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                        "novosibirsk", 10,
+                        "samara", 10
+                    ]
+                },
+                {
+                    "id": 35,
+                    "cash": 13,
+                    "color": "#d62424",
+                    "stations": [
+                        33.5, 50
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                    ]
+                },
+                {
+                    "id": 38,
+                    "cash": 13,
+                    "color": "#212020",
+                    "stations": [
+                        39, 42
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                    ]
+                },
+                {
+                    "id": 98,
+                    "cash": 13,
+                    "color": "#24af2b",
+                    "stations": [
+                    ],
+                    "resources": {
+                        "coal": 3,
+                        "oil": 1,
+                        "waste": 0,
+                        "uranium": 0
+                    },
+                    "cities": [
+                    ]
+                }
+            ]
+        }
+    }
+]

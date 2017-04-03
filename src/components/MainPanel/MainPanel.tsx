@@ -11,7 +11,9 @@ import {
 import Auction from 'components/Auction/Auction'
 import AuctionAction from 'components/AuctionAction/AuctionAction'
 import AuctionChoose from 'components/AuctionChoose/AuctionChoose'
+import ExcludeStation from 'components/ExcludeStation/ExcludeStation'
 import Resources from 'components/Resources/Resources'
+import ResourcesBuy from 'components/ResourcesBuy/ResourcesBuy'
 import * as constants from 'constants'
 import * as State from 'state'
 
@@ -102,10 +104,10 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
                 return <AuctionAction />
             case constants.StepTypes.AUCTION_CHOOSE:
                 return <AuctionChoose />
-            case constants.StepTypes.AUCTION_STATIONS:
-                return null  // TODO: change to real component
-            case constants.StepTypes.RESOURCES:
-                return null  // TODO: change to real component
+            case constants.StepTypes.EXCLUDE_STATION:
+                return <ExcludeStation />
+            case constants.StepTypes.RESOURCES_BUY:
+                return <ResourcesBuy />
             case constants.StepTypes.BUILDING:
                 return null  // TODO: change to real component
             default:

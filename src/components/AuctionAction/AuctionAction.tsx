@@ -6,6 +6,7 @@ import {
 import {
     requestGameAction,
 } from 'actions/action'
+import * as socket from 'api/socket'
 import * as constants from 'constants'
 import * as State from 'state'
 import Station from 'components/Station/Station'
@@ -161,9 +162,11 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         })
     }
     private handleAuctionBet(): void {
+        socket.send(constants.ActionTypes.AUCTION_BET, this.state.bet)
         this.props.requestGameAction(constants.ActionTypes.AUCTION_BET, this.state.bet)
     }
     private handleAuctionFold(): void {
+        socket.send(constants.ActionTypes.AUCTION_FOLD, undefined)
         this.props.requestGameAction(constants.ActionTypes.AUCTION_FOLD, undefined)
     }
 }
