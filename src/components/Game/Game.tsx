@@ -120,6 +120,7 @@ class Game extends React.Component<IGameProps, {}> {
         return (
             <div>
                 <UserTabs />
+                <Map />
                 <MainPanel />
             </div>
         )

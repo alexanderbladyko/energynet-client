@@ -6,6 +6,10 @@
     z-index: 1;
     background-color: #fff;
 
+    &__collapsed {
+        display: none;
+    }
+
     &-tabs {
         display: flex;
         flex-flow: row;

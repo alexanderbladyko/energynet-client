@@ -7,6 +7,7 @@ import * as classNames from 'classnames'
 import {
     selectTab,
     toggleTab,
+    togglePanels,
 } from 'actions/mainPanel'
 import Auction from 'components/Auction/Auction'
 import AuctionAction from 'components/AuctionAction/AuctionAction'
@@ -25,6 +26,7 @@ interface IMainPanelProps {
     mainPanel: State.IMainPanelState
     selectTab: typeof selectTab
     toggleTab: typeof toggleTab
+    togglePanels: typeof togglePanels
 }
 
 
@@ -33,7 +35,12 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
         const selectedTab: State.MainPanelTabs = this.props.mainPanel.selectedTab
 
         return (
-            <div className='main-panel'>
+            <div className={
+                classNames('main-panel', {
+                    'main-panel__collapsed': !this.props.mainPanel.expanded,
+                })
+            }>
+
                 {
                     this.renderMainPanelTabs()
                 }
@@ -50,6 +57,9 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
                         selectedTab === State.MainPanelTabs.Action
                         && this.renderActionComponent()
                     }
+                </div>
+                <div className='main-panel_toggle' onClick={() => this.props.togglePanels()}>
+                    Toggle
                 </div>
             </div>
         )
@@ -130,5 +140,6 @@ export default connect(
     {
         selectTab,
         toggleTab,
+        togglePanels,
     }
 )(MainPanel)

@@ -65,14 +65,13 @@ class Map extends React.Component<IMapProps, {}> {
 
                 this.refreshAdapters()
 
-                store.subscribe(this.refreshAdapters)
+                store.subscribe(this.refreshAdapters.bind(this))
             })
         }
     }
 
     private refreshAdapters(): void {
         adapters.forEach(adapter => adapter.setState(store.getState()))
-
         adapters.forEach(adapter => adapter.update(this.mapComponent, this.props.geo.data.features))
 
     }

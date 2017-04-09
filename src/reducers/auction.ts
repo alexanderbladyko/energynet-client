@@ -1,6 +1,5 @@
 import {
     IBaseAction,
-    IDataAction,
 } from 'actions/base'
 import {
     IAuctionDataAction,
@@ -15,7 +14,6 @@ export default {
         return {
             ...state,
             loading: true,
-            selectedStationId: 0,
         }
     },
 
@@ -25,15 +23,7 @@ export default {
             loading: false,
             meta: action.meta,
             data: action.payload.data,
-            selectedStationId: 0,
         }
     },
 
-    [actionTypes.AUCTION_STATION_SELECT]:
-        function(state: State.IAuctionState, action: IDataAction<State.IAuctionStation>): State.IAuctionState {
-            return {
-                ...state,
-                selectedStationId: action.payload.data.cost,
-            }
-        },
 }

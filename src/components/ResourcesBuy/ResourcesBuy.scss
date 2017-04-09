@@ -1,48 +1,66 @@
 .resources-buy {
     display: flex;
 
+    &_container {
+        flex: 1 1 auto;
+    }
+
+    &_action {
+        flex: 0 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_count {
+        display: inline-block;
+        min-width: 15px;
+    }
+
+    &_info {
+        width: 100%;
+    }
+
+    &_cost {
+        display: inline-block;
+        width: 50%;
+    }
+
+    &_clear {
+        display: inline-block;
+        width: 50%;
+    }
+
     &_resources {
-        flex: 1 1 auto;
-    }
-
-    &_block-cost {
-        text-align: center;
-    }
-
-    &_lines {
-        height: 104px;
-        padding: 0;
-        margin: 0;
-    }
-
-    &_items {
-        height: 24px;
-        text-align: center;
-    }
-
-    &_tabs {
+        min-height: 30px;
         display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    &_tab {
-        flex: 1 1 auto;
-        text-align: center;
+    &_resource {
+        box-sizing: border-box;
         border: 1px solid #454545;
+        width: 80px;
     }
 
-    &_controls {
-        display: flex;
+    &_price {
+        display: inline-block;
+    }
+
+    &_block {
+        display: inline-block;
+        float: left;
+        height: 120px;
+        text-align: center;
     }
 
     &_control {
         width: 40px;
         height: 40px;
+        flex: 1 0 auto;
     }
 
-    .resources-buy &_button {
-        position: relative;
-        height: 40px;
-        top: 100%;
-        transform: translateY(-100%);
+    &_extender {
+        flex: 1 1 auto;
     }
 }

@@ -6,6 +6,18 @@
     flex-direction: row;
 
     &_tabs {
+        .main-panel__collapsed & {
+            display: none;
+        }
+    }
+
+    &_container {
+        .main-panel__collapsed & {
+            display: none;
+        }
+    }
+
+    &_tabs {
         width: 60px;
         height: 100%;
         flex: 0 1 auto;
@@ -21,5 +33,14 @@
     &_container {
         flex: 1 1 auto;
         overflow: hidden;
+    }
+
+    &_toggle {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        border: 1px solid #393939;
     }
 }

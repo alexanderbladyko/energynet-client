@@ -4,6 +4,7 @@ import {
 
 import action from 'reducers/action'
 import auction from 'reducers/auction'
+import auctionChoose from 'reducers/auctionChoose'
 import config from 'reducers/config'
 import game from 'reducers/game'
 import games from 'reducers/games'
@@ -16,6 +17,7 @@ import newGame from 'reducers/newGame'
 import players from 'reducers/players'
 import register from 'reducers/register'
 import resources from 'reducers/resources'
+import resourcesBuy from 'reducers/resourcesBuy'
 import route from 'reducers/route'
 import socket from 'reducers/socket'
 import status from 'reducers/status'
@@ -45,6 +47,7 @@ function getReducer(reducerFunctions: any, initialState: any): Reducer<any> {
 export default {
     action: getReducer(action, initialState.action),
     auction: getReducer(auction, initialState.auction),
+    auctionChoose: getReducer(auctionChoose, initialState.auctionChoose),
     config: getReducer(config, initialState.config),
     game: getReducer(game, initialState.game),
     games: getReducer(games, initialState.games),
@@ -57,6 +60,7 @@ export default {
     players: getReducer(players, initialState.players),
     register: getReducer(register, initialState.register),
     resources: getReducer(resources, initialState.resources),
+    resourcesBuy: getReducer(resourcesBuy, initialState.resourcesBuy),
     route: getReducer(route, initialState.route),
     socket: getReducer(socket, initialState.socket),
     status: getReducer(status, initialState.status),

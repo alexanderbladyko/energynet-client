@@ -166,9 +166,7 @@ export interface IAuction {
     data?: IAuctionStation[]
 }
 
-export interface IAuctionState extends IBaseState, IAuction {
-    selectedStationId: number
-}
+export interface IAuctionState extends IBaseState, IAuction {}
 
 export interface IResources {
     [name: string]: number
@@ -288,11 +286,23 @@ export interface IMainPanelState {
     selectedTab: MainPanelTabs
     locked: boolean
     showActionTab: boolean
+    expanded: boolean
+}
+
+export interface IResourcesBuyState {
+    stations: {
+        [stationId: number]: IResources
+    }
+}
+
+export interface IAuctionChooseState {
+    selectedStationId: number|void
 }
 
 export interface IState extends Object {
     action: IGameActionState
     auction: IAuctionState
+    auctionChoose: IAuctionChooseState
     config: IConfigState
     game: IGameState
     games: IGamesState
@@ -305,6 +315,7 @@ export interface IState extends Object {
     players: IPlayersState
     register: IRegisterState
     resources: IResourcesState
+    resourcesBuy: IResourcesBuyState
     route: IRouteState
     socket: ISocketState
     status: IStatusState
@@ -321,7 +332,9 @@ export const initialState: IState = {
     auction: {
         error: false,
         loading: false,
-        selectedStationId: 0,
+    },
+    auctionChoose: {
+        selectedStationId: undefined,
     },
     config: {
         error: false,
@@ -358,6 +371,7 @@ export const initialState: IState = {
         selectedTab: MainPanelTabs.Auction,
         locked: false,
         showActionTab: false,
+        expanded: true,
     },
     map: {
         error: false,
@@ -374,6 +388,9 @@ export const initialState: IState = {
     resources: {
         error: false,
         loading: false,
+    },
+    resourcesBuy: {
+        stations: {},
     },
     route: {
         path: routes.LOADING_ROUTE,

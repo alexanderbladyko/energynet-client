@@ -35,4 +35,11 @@ export default {
             selectedTab,
         }
     },
+
+    [actionTypes.MAIN_PANEL_TOGGLE]: function(state: State.IMainPanelState, action: IBaseAction): State.IMainPanelState {
+        return {
+            ...state,
+            expanded: !state.expanded,
+        }
+    },
 }

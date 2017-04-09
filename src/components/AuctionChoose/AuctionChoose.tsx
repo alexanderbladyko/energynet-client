@@ -10,6 +10,9 @@ const ScrollArea: any = ReactScrollbarModule.default
 import {
     requestGameAction,
 } from 'actions/action'
+import {
+    selectStation,
+} from 'actions/auctionChoose'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
 import * as State from 'state'
@@ -21,18 +24,16 @@ import './AuctionChoose.scss'
 
 interface IAuctionChooseProps {
     auction: State.IAuctionState
+    auctionChoose: State.IAuctionChooseState
     game: State.IGameState
     map: State.IMapState
     userInfo: State.IUserInfoState
     requestGameAction: typeof requestGameAction
-}
-
-interface IAuctionChooseState {
-    selectedStation: number|void
+    selectStation: typeof selectStation
 }
 
 
-class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseState> {
+class AuctionChoose extends React.Component<IAuctionChooseProps, {}> {
     public componentWillMount(): void {
         this.setState({
             selectedStation: undefined,
@@ -73,7 +74,7 @@ class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseS
                                 <Station
                                     expanded={true}
                                     disabled={!station.available}
-                                    highlighted={station.cost === this.state.selectedStation}
+                                    highlighted={station.cost === this.props.auctionChoose.selectedStationId}
                                     stationId={station.cost}
                                     onClick={() => this.handleStationSelect(station.cost)}
                                 />
@@ -94,14 +95,12 @@ class AuctionChoose extends React.Component<IAuctionChooseProps, IAuctionChooseS
         )
     }
     private handleStationSelect(stationId: number): void {
-        this.setState({
-            selectedStation: stationId,
-        })
+        this.props.selectStation(stationId)
     }
     private handleApplyClick(): void {
-        if (this.state.selectedStation) {
-            socket.send(constants.ActionTypes.AUCTION_SELECT_STATION, this.state.selectedStation)
-            this.props.requestGameAction(constants.ActionTypes.AUCTION_SELECT_STATION, this.state.selectedStation)
+        if (this.props.auctionChoose.selectedStationId) {
+            socket.send(constants.ActionTypes.AUCTION_SELECT_STATION, this.props.auctionChoose.selectedStationId)
+            this.props.requestGameAction(constants.ActionTypes.AUCTION_SELECT_STATION, this.props.auctionChoose.selectedStationId)
         }
     }
 }
@@ -110,6 +109,7 @@ export default connect(
     (state: State.IState): any => {
         return {
             auction: state.auction,
+            auctionChoose: state.auctionChoose,
             game: state.game,
             map: state.map,
             userInfo: state.userInfo,
@@ -117,5 +117,6 @@ export default connect(
     },
     {
         requestGameAction,
+        selectStation,
     }
 )(AuctionChoose)

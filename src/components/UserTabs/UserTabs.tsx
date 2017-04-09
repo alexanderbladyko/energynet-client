@@ -20,6 +20,7 @@ import './UserTabs.scss'
 
 interface IUserTabsProps {
     game: State.IGameState
+    mainPanel: State.IMainPanelState
     userTabs: State.IUserTabsState
     selectTab: typeof selectTab
     toggleTab: typeof toggleTab
@@ -29,7 +30,11 @@ interface IUserTabsProps {
 class UserTabs extends React.Component<IUserTabsProps, {}> {
     public render(): React.ReactElement<{}> {
         return (
-            <div className='users'>
+            <div className={
+                classNames('users', {
+                    'users__collapsed': !this.props.mainPanel.expanded,
+                })
+            }>
                 {this.renderUserTabs()}
                 {this.renderUserInfo()}
             </div>
@@ -155,6 +160,7 @@ export default connect(
         return {
             game: state.game,
             userTabs: state.userTabs,
+            mainPanel: state.mainPanel,
         }
     },
     {

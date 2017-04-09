@@ -21,3 +21,9 @@ export function toggleTab(): IBaseAction {
         type: actionTypes.MAIN_PANEL_TOGGLE_LOCK,
     }
 }
+
+export function togglePanels(): IBaseAction {
+    return {
+        type: actionTypes.MAIN_PANEL_TOGGLE,
+    }
+}
