@@ -7,7 +7,7 @@ export class StepTypes {
     public static AUCTION: string = 'auction'
     public static AUCTION_CHOOSE: string = 'auction_choose'
     public static AREAS: string = 'areas'
-    public static BUILDING: string = 'building'
+    public static CITIES_BUY: string = 'cities_buy'
     public static COLORS: string = 'colors'
     public static RESOURCES_BUY: string = 'resources_buy'
     public static EXCLUDE_STATION: string = 'exclude_station'

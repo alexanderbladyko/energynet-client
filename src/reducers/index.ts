@@ -6,6 +6,7 @@ import action from 'reducers/action'
 import auction from 'reducers/auction'
 import auctionChoose from 'reducers/auctionChoose'
 import config from 'reducers/config'
+import citiesBuy from 'reducers/citiesBuy'
 import game from 'reducers/game'
 import games from 'reducers/games'
 import geo from 'reducers/geo'
@@ -49,6 +50,7 @@ export default {
     auction: getReducer(auction, initialState.auction),
     auctionChoose: getReducer(auctionChoose, initialState.auctionChoose),
     config: getReducer(config, initialState.config),
+    citiesBuy: getReducer(citiesBuy, initialState.citiesBuy),
     game: getReducer(game, initialState.game),
     games: getReducer(games, initialState.games),
     geo: getReducer(geo, initialState.geo),

@@ -219,6 +219,14 @@ export interface IMapStation {
     resources: string[]
 }
 
+export interface IMapJunction {
+    [to: string]: number
+}
+
+export interface IMapGraph {
+    [from: string]: IMapJunction
+}
+
 export interface IMap {
     areasCount: number[]
     refill: IRefill[]
@@ -229,6 +237,10 @@ export interface IMap {
     payment: number[]
     resourceLimits: IResourceLimits
     resourceGroup: IResourceLimits
+    areas: IArea[]
+    cities: ICity[]
+    junctions: IJunction[]
+    graph: IMapGraph
 }
 
 export interface IMapState extends IBaseState {
@@ -299,11 +311,16 @@ export interface IAuctionChooseState {
     selectedStationId: number|void
 }
 
+export interface ICitiesBuyState {
+    cities: string[]
+}
+
 export interface IState extends Object {
     action: IGameActionState
     auction: IAuctionState
     auctionChoose: IAuctionChooseState
     config: IConfigState
+    citiesBuy: ICitiesBuyState
     game: IGameState
     games: IGamesState
     geo: IMapGeoState
@@ -339,6 +356,9 @@ export const initialState: IState = {
     config: {
         error: false,
         loading: false,
+    },
+    citiesBuy: {
+        cities: [],
     },
     game: {
         error: false,

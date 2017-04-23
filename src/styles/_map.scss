@@ -1,0 +1,14 @@
+.map {
+    &_city {
+        min-width: 100px;
+        height: 40px;
+    }
+
+    &_slots {
+        display: flex;
+    }
+
+    &_slot {
+        flex: 1 0 auto;
+    }
+}

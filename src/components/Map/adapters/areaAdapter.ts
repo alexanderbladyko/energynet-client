@@ -4,7 +4,7 @@ import {
 import * as constants from 'constants'
 
 
-export default class AreaAdapter extends BaseLayerAdapter<{}> {
+export default class AreaAdapter extends BaseLayerAdapter<{}, {}> {
     protected getLayers(features: GeoJSON.Feature<GeoJSON.GeometryObject>[], state: {}): mapboxgl.Layer[] {
         return features
             .filter(feature => feature.properties.type === constants.FeatureTypes.AREA)

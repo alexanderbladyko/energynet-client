@@ -15,7 +15,7 @@ import { store, } from 'store'
 import * as State from 'state'
 
 
-const adapters: BaseAdapter<any>[] = [
+const adapters: BaseAdapter<any, any>[] = [
     new CityMarkerAdapter(),
     new AreaAdapter(),
     new JunctionAdapter(),
@@ -63,6 +63,7 @@ class Map extends React.Component<IMapProps, {}> {
                     data: this.props.geo.data,
                 })
 
+                adapters.forEach(adapter => adapter.bindActions(store.dispatch))
                 this.refreshAdapters()
 
                 store.subscribe(this.refreshAdapters.bind(this))

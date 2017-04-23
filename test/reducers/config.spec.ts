@@ -25,7 +25,7 @@ describe('config reducer', () => {
 
         const expectedState: IConfigState = {
             error: false,
-            loading: true,
+            loading: false,
         }
         expect(result).to.deep.equals(expectedState)
     })

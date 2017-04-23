@@ -1,0 +1,38 @@
+.cities-buy {
+    &_container {
+        display: block;
+    }
+
+    &_cities {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        height: 120px;
+    }
+
+    &_city {
+        box-sizing: border-box;
+        height: 36px;
+        width: 100px;
+        margin: 2px;
+        border: 1px solid #454545;
+        text-align: center;
+        position: relative;
+
+        &__owned {
+            border: 1px solid #bbb;
+        }
+    }
+
+    &_remove {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &::after {
+            content: 'X';
+            line-height: 36px;
+        }
+    }
+}

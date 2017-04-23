@@ -11,3 +11,18 @@ export function fixContainerWidth(selector: string): void {
         container.style.width = width + 'px'
     })
 }
+
+
+export function fixWrappedFlexbox(selector: string): void {
+    const container: any = document.querySelector(selector)
+    if (!container) {
+        return
+    }
+    if (container.children.length === 0) {
+        return
+    }
+    const lastChild: any = container.children[container.children.length - 1]
+    container.style.width = (
+        lastChild.offsetLeft - container.offsetLeft + lastChild.clientWidth + 20
+    ) + 'px'
+}
