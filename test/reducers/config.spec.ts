@@ -1,4 +1,4 @@
-/// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
+/// <reference path="../../node_modules/@types/jest/index.d.ts" />
 
 import { expect, } from 'chai'
 import * as deepFreeze from 'deep-freeze'
@@ -25,7 +25,7 @@ describe('config reducer', () => {
 
         const expectedState: IConfigState = {
             error: false,
-            loading: false,
+            loading: true,
         }
         expect(result).to.deep.equals(expectedState)
     })
