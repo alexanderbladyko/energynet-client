@@ -1,6 +1,5 @@
 /// <reference path="../../node_modules/@types/jest/index.d.ts" />
 
-import { expect, } from 'chai'
 import * as deepFreeze from 'deep-freeze'
 
 import { IBaseAction, } from 'actions/base'
@@ -27,6 +26,6 @@ describe('config reducer', () => {
             error: false,
             loading: true,
         }
-        expect(result).to.deep.equals(expectedState)
+        expect(result).toEqual(expectedState)
     })
 })

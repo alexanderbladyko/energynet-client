@@ -5,6 +5,9 @@ import * as constants from 'constants'
 
 
 export default class JunctionAdapter extends BaseLayerAdapter<{}, {}> {
+    protected shouldUpdate(oldState: {}, newState: {}): boolean {
+        return false
+    }
     protected getLayers(features: GeoJSON.Feature<GeoJSON.GeometryObject>[], state: {}): mapboxgl.Layer[] {
         return [
             {

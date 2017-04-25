@@ -18,7 +18,7 @@
                         "waste": 0,
                         "uranium": 0
                     },
-                    "cities": []
+                    "cities": {}
                 },
                 {
                     "id": 31,
@@ -31,7 +31,7 @@
                         "waste": 0,
                         "uranium": 0
                     },
-                    "cities": []
+                    "cities": {}
                 },
                 {
                     "id": 32,
@@ -44,7 +44,7 @@
                         "waste": 0,
                         "uranium": 0
                     },
-                    "cities": []
+                    "cities": {}
                 }
             ]
         }

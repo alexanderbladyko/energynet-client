@@ -14,6 +14,7 @@ export abstract class BaseAdapter<T, TActions> {
     protected dispatch: TActions
 
     private _shouldUpdate: boolean
+    private _loaded: boolean = true
 
     public bindActions(dispatch: Dispatch<State.IState>): void {
         const dispatchObject: any = {}
@@ -27,8 +28,9 @@ export abstract class BaseAdapter<T, TActions> {
 
     public setState(newState: State.IState): void {
         const lensedState: T = this.stateLens(newState)
-        if (!this.state) {
+        if (this._loaded) {
             this._shouldUpdate = true
+            this._loaded = false
             this.state = lensedState
             return
         }

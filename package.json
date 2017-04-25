@@ -17,7 +17,8 @@
     "clean": "rimraf build",
     "start": "npm rebuild node-sass && node tasks/devServer.js",
     "mocks": "node tasks/mockServer.js",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test-coverage": "jest --coverage",
     "docs:api": "mkdir -p build && raml2html docs/api.raml > build/api.html"
   },
   "devDependencies": {

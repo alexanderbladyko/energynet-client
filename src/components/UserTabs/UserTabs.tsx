@@ -77,7 +77,7 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
                                 </div>
                                 <div className='users-tabs_value'>
                                     <Buildings
-                                        value={user.cities.length}
+                                        value={Object.keys(user.cities).length}
                                         size={Buildings.IconSize.SMALL}
                                     />
                                 </div>

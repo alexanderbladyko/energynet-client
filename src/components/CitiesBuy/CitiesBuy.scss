@@ -1,6 +1,9 @@
 .cities-buy {
+    display: flex;
+
     &_container {
         display: block;
+        flex: 1 1 auto;
     }
 
     &_cities {
@@ -13,7 +16,7 @@
 
     &_city {
         box-sizing: border-box;
-        height: 36px;
+        height: 48px;
         width: 100px;
         margin: 2px;
         border: 1px solid #454545;

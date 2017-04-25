@@ -1,0 +1,16 @@
+.side-bar {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+
+    &_button {
+        width: 40px;
+        height: 40px;
+        flex: 0 1 auto;
+    }
+
+    &_expander {
+        flex: 1 1 auto;
+    }
+}

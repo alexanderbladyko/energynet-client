@@ -124,7 +124,9 @@ export interface IGamePlayer {
         waste: number
         uranium: number
     }
-    cities: Array<string|number>
+    cities: {
+        [city: string]: number
+    }
 }
 
 export interface IGameMeta {
