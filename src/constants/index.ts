@@ -19,6 +19,7 @@ export class ActionTypes {
     public static RESOURCE_BUY: string = 'resource_buy'
     public static AUCTION_SELECT_STATION: string = 'auction_select'
     public static EXCLUDE_STATION: string = 'exclude_station'
+    public static CITIES_BUY: string = 'cities_buy'
 }
 
 export class ResourceTypes {

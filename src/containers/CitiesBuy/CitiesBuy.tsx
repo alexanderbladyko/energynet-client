@@ -14,10 +14,12 @@ import {
     removeCity,
     clearAll,
 } from 'actions/citiesBuy'
+import * as constants from 'constants'
+import * as socket from 'api/socket'
 import * as State from 'state'
 import * as models from 'state/models'
 import Currency from 'components/Currency/Currency'
-import { SideBar, SideBarButton, SideBarExpander, } from 'components/SideBar/SideBar'
+import { SideBar, SideBarButton, SideBarExpander, SideBarIcon, } from 'components/SideBar/SideBar'
 import { fixWrappedFlexbox, } from 'utils/react'
 import { getClosestPath, } from 'utils/graph'
 
@@ -72,7 +74,7 @@ class CitiesBuy extends React.Component<ICitiesBuyProps, {}> {
                 </ScrollArea>
                 <SideBar>
                     <SideBarExpander />
-                    <SideBarButton />
+                    <SideBarButton type={SideBarIcon.APPLY} onClick={this.handleApplyClick.bind(this)} />
                 </SideBar>
             </div>
         )
@@ -94,6 +96,10 @@ class CitiesBuy extends React.Component<ICitiesBuyProps, {}> {
                 {name}
             </div>
         )
+    }
+    private handleApplyClick(): void {
+        socket.send(constants.ActionTypes.CITIES_BUY, this.props.citiesBuy.cities)
+        this.props.requestGameAction(constants.ActionTypes.CITIES_BUY, this.props.citiesBuy.cities)
     }
 }
 

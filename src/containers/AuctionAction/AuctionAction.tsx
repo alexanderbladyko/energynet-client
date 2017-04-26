@@ -9,6 +9,7 @@ import {
 import * as socket from 'api/socket'
 import * as constants from 'constants'
 import * as State from 'state'
+import Button from 'components/Button/Button'
 import Station from 'components/Station/Station'
 import Currency from 'components/Currency/Currency'
 
@@ -87,11 +88,11 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
             <div className='action-bet_action'>
                 <div className='action-bet_value'>
                     <div className='action-bet_value-button'>
-                        <button
-                            className='button'
+                        <Button
+                            text={'-'}
                             onClick={() => this.handleBetChange(-1)}
                             disabled={this.state.bet === minBet}
-                        >{'-'}</button>
+                        />
                     </div>
                     <div className='action-bet_control'>
                         <input
@@ -107,21 +108,21 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
                         </span>
                     </div>
                     <div className='action-bet_value-button'>
-                        <button
-                            className='button'
+                        <Button
+                            text={'+'}
                             onClick={() => this.handleBetChange(1)}
                             disabled={this.state.bet === user.cash}
-                        >{'+'}</button>
+                        />
                     </div>
                 </div>
                 <div className='action-bet_action-button'>
-                    <button
-                        className='button'
-                        onClick={() => this.handleAuctionFold()}
-                        style={{
-                            visibility: user.stations.length === 0 ? 'none' : '',
-                        }}
-                    >{'Fold'}</button>
+                    {
+                        user.stations.length !== 0 &&
+                        <Button
+                            text={'Fold'}
+                            onClick={() => this.handleAuctionFold()}
+                        />
+                    }
                 </div>
                 <div className='action-bet_action-button action-bet_action-button__right'>
                     <button
