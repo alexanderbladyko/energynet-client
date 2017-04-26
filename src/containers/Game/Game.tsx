@@ -36,10 +36,10 @@ import {
 } from 'actions/resources'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
-import ColorPick from 'components/ColorPick/ColorPick'
-import MainPanel from 'components/MainPanel/MainPanel'
-import Map from 'components/Map/Map'
-import UserTabs from 'components/UserTabs/UserTabs'
+import ColorPick from 'containers/ColorPick/ColorPick'
+import MainPanel from 'containers/MainPanel/MainPanel'
+import Map from 'containers/Map/Map'
+import UserTabs from 'containers/UserTabs/UserTabs'
 import * as State from 'state'
 
 interface IGameProps {

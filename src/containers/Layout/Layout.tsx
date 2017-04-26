@@ -8,7 +8,7 @@ import {
 
 import * as State from 'state'
 
-import Router from 'components/Router/Router'
+import Router from 'containers/Router/Router'
 import {
     loadConfig,
     ILoadConfigAction,

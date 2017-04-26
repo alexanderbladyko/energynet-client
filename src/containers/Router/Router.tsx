@@ -6,11 +6,11 @@ import {
 import * as State from 'state'
 import * as Routes from 'constants/routes'
 
-import Body from 'components/Body/Body'
-import Loading from 'components/Loading/Loading'
-import Error from 'components/Error/Error'
-import Login from 'components/Login/Login'
-import Register from 'components/Register/Register'
+import Body from 'containers/Body/Body'
+import Loading from 'containers/Loading/Loading'
+import Error from 'containers/Error/Error'
+import Login from 'containers/Login/Login'
+import Register from 'containers/Register/Register'
 
 interface IRouterProps {
     route: State.IRouteState

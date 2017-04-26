@@ -4,10 +4,10 @@ import {
 } from 'react-redux'
 import * as mapboxgl from 'mapbox-gl'
 
-import { BaseAdapter, } from 'components/Map/adapters/baseAdapters'
-import CityMarkerAdapter from 'components/Map/adapters/cityMarkerAdapter'
-import JunctionAdapter from 'components/Map/adapters/junctionAdapter'
-import AreaAdapter from 'components/Map/adapters/areaAdapter'
+import { BaseAdapter, } from './adapters/baseAdapters'
+import CityMarkerAdapter from './adapters/cityMarkerAdapter'
+import JunctionAdapter from './adapters/junctionAdapter'
+import AreaAdapter from './adapters/areaAdapter'
 
 
 import { setAccessToken, } from 'MapboxMap'

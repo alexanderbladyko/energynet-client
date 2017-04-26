@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom'
 
 import { Provider, } from 'react-redux'
 
-import Layout from 'components/Layout/Layout'
+import Layout from 'containers/Layout/Layout'
 import { store, } from 'store'
 
 import 'styles/base.scss'

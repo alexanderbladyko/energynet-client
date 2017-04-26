@@ -19,9 +19,9 @@ import {
 } from 'actions/status'
 import * as socket from 'api/socket'
 
-import Game from 'components/Game/Game'
-import Games from 'components/Games/Games'
-import Lobby from 'components/Lobby/Lobby'
+import Game from 'containers/Game/Game'
+import Games from 'containers/Games/Games'
+import Lobby from 'containers/Lobby/Lobby'
 
 interface IBodyProps {
     status: State.IStatusState,

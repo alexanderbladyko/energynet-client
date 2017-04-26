@@ -9,13 +9,13 @@ import {
     toggleTab,
     togglePanels,
 } from 'actions/mainPanel'
-import Auction from 'components/Auction/Auction'
-import AuctionAction from 'components/AuctionAction/AuctionAction'
-import AuctionChoose from 'components/AuctionChoose/AuctionChoose'
-import CitiesBuy from 'components/CitiesBuy/CitiesBuy'
-import ExcludeStation from 'components/ExcludeStation/ExcludeStation'
-import Resources from 'components/Resources/Resources'
-import ResourcesBuy from 'components/ResourcesBuy/ResourcesBuy'
+import Auction from 'containers/Auction/Auction'
+import AuctionAction from 'containers/AuctionAction/AuctionAction'
+import AuctionChoose from 'containers/AuctionChoose/AuctionChoose'
+import CitiesBuy from 'containers/CitiesBuy/CitiesBuy'
+import ExcludeStation from 'containers/ExcludeStation/ExcludeStation'
+import Resources from 'containers/Resources/Resources'
+import ResourcesBuy from 'containers/ResourcesBuy/ResourcesBuy'
 import * as constants from 'constants'
 import * as State from 'state'
 
