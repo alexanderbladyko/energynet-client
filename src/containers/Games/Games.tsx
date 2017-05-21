@@ -63,7 +63,7 @@ class Games extends React.Component<IGamesProps, {}> {
                             <p
                                 key={game.id}
                             >
-                                {`${game.name} (Limit of players ${game.userLimit})`}
+                                {`${game.name} (Limit of players ${game.playersLimit})`}
                                 <button onClick={() => this.onJoinGame(game.id)}>{'Join'}</button>
                             </p>
                         )

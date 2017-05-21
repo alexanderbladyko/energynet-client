@@ -48,7 +48,7 @@ export interface IGamesState extends IBaseState {
 export interface IStartingGame {
     id: number
     name: string
-    userLimit: number
+    playersLimit: number
 }
 
 export interface INewGameState extends IBaseState {
