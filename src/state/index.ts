@@ -30,6 +30,7 @@ export interface IUserInfo {
     id?: number
     name?: string
     isAuthenticated: boolean
+    userToken?: string
 }
 
 export interface IRouteState {

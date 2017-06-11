@@ -3,6 +3,8 @@ export const MAX_PLAYERS: number = 6
 
 export const DEFAULT_PLAYERS_LIMIT: number = 4
 
+export const AUTH_TOKEN_KEY: string = 'token'
+
 export class StepTypes {
     public static AUCTION: string = 'auction'
     public static AUCTION_CHOOSE: string = 'auction_choose'

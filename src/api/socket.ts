@@ -1,29 +1,41 @@
 import * as io from 'socket.io-client'
 
+import * as constants from 'constants'
+
 
 let socket: SocketIOClient.Socket = null
 
-export function initSocket(): void {
+export function initSocket(accessToken: string): void {
     if (socket) {
         console.error('Socket is already initialized')
     }
-    socket = io()
+
+    localStorage.setItem(constants.AUTH_TOKEN_KEY, accessToken)
+
+    socket = io.connect('', {
+        extraHeaders: {
+            Authorization: accessToken,
+        },
+        query: `token=${accessToken}`,
+        reconnection: true,
+        reconnectionAttempts: 10,
+    })
 }
 
 export function send(url: string, options: any): void {
-    if (!socket) {
-        console.error('Socket is not initialized')
-        initSocket()
-    }
+    // if (!socket) {
+    //     console.error('Socket is not initialized')
+    //     initSocket()
+    // }
 
     socket.emit(url, options)
 }
 
 export function subscribe(url: string, handler: Function): SocketIOClient.Emitter {
-    if (!socket) {
-        console.error('Socket is not initialized')
-        initSocket()
-    }
+    // if (!socket) {
+    //     console.error('Socket is not initialized')
+    //     initSocket()
+    // }
 
     return socket.on(url, handler)
 }

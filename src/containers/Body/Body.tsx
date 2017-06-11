@@ -38,7 +38,7 @@ interface IBodyProps {
 class Body extends React.Component<IBodyProps, {}> {
     public componentWillMount(): void {
         this.props.socketConnecting()
-        socket.initSocket()
+        socket.initSocket(this.props.userInfo.data.userToken)
 
         socket.subscribe('handshake', (data: any): void => {
             console.log('Socket connected')
@@ -50,6 +50,10 @@ class Body extends React.Component<IBodyProps, {}> {
 
         socket.subscribe('state', (data: State.IStatusState): void => {
             this.props.receiveState(data)
+        })
+
+        socket.subscribe('connect_timeout', () => {
+            console.log('Socket timeout')
         })
 
     }
@@ -96,7 +100,7 @@ class Body extends React.Component<IBodyProps, {}> {
     private initSocket(): void {
         if (this.props.userInfo.data.isAuthenticated) {
             this.props.socketConnecting()
-            socket.initSocket()
+            socket.initSocket(this.props.userInfo.data.userToken)
 
             socket.subscribe('handshake', (data: any): void => {
                 console.log('Socket connected')

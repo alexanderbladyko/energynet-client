@@ -56,7 +56,7 @@ export function responseGameLeave(response: State.IGameLeave): IBaseAction|IErro
         }
     }
     return {
-        type: actionTypes.GAMES_LEAVE,
+        type: actionTypes.GAMES_LEAVE_ERROR,
         error: true,
         payload: {
             message: response.reason,

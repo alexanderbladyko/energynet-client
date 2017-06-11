@@ -6,6 +6,7 @@ import {
     Dispatch,
 } from 'redux'
 
+import * as constants from 'constants'
 import * as State from 'state'
 
 import Router from 'containers/Router/Router'
@@ -34,7 +35,8 @@ class Layout extends React.Component<ILayoutStateProps, {}> {
         if (!this.props.config.data) {
             this.props.loadConfig().then(config => {
                 if (config) {
-                    this.props.loadUserInfo(config).done()
+                    const token: string = localStorage.getItem(constants.AUTH_TOKEN_KEY)
+                    this.props.loadUserInfo(config, token).done()
                 }
                 return null
             }).done()

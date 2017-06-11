@@ -14,11 +14,16 @@ export class BaseApi<T> {
     public getUrl(...args: any[]): string {
         throw new Error('not implemented')
     }
+    public getHeaders(...args: any[]): Headers {
+        return
+    }
     public get(...args: any[]): Bluebird<T> {
         const url: string = this.getUrl(...args)
+        const headers: Headers = this.getHeaders(...args)
         return new Bluebird<T>(function(resolve: any, reject: any): void {
             fetch(url, {
                 method: 'get',
+                headers: headers,
             }).then(
                 function(response: Response): void {
                     response.json().then((data: any): void => {
@@ -57,7 +62,9 @@ export class BaseApi<T> {
                         }
                     }).catch((error: any): void => {
                         console.error(`Failed to get json by url: ${url}`)
-                        reject(error)
+                        reject(new ApiError({
+                            reason: 'Unknown error',
+                        }))
                     })
                 }
             )

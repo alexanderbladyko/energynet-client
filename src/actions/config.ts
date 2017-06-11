@@ -51,7 +51,6 @@ export function loadConfig(dispatch: Dispatch<State.IState>): ILoadConfigAction 
             },
             error => {
                 dispatch(errorConfig(error))
-                throw new Error('Failed to load config')
             }
         )
     }

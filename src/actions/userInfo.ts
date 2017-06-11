@@ -39,14 +39,14 @@ export function errorUserInfo(message: string): IErrorAction {
 }
 
 export interface ILoadUserInfoAction {
-    (config: State.IConfig): Bluebird<State.IUserInfo|void>
+    (config: State.IConfig, token: string): Bluebird<State.IUserInfo|void>
 }
 
 export function loadUserInfo(dispatch: Dispatch<State.IState>): ILoadUserInfoAction {
-    return (config) => {
+    return (config, token) => {
         dispatch(requestUserInfo())
         const api: UserInfoApi = new UserInfoApi()
-        return api.get(config).then(
+        return api.get(config, token).then(
             userInfo => {
                 dispatch(responseUserInfo(userInfo))
                 return userInfo
@@ -156,7 +156,6 @@ export function registerUser(dispatch: Dispatch<State.IState>): IRegisterUserAct
             },
             error => {
                 dispatch(errorRegister(error.data.reason))
-                throw new Error('Failed to register')
             }
         )
     }

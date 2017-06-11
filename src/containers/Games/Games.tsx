@@ -13,7 +13,6 @@ import {
     toggleNewGame,
 } from 'actions/games'
 import * as socket from 'api/socket'
-import * as gamesSocket from 'api/gamesSocket'
 
 import NewGame from './NewGame'
 
@@ -32,22 +31,21 @@ interface IGamesProps {
 
 class Games extends React.Component<IGamesProps, {}> {
     public componentWillMount(): void {
-        gamesSocket.initSocket()
-
         this.props.requestGames()
-        gamesSocket.send('list', {})
 
-        gamesSocket.subscribe('games', (data: Array<State.IGame>) => {
+        socket.subscribe('games', (data: Array<State.IGame>) => {
             this.props.receiveGames(data)
         })
+        socket.send('find_game', {})
 
         socket.subscribe('join_game', (data: State.IGameJoin) => {
             this.props.responseGameJoin(data)
         })
     }
     public componentWillUnmount(): void {
+        socket.unsubscribe('find_game')
+        socket.unsubscribe('games')
         socket.unsubscribe('join_game')
-        gamesSocket.disconnect()
     }
     public render(): React.ReactElement<{}> {
         return (
