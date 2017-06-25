@@ -29,6 +29,8 @@ export default {
         return {
             ...state,
             loading: true,
+            loaded: false,
+            error: false,
         }
     },
 
@@ -40,6 +42,7 @@ export default {
                 graph: getGraph(action.payload.data.junctions),
             },
             loading: false,
+            loaded: true,
         }
     },
 
@@ -47,6 +50,8 @@ export default {
         return {
             ...state,
             loading: false,
+            loaded: false,
+            error: true,
             message: action.payload.message,
         }
     },

@@ -24,6 +24,27 @@ export class ActionTypes {
     public static CITIES_BUY: string = 'cities_buy'
 }
 
+export class Messages {
+    public static STATE: string = 'state'
+    public static AUCTION_BET: string = 'auction_bet'
+    public static AUCTION_FOLD: string = 'auction_fold'
+    public static RESOURCE_BUY: string = 'resource_buy'
+    public static AUCTION_SELECT_STATION: string = 'auction_select'
+    public static EXCLUDE_STATION: string = 'exclude_station'
+    public static CITIES_BUY: string = 'cities_buy'
+
+    public static GAMES: string = 'games_list'
+    public static GAMES_NEW: string = 'games_new'
+    public static JOIN_GAME: string = 'game_join'
+    public static LEAVE_GAME: string = 'game_leave'
+    public static LOBBY: string = 'game_lobby'
+
+    public static START_GAME: string = 'game_start'
+    public static GAME: string = 'game'
+    public static RESOURCES: string = 'resources'
+    public static AUCTION: string = 'auction'
+}
+
 export class ResourceTypes {
     public static COAL: string = 'coal'
     public static OIL: string = 'oil'

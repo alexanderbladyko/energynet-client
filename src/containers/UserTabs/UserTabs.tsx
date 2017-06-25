@@ -92,6 +92,9 @@ class UserTabs extends React.Component<IUserTabsProps, {}> {
         const userInfo: State.IGamePlayer = this.props.game.data.find(
             game => game.id === this.props.userTabs.selectedUserId
         )
+        if (!userInfo) {
+            return null
+        }
         return (
             <div className='users-info'>
                 <div className='users-info_stations'>

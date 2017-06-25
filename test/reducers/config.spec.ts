@@ -10,6 +10,7 @@ import { IConfigState, } from 'state'
 const state: IConfigState = {
     error: false,
     loading: false,
+    loaded: false,
 }
 
 describe('config reducer', () => {
@@ -25,6 +26,7 @@ describe('config reducer', () => {
         const expectedState: IConfigState = {
             error: false,
             loading: true,
+            loaded: false,
         }
         expect(result).toEqual(expectedState)
     })

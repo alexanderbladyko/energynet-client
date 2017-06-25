@@ -86,7 +86,7 @@ export default {
         }
     },
 
-    [actionTypes.NEW_GAME_SUCCESS]: function(state: State.IRouteState, action: IBaseAction): State.IRouteState {
+    [actionTypes.GAMES_NEW_SUCCESS]: function(state: State.IRouteState, action: IBaseAction): State.IRouteState {
         return {
             ...state,
             path: routes.LOBBY_ROUTE,
@@ -104,6 +104,13 @@ export default {
         return {
             ...state,
             path: routes.GAMES_ROUTE,
+        }
+    },
+
+    [actionTypes.GAME_START_SUCCESS]: function(state: State.IRouteState, action: IBaseAction): State.IRouteState {
+        return {
+            ...state,
+            path: routes.GAME_ROUTE,
         }
     },
 

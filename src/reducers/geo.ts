@@ -13,6 +13,8 @@ export default {
         return {
             ...state,
             loading: true,
+            loaded: false,
+            error: false,
         }
     },
 
@@ -21,6 +23,7 @@ export default {
             ...state,
             data: action.payload.data,
             loading: false,
+            loaded: true,
         }
     },
 
@@ -28,6 +31,8 @@ export default {
         return {
             ...state,
             loading: false,
+            loaded: false,
+            error: true,
             message: action.payload.message,
         }
     },

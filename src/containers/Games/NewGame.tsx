@@ -103,7 +103,7 @@ class NewGame extends React.Component<INewGameProps, INewGameComponentState> {
     }
     private onFormSubmit(): void {
         this.props.requestNewGame()
-        socket.send('new_game', {
+        socket.send(constants.Messages.GAMES_NEW, {
             name: this.refs.name.value,
             playersLimit: this.state.playersLimit,
         })

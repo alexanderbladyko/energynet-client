@@ -3,6 +3,7 @@ import * as routes from 'constants/routes'
 
 interface IBaseState {
     loading: boolean
+    loaded: boolean
     error: boolean
     message?: string
 }
@@ -19,7 +20,6 @@ export interface IConfigState extends IBaseState {
 export interface IConfig {
     authApi: string
     gameApi: string
-    colors: string[]
 }
 
 export interface IUserInfoState extends IBaseState {
@@ -58,6 +58,8 @@ export interface INewGameState extends IBaseState {
 }
 
 export interface INewGame extends IActionResponse {}
+
+export interface IStartGame extends IActionResponse {}
 
 export interface ILobbyState extends IBaseState {
     data?: ILobby
@@ -103,15 +105,6 @@ export interface IGameStatus {
 
 export interface IStatusState extends IBaseState {
     data?: IGameStatus
-}
-
-export interface IPlayer {
-    id: number
-    name: string
-}
-
-export interface IPlayersState extends IBaseState {
-    data?: IPlayer[]
 }
 
 export interface IGamePlayer {
@@ -244,6 +237,7 @@ export interface IMap {
     cities: ICity[]
     junctions: IJunction[]
     graph: IMapGraph
+    colors: string[]
 }
 
 export interface IMapState extends IBaseState {
@@ -332,7 +326,6 @@ export interface IState extends Object {
     mainPanel: IMainPanelState
     map: IMapState
     newGame: INewGameState
-    players: IPlayersState
     register: IRegisterState
     resources: IResourcesState
     resourcesBuy: IResourcesBuyState
@@ -347,11 +340,13 @@ export const initialState: IState = {
     action: {
         error: false,
         loading: false,
+        loaded: false,
         type: null,
     },
     auction: {
         error: false,
         loading: false,
+        loaded: false,
     },
     auctionChoose: {
         selectedStationId: undefined,
@@ -359,6 +354,7 @@ export const initialState: IState = {
     config: {
         error: false,
         loading: false,
+        loaded: false,
     },
     citiesBuy: {
         cities: [],
@@ -366,28 +362,34 @@ export const initialState: IState = {
     game: {
         error: false,
         loading: false,
+        loaded: false,
     },
     games: {
         error: false,
         loading: false,
+        loaded: false,
         data: [],
         gameJoining: false,
     },
     geo: {
         error: false,
         loading: false,
+        loaded: false,
     },
     lobby: {
         error: false,
         loading: false,
+        loaded: false,
     },
     login: {
         error: false,
         loading: false,
+        loaded: false,
     },
     newGame: {
         error: false,
         loading: false,
+        loaded: false,
         opened: false,
     },
     mainPanel: {
@@ -399,18 +401,17 @@ export const initialState: IState = {
     map: {
         error: false,
         loading: false,
-    },
-    players: {
-        error: false,
-        loading: false,
+        loaded: false,
     },
     register: {
         error: false,
         loading: false,
+        loaded: false,
     },
     resources: {
         error: false,
         loading: false,
+        loaded: false,
     },
     resourcesBuy: {
         stations: {},
@@ -424,6 +425,7 @@ export const initialState: IState = {
     status: {
         error: false,
         loading: false,
+        loaded: false,
     },
     userInfo: {
         data: {
@@ -431,6 +433,7 @@ export const initialState: IState = {
         },
         error: false,
         loading: false,
+        loaded: false,
     },
     userTabs: {
         selectedUserId: undefined,

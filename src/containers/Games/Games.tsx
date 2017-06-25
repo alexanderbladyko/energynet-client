@@ -3,6 +3,7 @@ import {
     connect,
 } from 'react-redux'
 
+import * as constants from 'constants'
 import * as State from 'state'
 
 import {
@@ -33,10 +34,10 @@ class Games extends React.Component<IGamesProps, {}> {
     public componentWillMount(): void {
         this.props.requestGames()
 
-        socket.subscribe('games', (data: Array<State.IGame>) => {
+        socket.subscribe(constants.Messages.GAMES, (data: Array<State.IGame>) => {
             this.props.receiveGames(data)
         })
-        socket.send('find_game', {})
+        socket.send(constants.Messages.GAMES, {})
 
         socket.subscribe('join_game', (data: State.IGameJoin) => {
             this.props.responseGameJoin(data)

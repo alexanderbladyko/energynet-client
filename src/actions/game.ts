@@ -1,4 +1,8 @@
-import { IBaseAction, } from 'actions/base'
+import {
+    IBaseAction,
+    IReceiveAction,
+    generateReceiveGameAction,
+} from 'actions/base'
 import * as actionTypes from 'constants/actionTypes'
 import * as State from 'state'
 
@@ -25,3 +29,13 @@ export function receiveGameInfo(response: State.IGame): IGameAction {
         },
     }
 }
+
+export function requestGameStart(): IBaseAction {
+    return {
+        type: actionTypes.GAME_START_REQUEST,
+    }
+}
+
+export const receiveGameStart: IReceiveAction = generateReceiveGameAction(
+    actionTypes.GAME_START_SUCCESS, actionTypes.GAME_START_ERROR
+)

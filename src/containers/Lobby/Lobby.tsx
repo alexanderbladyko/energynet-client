@@ -8,11 +8,16 @@ import {
     responseGameLeave,
 } from 'actions/games'
 import {
+    requestGameStart,
+    receiveGameStart,
+} from 'actions/game'
+import {
     requestLobby,
     receiveLobby,
     addUser,
     removeUser,
 } from 'actions/lobby'
+import * as constants from 'constants'
 import * as State from 'state'
 
 import * as socket from 'api/socket'
@@ -26,36 +31,42 @@ interface ILobbyProps {
     removeUser: typeof removeUser
     requestGameLeave: typeof requestGameLeave
     responseGameLeave: typeof responseGameLeave
+    requestGameStart: typeof requestGameStart
+    receiveGameStart: typeof receiveGameStart
 }
 
 
 class Lobby extends React.Component<ILobbyProps, {}> {
     public componentWillMount(): void {
-        socket.send('lobby', {})
+        socket.send(constants.Messages.LOBBY, {})
         this.props.requestLobby()
-        socket.subscribe('lobby', (data: State.ILobby) => {
+        socket.subscribe(constants.Messages.LOBBY, (data: State.ILobby) => {
             this.props.receiveLobby(data)
         })
         socket.subscribe('leave_game', (data: State.IGameLeave) => {
             this.props.responseGameLeave(data)
         })
+        socket.subscribe(constants.Messages.START_GAME, (data: State.IStartGame) => {
+            this.props.receiveGameStart(data)
+        })
     }
     public componentWillUnmount(): void {
-        socket.unsubscribe('lobby')
+        socket.unsubscribe(constants.Messages.LOBBY)
     }
     public render(): React.ReactElement<{}> {
+        if (this.props.lobby.loading) {
+            return <div>'Loading'</div>
+        }
+        if (!this.props.lobby.loaded) {
+            return null
+        }
         return (
             <div>
                 {'Lobby'}
-                {
-                    this.props.lobby.loading
-                    && 'Loading'
-                }
                 <div>
                     {'Player'}
                     {
-                        this.props.lobby.data
-                        && this.props.lobby.data.players.map(player => {
+                        this.props.lobby.data.players.map(player => {
                             return (
                                 <div key={player.id}>
                                     {player.name}
@@ -73,8 +84,7 @@ class Lobby extends React.Component<ILobbyProps, {}> {
                 <div>
                     {'Users'}
                     {
-                        this.props.lobby.data
-                        && this.props.lobby.data.users.map(user => {
+                        this.props.lobby.data.users.map(user => {
                             return (
                                 <div key={user.id}>
                                     {user.name}
@@ -92,12 +102,18 @@ class Lobby extends React.Component<ILobbyProps, {}> {
                 <button onClick={() => this.onLobbyLeave()}>
                     {'Leave'}
                 </button>
+                {
+                    this.props.lobby.data.ownerId === this.props.userInfo.data.id
+                    && <button onClick={() => this.onGameStart()}>
+                        {'Start'}
+                    </button>
+                }
             </div>
         )
     }
     private onLobbyLeave(): void {
         this.props.requestGameLeave()
-        socket.send('leave_game', {})
+        socket.send(constants.Messages.LEAVE_GAME, {})
     }
     private onUserAdd(id: number): void {
         this.props.addUser(id)
@@ -106,6 +122,10 @@ class Lobby extends React.Component<ILobbyProps, {}> {
     private onUserRemove(id: number): void {
         this.props.removeUser(id)
         socket.send('remove_user', { id, })
+    }
+    private onGameStart(): void {
+        this.props.requestGameStart()
+        socket.send(constants.Messages.START_GAME, {})
     }
 }
 export default connect(
@@ -122,5 +142,7 @@ export default connect(
         removeUser,
         requestGameLeave,
         responseGameLeave,
+        requestGameStart,
+        receiveGameStart,
     }
 )(Lobby)

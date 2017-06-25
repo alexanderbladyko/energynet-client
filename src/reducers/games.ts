@@ -13,6 +13,7 @@ export default {
         return {
             ...state,
             loading: true,
+            loaded: false,
             data: [],
         }
     },
@@ -21,13 +22,16 @@ export default {
         return {
             ...state,
             loading: false,
+            loaded: true,
             data: action.payload.data,
         }
     },
 
-    [actionTypes.GAMES_JOIN]: function(state: State.IGamesState, action: IBaseAction): State.IGamesState {
+    [actionTypes.GAMES_JOIN_REQUEST]: function(state: State.IGamesState, action: IBaseAction): State.IGamesState {
         return {
             ...state,
+            loaded: false,
+            error: false,
             gameJoining: true,
         }
     },
@@ -35,6 +39,7 @@ export default {
     [actionTypes.GAMES_JOIN_SUCCESS]: function(state: State.IGamesState, action: IBaseAction): State.IGamesState {
         return {
             ...state,
+            loaded: true,
             gameJoining: false,
         }
     },
@@ -42,6 +47,8 @@ export default {
     [actionTypes.GAMES_JOIN_ERROR]: function(state: State.IGamesState, action: IErrorAction): State.IGamesState {
         return {
             ...state,
+            loaded: false,
+            error: true,
             gameJoining: false,
         }
     },

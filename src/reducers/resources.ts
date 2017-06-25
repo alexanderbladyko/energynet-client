@@ -12,6 +12,8 @@ export default {
         return {
             ...state,
             loading: true,
+            loaded: false,
+            error: false,
             selectedStationId: 0,
         }
     },
@@ -20,6 +22,7 @@ export default {
         return {
             ...state,
             loading: false,
+            loaded: true,
             data: action.payload.data,
         }
     },

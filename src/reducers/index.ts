@@ -15,7 +15,6 @@ import login from 'reducers/login'
 import mainPanel from 'reducers/mainPanel'
 import map from 'reducers/map'
 import newGame from 'reducers/newGame'
-import players from 'reducers/players'
 import register from 'reducers/register'
 import resources from 'reducers/resources'
 import resourcesBuy from 'reducers/resourcesBuy'
@@ -59,7 +58,6 @@ export default {
     lobby: getReducer(lobby, initialState.lobby),
     login: getReducer(login, initialState.login),
     newGame: getReducer(newGame, initialState.newGame),
-    players: getReducer(players, initialState.players),
     register: getReducer(register, initialState.register),
     resources: getReducer(resources, initialState.resources),
     resourcesBuy: getReducer(resourcesBuy, initialState.resourcesBuy),

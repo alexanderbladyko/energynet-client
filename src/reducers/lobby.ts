@@ -12,6 +12,7 @@ export default {
         return {
             ...state,
             loading: true,
+            loaded: false,
         }
     },
 
@@ -19,6 +20,7 @@ export default {
         return {
             ...state,
             loading: false,
+            loaded: true,
             data: action.payload.data,
         }
     },

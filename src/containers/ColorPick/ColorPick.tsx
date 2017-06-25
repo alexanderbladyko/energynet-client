@@ -9,16 +9,19 @@ import * as State from 'state'
 interface IColorPickProps {
     config: State.IConfigState
     game: State.IGameState
-    players: State.IPlayersState
+    map: State.IMapState
 }
 
 
 class ColorPick extends React.Component<IColorPickProps, {}> {
     public render(): React.ReactElement<{}> {
+        if (!this.props.map.loaded) {
+            return null
+        }
         return (
             <div>
                 {
-                    this.props.config.data.colors.map(color => {
+                    this.props.map.data.colors.map(color => {
                         return (
                             <div key={color}>
                                 <div
@@ -45,8 +48,7 @@ class ColorPick extends React.Component<IColorPickProps, {}> {
                         return (
                             <div key={playerInfo.id}>
                                 {
-                                    'Player: ' +
-                                    this.props.players.data.find(player => player.id === playerInfo.id).name
+                                    'Player: ' + playerInfo
                                 }
                                 {
                                     playerInfo.color
@@ -85,8 +87,8 @@ export default connect(
         return {
             config: state.config,
             game: state.game,
-            players: state.players,
             // userInfo: state.userInfo,
+            map: state.map,
         }
     },
     {

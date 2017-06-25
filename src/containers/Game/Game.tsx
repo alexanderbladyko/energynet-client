@@ -27,10 +27,6 @@ import {
     ILoadMapGeoAction,
 } from 'actions/geo'
 import {
-    requestPlayers,
-    receivePlayers,
-} from 'actions/players'
-import {
     requestResources,
     receiveResources,
 } from 'actions/resources'
@@ -52,8 +48,6 @@ interface IGameProps {
     receiveGameInfo: typeof receiveGameInfo
     requestAuction: typeof requestAuction
     receiveAuction: typeof receiveAuction
-    requestPlayers: typeof requestPlayers
-    receivePlayers: typeof receivePlayers
     requestResources: typeof requestResources
     receiveResources: typeof receiveResources
     loadMapInfo: ILoadMapInfoAction
@@ -63,16 +57,7 @@ interface IGameProps {
 
 class Game extends React.Component<IGameProps, {}> {
     public componentWillMount(): void {
-        this.props.requestPlayers()
-        socket.send('players', {})
-
-        socket.subscribe('players', (data: State.IPlayer[]) => {
-            this.props.receivePlayers(data)
-
-            this.props.requestGameInfo()
-            socket.send('game', {})
-        })
-        socket.subscribe('game', (data: State.IGame): void => {
+        socket.subscribe(constants.Messages.GAME, (data: State.IGame): void => {
             this.props.receiveGameInfo(data)
 
             if (!this.props.map.data && !this.props.map.loading) {
@@ -82,30 +67,28 @@ class Game extends React.Component<IGameProps, {}> {
                 this.props.loadMapGeo(this.props.config, this.props.game)
             }
         })
-        socket.subscribe('action', (data: State.IGameActionResponse): void => {
-            this.props.receiveGameAction(data)
-        })
+        this.props.requestGameInfo()
+        socket.send(constants.Messages.GAME, {})
 
         this.props.requestAuction()
-        socket.send('auction', {})
+        socket.send(constants.Messages.AUCTION, {})
 
-        socket.subscribe('auction', (data: State.IGameActionResponse): void => {
+        socket.subscribe(constants.Messages.AUCTION, (data: State.IGameActionResponse): void => {
             this.props.receiveAuction(data)
 
         })
 
         this.props.requestResources()
-        socket.send('resources', {})
+        socket.send(constants.Messages.RESOURCES, {})
 
-        socket.subscribe('resources', (data: State.IResources): void => {
+        socket.subscribe(constants.Messages.RESOURCES, (data: State.IResources): void => {
             this.props.receiveResources(data)
         })
     }
     public componentWillUnmount(): void {
-        socket.unsubscribe('game')
-        socket.unsubscribe('players')
-        socket.unsubscribe('auction')
-        socket.unsubscribe('resources')
+        socket.unsubscribe(constants.Messages.GAME)
+        socket.unsubscribe(constants.Messages.AUCTION)
+        socket.unsubscribe(constants.Messages.RESOURCES)
     }
     public render(): React.ReactElement<{}> {
         if (!this.props.game.data) {
@@ -142,8 +125,6 @@ export default connect(
             receiveGameAction: bindActionCreators(receiveGameAction, dispatch),
             requestGameInfo: bindActionCreators(requestGameInfo, dispatch),
             receiveGameInfo: bindActionCreators(receiveGameInfo, dispatch),
-            requestPlayers: bindActionCreators(requestPlayers, dispatch),
-            receivePlayers: bindActionCreators(receivePlayers, dispatch),
             requestAuction: bindActionCreators(requestAuction, dispatch),
             receiveAuction: bindActionCreators(receiveAuction, dispatch),
             requestResources: bindActionCreators(requestResources, dispatch),

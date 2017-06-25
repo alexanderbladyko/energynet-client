@@ -9,32 +9,36 @@ import * as State from 'state'
 
 
 export default {
-    [actionTypes.NEW_GAME_REQUEST]: function(state: State.INewGameState, action: IBaseAction): State.INewGameState {
+    [actionTypes.GAMES_NEW_REQUEST]: function(state: State.INewGameState, action: IBaseAction): State.INewGameState {
         return {
             ...state,
             loading: true,
+            loaded: false,
+            error: false,
         }
     },
 
-    [actionTypes.NEW_GAME_SUCCESS]: function(state: State.INewGameState, action: IDataAction<State.INewGame>): State.INewGameState {
+    [actionTypes.GAMES_NEW_SUCCESS]: function(state: State.INewGameState, action: IDataAction<State.INewGame>): State.INewGameState {
         return {
             ...state,
             loading: false,
             data: action.payload.data,
             opened: false,
+            loaded: true,
         }
     },
 
-    [actionTypes.NEW_GAME_ERROR]: function(state: State.INewGameState, action: IErrorAction): State.INewGameState {
+    [actionTypes.GAMES_NEW_ERROR]: function(state: State.INewGameState, action: IErrorAction): State.INewGameState {
         return {
             ...state,
             loading: false,
             error: true,
+            loaded: false,
             message: action.payload.message,
         }
     },
 
-    [actionTypes.NEW_GAME_TOGGLE]: function(state: State.INewGameState, action: IBaseAction): State.INewGameState {
+    [actionTypes.GAMES_NEW_TOGGLE]: function(state: State.INewGameState, action: IBaseAction): State.INewGameState {
         return {
             ...state,
             opened: !state.opened,
