@@ -3,6 +3,7 @@ import {
     connect,
 } from 'react-redux'
 
+import * as constants from 'constants'
 import * as socket from 'api/socket'
 import * as State from 'state'
 
@@ -48,7 +49,7 @@ class ColorPick extends React.Component<IColorPickProps, {}> {
                         return (
                             <div key={playerInfo.id}>
                                 {
-                                    'Player: ' + playerInfo
+                                    'Player: ' + playerInfo.data.name
                                 }
                                 {
                                     playerInfo.color
@@ -78,7 +79,7 @@ class ColorPick extends React.Component<IColorPickProps, {}> {
             return
         }
 
-        socket.send('select_color', { color, })
+        socket.send(constants.Messages.COLOR_CHOOSE, { color, })
     }
 }
 

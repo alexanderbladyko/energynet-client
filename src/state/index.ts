@@ -111,6 +111,10 @@ export interface IGamePlayer {
     id: number
     cash: number
     color: string|null
+    data: {
+        name: string
+        avatar: string
+    }
     stations: number[]
     resources: {
         coal: number

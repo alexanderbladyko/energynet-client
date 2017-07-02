@@ -75,7 +75,6 @@ class Game extends React.Component<IGameProps, {}> {
 
         socket.subscribe(constants.Messages.AUCTION, (data: State.IGameActionResponse): void => {
             this.props.receiveAuction(data)
-
         })
 
         this.props.requestResources()

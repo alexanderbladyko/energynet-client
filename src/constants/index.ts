@@ -26,6 +26,8 @@ export class ActionTypes {
 
 export class Messages {
     public static STATE: string = 'state'
+
+    public static COLOR_CHOOSE: string = 'color_choose'
     public static AUCTION_BET: string = 'auction_bet'
     public static AUCTION_FOLD: string = 'auction_fold'
     public static RESOURCE_BUY: string = 'resource_buy'
