@@ -10,7 +10,8 @@ module.exports = {
     debug: true,
     noInfo: true,
     entry: [
-        "index.tsx"
+        "index.tsx",
+        "config.js"
     ],
     resolve: {
         root: path.resolve(path.join(__dirname, '..', 'src')),

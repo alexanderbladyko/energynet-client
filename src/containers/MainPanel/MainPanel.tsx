@@ -11,7 +11,6 @@ import {
 } from 'actions/mainPanel'
 import Auction from 'containers/Auction/Auction'
 import AuctionAction from 'containers/AuctionAction/AuctionAction'
-import AuctionChoose from 'containers/AuctionChoose/AuctionChoose'
 import CitiesBuy from 'containers/CitiesBuy/CitiesBuy'
 import ExcludeStation from 'containers/ExcludeStation/ExcludeStation'
 import Resources from 'containers/Resources/Resources'
@@ -113,8 +112,6 @@ class MainPanel extends React.Component<IMainPanelProps, {}> {
         switch (this.props.game.meta.step) {
             case constants.StepTypes.AUCTION:
                 return <AuctionAction />
-            case constants.StepTypes.AUCTION_CHOOSE:
-                return <AuctionChoose />
             case constants.StepTypes.EXCLUDE_STATION:
                 return <ExcludeStation />
             case constants.StepTypes.RESOURCES_BUY:

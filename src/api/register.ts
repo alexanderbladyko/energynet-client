@@ -1,9 +1,9 @@
 import { BaseApi, } from 'api/base'
-import { IRegister, IConfig, } from 'state'
+import { IRegister, IConfigState, } from 'state'
 
 
 export default class RegisterApi extends BaseApi<IRegister> {
-    public getUrl(config: IConfig): string {
-        return `${config.authApi}/register`
+    public getUrl(config: IConfigState): string {
+        return `${config.apiUrl}/register`
     }
 }

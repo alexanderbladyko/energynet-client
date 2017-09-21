@@ -146,7 +146,7 @@ class Register extends React.Component<IRegisterStateProps, IRegisterComponentSt
         if (!this.state.password.valid) {
             return
         }
-        this.props.registerUser(this.props.config.data, {
+        this.props.registerUser(this.props.config, {
             username: this.refs.name.value,
             password: this.refs.password.value,
         }).done()

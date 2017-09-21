@@ -75,7 +75,6 @@
     "react-scrollbar": "^0.5.1",
     "redux": "^3.6.0",
     "sass-loader": "^4.0.2",
-    "scss-loader": "^0.0.1",
     "socket.io": "^1.7.2",
     "socket.io-client": "^2.0.2",
     "style-loader": "^0.13.1",

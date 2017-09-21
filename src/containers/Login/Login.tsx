@@ -85,7 +85,7 @@ class Login extends React.Component<ILoginStateProps, {}> {
 
     private handleSubmit(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
-        this.props.loginUser(this.props.config.data, {
+        this.props.loginUser(this.props.config, {
             username: this.refs.name.value,
             password: this.refs.password.value,
         }).done()

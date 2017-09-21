@@ -39,7 +39,7 @@ export function errorUserInfo(message: string): IErrorAction {
 }
 
 export interface ILoadUserInfoAction {
-    (config: State.IConfig, token: string): Bluebird<State.IUserInfo|void>
+    (config: State.IConfigState, token: string): Bluebird<State.IUserInfo|void>
 }
 
 export function loadUserInfo(dispatch: Dispatch<State.IState>): ILoadUserInfoAction {
@@ -90,7 +90,7 @@ interface ILoginData {
 }
 
 export interface ILoginUserAction {
-    (config: State.IConfig, data: ILoginData): Bluebird<State.IUserInfo|void>
+    (config: State.IConfigState, data: ILoginData): Bluebird<State.IUserInfo|void>
 }
 
 export function loginUser(dispatch: Dispatch<State.IState>): ILoginUserAction {
@@ -141,7 +141,7 @@ interface IRegisterData {
 }
 
 export interface IRegisterUserAction {
-    (config: State.IConfig, data: IRegisterData): Bluebird<State.IRegister|void>
+    (config: State.IConfigState, data: IRegisterData): Bluebird<State.IRegister|void>
 }
 
 

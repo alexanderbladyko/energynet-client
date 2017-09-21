@@ -62,10 +62,13 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         return (
             <div className='action-bet'>
                 <div className='action-bet_station'>
-                    <Station
-                        expanded={true}
-                        stationId={this.props.game.meta.auction.station}
-                    />
+                    {
+                        this.props.game.meta.auction.station &&
+                        <Station
+                            expanded={true}
+                            stationId={this.props.game.meta.auction.station}
+                        />
+                    }
                 </div>
                 {
                     yourTurn
@@ -163,12 +166,12 @@ class AuctionAction extends React.Component<IAuctionActionProps, IAuctionActionS
         })
     }
     private handleAuctionBet(): void {
-        socket.send(constants.ActionTypes.AUCTION_BET, this.state.bet)
-        this.props.requestGameAction(constants.ActionTypes.AUCTION_BET, this.state.bet)
+        socket.send(constants.ActionTypes.AUCTION_BID, this.state.bet)
+        this.props.requestGameAction(constants.Messages.AUCTION_BID, this.state.bet)
     }
     private handleAuctionFold(): void {
-        socket.send(constants.ActionTypes.AUCTION_FOLD, undefined)
-        this.props.requestGameAction(constants.ActionTypes.AUCTION_FOLD, undefined)
+        socket.send(constants.ActionTypes.AUCTION_PASS, undefined)
+        this.props.requestGameAction(constants.Messages.AUCTION_PASS, undefined)
     }
 }
 
