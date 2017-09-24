@@ -42,6 +42,7 @@ export function getClosestPath(junctions: State.IMapGraph, fromCities: string[],
 
         if (toCities.indexOf(vertex) !== -1) {
             result[vertex] = distance
+            distances[vertex] = 0
         }
 
         const neighbors: any = junctions[vertex]

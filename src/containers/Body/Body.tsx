@@ -24,6 +24,7 @@ import Games from 'containers/Games/Games'
 import Lobby from 'containers/Lobby/Lobby'
 
 interface IBodyProps {
+    config: State.IConfigState,
     status: State.IStatusState,
     route: State.IRouteState
     userInfo: State.IUserInfoState
@@ -38,7 +39,7 @@ interface IBodyProps {
 class Body extends React.Component<IBodyProps, {}> {
     public componentWillMount(): void {
         this.props.socketConnecting()
-        socket.initSocket(this.props.userInfo.data.userToken)
+        socket.initSocket(this.props.config, this.props.userInfo.data.userToken)
 
         socket.subscribe('handshake', (data: any): void => {
             console.log('Socket connected')
@@ -100,7 +101,7 @@ class Body extends React.Component<IBodyProps, {}> {
     private initSocket(): void {
         if (this.props.userInfo.data.isAuthenticated) {
             this.props.socketConnecting()
-            socket.initSocket(this.props.userInfo.data.userToken)
+            socket.initSocket(this.props.config, this.props.userInfo.data.userToken)
 
             socket.subscribe('handshake', (data: any): void => {
                 console.log('Socket connected')
@@ -113,6 +114,7 @@ class Body extends React.Component<IBodyProps, {}> {
 export default connect(
     (state: State.IState): any => {
         return {
+            config: state.config,
             status: state.status,
             route: state.route,
             userInfo: state.userInfo,

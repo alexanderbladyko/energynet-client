@@ -25,20 +25,6 @@ export default {
         }
     },
 
-    [actionTypes.CONFIG_RESPONSE]: function(state: State.IRouteState, action: IDataAction<State.IConfig>): State.IRouteState {
-        return {
-            ...state,
-            path: routes.LOADING_ROUTE,
-        }
-    },
-
-    [actionTypes.CONFIG_ERROR]: function(state: State.IRouteState, action: IErrorAction): State.IRouteState {
-        return {
-            ...state,
-            path: routes.ERROR_ROUTE,
-        }
-    },
-
     [actionTypes.GAMES_JOIN_ERROR]: function(state: State.IRouteState, action: IErrorAction): State.IRouteState {
         return {
             ...state,

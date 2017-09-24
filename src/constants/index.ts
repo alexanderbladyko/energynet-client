@@ -7,20 +7,19 @@ export const AUTH_TOKEN_KEY: string = 'token'
 
 export class StepTypes {
     public static AUCTION: string = 'auction'
-    public static AUCTION_CHOOSE: string = 'auction_choose'
     public static AREAS: string = 'areas'
     public static CITIES_BUY: string = 'cities_buy'
     public static COLORS: string = 'colors'
     public static RESOURCES_BUY: string = 'resources_buy'
-    public static EXCLUDE_STATION: string = 'exclude_station'
+    public static EXCLUDE_STATION: string = 'remove_station'
 }
 
 export class ActionTypes {
-    public static AUCTION_BET: string = 'auction_bet'
-    public static AUCTION_FOLD: string = 'auction_fold'
+    public static AUCTION_BID: string = 'auction_bid'
+    public static AUCTION_PASS: string = 'auction_pass'
     public static RESOURCE_BUY: string = 'resource_buy'
     public static AUCTION_SELECT_STATION: string = 'auction_select'
-    public static EXCLUDE_STATION: string = 'exclude_station'
+    public static EXCLUDE_STATION: string = 'remove_station'
     public static CITIES_BUY: string = 'cities_buy'
 }
 
@@ -28,11 +27,10 @@ export class Messages {
     public static STATE: string = 'state'
 
     public static COLOR_CHOOSE: string = 'color_choose'
-    public static AUCTION_BET: string = 'auction_bet'
-    public static AUCTION_FOLD: string = 'auction_fold'
+    public static AUCTION_BID: string = 'auction_bid'
+    public static AUCTION_PASS: string = 'auction_pass'
     public static RESOURCE_BUY: string = 'resource_buy'
-    public static AUCTION_SELECT_STATION: string = 'auction_select'
-    public static EXCLUDE_STATION: string = 'exclude_station'
+    public static STATION_REMOVE: string = 'station_remove'
     public static CITIES_BUY: string = 'cities_buy'
 
     public static GAMES: string = 'games_list'

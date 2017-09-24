@@ -1,18 +1,19 @@
 import * as io from 'socket.io-client'
 
 import * as constants from 'constants'
+import * as State from 'state'
 
 
 let socket: SocketIOClient.Socket = null
 
-export function initSocket(accessToken: string): void {
+export function initSocket(config: State.IConfigState, accessToken: string): void {
     if (socket) {
         console.error('Socket is already initialized')
     }
 
     localStorage.setItem(constants.AUTH_TOKEN_KEY, accessToken)
 
-    socket = io.connect('', {
+    socket = io.connect(config.apiUrl, {
         extraHeaders: {
             Authorization: accessToken,
         },

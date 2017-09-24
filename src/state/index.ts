@@ -13,13 +13,8 @@ interface IActionResponse {
     reason?: string
 }
 
-export interface IConfigState extends IBaseState {
-    data?: IConfig
-}
-
-export interface IConfig {
-    authApi: string
-    gameApi: string
+export interface IConfigState {
+    apiUrl: string
 }
 
 export interface IUserInfoState extends IBaseState {
@@ -135,6 +130,7 @@ export interface IGameMeta {
     auction?: {
         bet: number
         station: number
+        userId: number
     }
     map: string
 }
@@ -355,11 +351,7 @@ export const initialState: IState = {
     auctionChoose: {
         selectedStationId: undefined,
     },
-    config: {
-        error: false,
-        loading: false,
-        loaded: false,
-    },
+    config: (<any>window).config || {},
     citiesBuy: {
         cities: [],
     },

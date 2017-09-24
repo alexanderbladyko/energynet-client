@@ -109,11 +109,26 @@ describe('graph utils', () => {
                     C: 10,
                     E: 8,
                 },
+                G: {
+                    C: 13,
+                    D: 6,
+                    E: 7,
+                },
             }
-            const result: any = getClosestPath(graph, ['A', 'D'], ['C', 'F'])
+            let result: any = getClosestPath(graph, ['A', 'D'], ['C', 'F'])
             expect(result).toEqual({
                 C: 10,
                 F: 10,
+            })
+            result = getClosestPath(graph, ['A', 'D'], ['B', 'F'])
+            expect(result).toEqual({
+                B: 3,
+                F: 7,
+            })
+            result = getClosestPath(graph, ['B', 'C'], ['G', 'D'])
+            expect(result).toEqual({
+                G: 6,
+                D: 8,
             })
         })
     })

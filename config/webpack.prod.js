@@ -3,22 +3,21 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
 
 module.exports = {
-    devtool: 'source-map',
     noInfo: true,
     entry: [
-        "./src/index.tsx"
+        "index.tsx"
     ],
+    production: true,
     resolve: {
-        root: 'src',
+        root: path.resolve(path.join(__dirname, '..', 'src')),
         extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
-        moduleDirectories: ['node_modules']
-    },
-    resolveLoader: {
-        moduleDirectories: [
-            'node_modules'
-        ]
+        alias: {
+            "mapbox-gl": 'mapbox-gl/dist/mapbox-gl.js',
+        }
     },
     output: {
         path: path.resolve(path.join(__dirname, '..', 'build')),
@@ -32,7 +31,23 @@ module.exports = {
         }],
         loaders: [{
             test: /\.tsx?$/,
-            loaders: ['ts']
+            loaders: ['ts'],
+            exclude: /node_modules/
+        },
+        {
+           test: /\.scss$/,
+           loader: 'style!css!sass',
+        },
+        {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file?name=public/fonts/[name].[ext]'
+        },
+        {
+            test: /.\.(gif|png|jpe?g|svg)$/,
+            loaders: [
+                'file?hash=sha512&digest=hex&name=[name].[hash:8].[ext]',
+                'image-webpack',
+            ],
         }]
     },
     plugins: [
@@ -46,6 +61,11 @@ module.exports = {
             compressor: {
                 warnings: false
             }
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index_template.html',
+            inject: false,
+            production: true,
         })
     ],
     tslint: {
