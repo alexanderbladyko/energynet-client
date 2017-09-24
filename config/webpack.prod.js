@@ -3,12 +3,15 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
 
 module.exports = {
     noInfo: true,
     entry: [
         "index.tsx"
     ],
+    production: true,
     resolve: {
         root: path.resolve(path.join(__dirname, '..', 'src')),
         extensions: ["", ".ts", ".tsx", ".js", ".jsx"],
@@ -58,6 +61,11 @@ module.exports = {
             compressor: {
                 warnings: false
             }
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index_template.html',
+            inject: false,
+            production: true,
         })
     ],
     tslint: {

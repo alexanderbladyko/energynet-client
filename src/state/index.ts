@@ -351,9 +351,7 @@ export const initialState: IState = {
     auctionChoose: {
         selectedStationId: undefined,
     },
-    config: {
-        apiUrl: (<any>window).config.apiUrl,
-    },
+    config: (<any>window).config || {},
     citiesBuy: {
         cities: [],
     },

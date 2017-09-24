@@ -4,6 +4,6 @@ import { IUserInfo, IConfigState, } from 'state'
 
 export default class LoginApi extends BaseApi<IUserInfo> {
     public getUrl(config: IConfigState): string {
-        return `${config.apiUrl}/login`
+        return `${config.apiUrl}/auth/login`
     }
 }

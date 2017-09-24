@@ -4,14 +4,15 @@ var webpack = require('webpack')
 var path = require("path")
 
 var StyleLintPlugin = require('stylelint-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     devtool: 'source-map',
     debug: true,
     noInfo: true,
     entry: [
+        "config.js",
         "index.tsx",
-        "config.js"
     ],
     resolve: {
         root: path.resolve(path.join(__dirname, '..', 'src')),
@@ -42,7 +43,7 @@ module.exports = {
             },
             {
                 test: /\.(eot|ttf|woff|woff2)$/,
-                loader: 'file?name=public/fonts/[name].[ext]'
+                loader: 'file?name=[name].[ext]'
             },
             {
                 test: /.\.(gif|png|jpe?g|svg)$/,
@@ -61,6 +62,10 @@ module.exports = {
         new StyleLintPlugin({
             files: '**/*.scss',
             syntax: 'scss',
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index_template.html',
+            inject: false,
         })
     ]
 };
