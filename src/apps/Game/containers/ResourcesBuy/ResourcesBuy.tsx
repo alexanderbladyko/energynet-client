@@ -253,5 +253,6 @@ export default connect(
         addResource,
         clearStation,
         clearAll,
-    }
+    },
+
 )(ResourceBuy)

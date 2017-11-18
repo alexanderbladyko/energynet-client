@@ -3648,7 +3648,7 @@
         }
     ],
     "properties": {
-        "minZoom": 4.5,
+        "minZoom": 3.5,
         "maxZoom": 8
     },
     "type": "FeatureCollection",

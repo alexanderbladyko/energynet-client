@@ -1,5 +1,6 @@
 const path = require('path')
 const http = require('http')
+const cors = require('cors')
 const express = require('express')
 const socketIo = require('socket.io')
 
@@ -13,6 +14,9 @@ const server = new http.Server(app)
 const port = 5000
 
 const io = socketIo(server)
+
+
+app.use(cors())
 
 app.use(mockApiServer)
 

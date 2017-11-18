@@ -9,12 +9,12 @@ import {
     toggleTab,
     togglePanels,
 } from 'actions/mainPanel'
-import Auction from 'containers/Auction/Auction'
-import AuctionAction from 'containers/AuctionAction/AuctionAction'
-import CitiesBuy from 'containers/CitiesBuy/CitiesBuy'
-import ExcludeStation from 'containers/ExcludeStation/ExcludeStation'
-import Resources from 'containers/Resources/Resources'
-import ResourcesBuy from 'containers/ResourcesBuy/ResourcesBuy'
+import Auction from 'apps/Game/containers/Auction/Auction'
+import AuctionAction from 'apps/Game/containers/AuctionAction/AuctionAction'
+import CitiesBuy from 'apps/Game/containers/CitiesBuy/CitiesBuy'
+import ExcludeStation from 'apps/Game/containers/ExcludeStation/ExcludeStation'
+import Resources from 'apps/Game/containers/Resources/Resources'
+import ResourcesBuy from 'apps/Game/containers/ResourcesBuy/ResourcesBuy'
 import * as constants from 'constants'
 import * as State from 'state'
 

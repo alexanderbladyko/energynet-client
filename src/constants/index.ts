@@ -24,7 +24,9 @@ export class ActionTypes {
 }
 
 export class Messages {
+    public static HANDSHAKE: string = 'handshake'
     public static STATE: string = 'state'
+    public static CONNECT_TIMEOUT: string = 'connect_timeout'
 
     public static COLOR_CHOOSE: string = 'color_choose'
     public static AUCTION_BID: string = 'auction_bid'

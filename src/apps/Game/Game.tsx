@@ -32,10 +32,11 @@ import {
 } from 'actions/resources'
 import * as socket from 'api/socket'
 import * as constants from 'constants'
-import ColorPick from 'containers/ColorPick/ColorPick'
-import MainPanel from 'containers/MainPanel/MainPanel'
-import Map from 'containers/Map/Map'
-import UserTabs from 'containers/UserTabs/UserTabs'
+import ColorPick from './containers/ColorPick/ColorPick'
+import MainPanel from './containers/MainPanel/MainPanel'
+import SideBar from './containers/SideBar/SideBar'
+import Map from './containers/Map/Map'
+import UserTabs from './containers/UserTabs/UserTabs'
 import * as State from 'state'
 
 interface IGameProps {
@@ -54,8 +55,12 @@ interface IGameProps {
     loadMapGeo: ILoadMapGeoAction
 }
 
+interface IGameState {
+    mapDragging: boolean
+}
 
-class Game extends React.Component<IGameProps, {}> {
+
+class Game extends React.Component<IGameProps, IGameState> {
     public componentWillMount(): void {
         socket.subscribe(constants.Messages.GAME, (data: State.IGame): void => {
             this.props.receiveGameInfo(data)
@@ -83,6 +88,9 @@ class Game extends React.Component<IGameProps, {}> {
         socket.subscribe(constants.Messages.RESOURCES, (data: State.IResources): void => {
             this.props.receiveResources(data)
         })
+        this.setState({
+            mapDragging: false,
+        })
     }
     public componentWillUnmount(): void {
         socket.unsubscribe(constants.Messages.GAME)
@@ -90,6 +98,7 @@ class Game extends React.Component<IGameProps, {}> {
         socket.unsubscribe(constants.Messages.RESOURCES)
     }
     public render(): React.ReactElement<{}> {
+        console.log(this.state)
         if (!this.props.game.data) {
             return null
         }
@@ -101,11 +110,23 @@ class Game extends React.Component<IGameProps, {}> {
         }
         return (
             <div>
-                <UserTabs />
-                <Map />
-                <MainPanel />
+                <Map
+                    handleMapDragStart={this._handleMapDragStart.bind(this)}
+                    handleMapDragEnd={this._handleMapDragEnd.bind(this)}
+                />
+                <SideBar mapDragging={this.state.mapDragging} />
             </div>
         )
+    }
+    private _handleMapDragEnd(): void {
+        this.setState({
+            mapDragging: false,
+        })
+    }
+    private _handleMapDragStart(): void {
+        this.setState({
+            mapDragging: true,
+        })
     }
 }
 

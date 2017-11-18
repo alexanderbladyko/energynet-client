@@ -24,6 +24,8 @@ const adapters: BaseAdapter<any, any>[] = [
 interface IMapProps {
     game: State.IGameState
     geo: State.IMapGeoState
+    handleMapDragEnd: Function,
+    handleMapDragStart: Function,
 }
 
 class Map extends React.Component<IMapProps, {}> {
@@ -68,6 +70,8 @@ class Map extends React.Component<IMapProps, {}> {
 
                 store.subscribe(this.refreshAdapters.bind(this))
             })
+            this.mapComponent.on('dragstart', this.props.handleMapDragStart.bind(this))
+            this.mapComponent.on('dragend', this.props.handleMapDragEnd.bind(this))
         }
     }
 
@@ -78,7 +82,10 @@ class Map extends React.Component<IMapProps, {}> {
     }
 }
 
-export default connect(
+export default connect<any, any, {
+    handleMapDragStart: Function,
+    handleMapDragEnd: Function,
+}>(
     (state: State.IState): any => {
         return {
             game: state.game,

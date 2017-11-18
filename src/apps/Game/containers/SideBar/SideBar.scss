@@ -1,0 +1,13 @@
+.side-bar {
+    position: absolute;
+    width: 54px;
+    height: 100%;
+    border: 1px solid #123123;
+    left: 0;
+    transition: 1s;
+
+    &__collapsed {
+        left: -54px;
+        opacity: 0.2;
+    }
+}
